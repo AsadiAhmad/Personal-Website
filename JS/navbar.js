@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let activeLink = null;
 
     function updatePointer(target) {
-        animationDiv.style.width = target.offsetWidth + 'px';
-        animationDiv.style.left = target.offsetLeft + 'px';
+        animationDiv.style.width = target.offsetWidth + 4 + 'px';
+        animationDiv.style.left = target.offsetLeft - 2 + 'px';
     }
 
     function resetActiveState() {

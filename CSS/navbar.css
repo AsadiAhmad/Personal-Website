@@ -17,16 +17,16 @@ nav.parent-nav {
 
 ul.nav {
     margin-top: 0;
-    position: relative;
+    /* position: relative; */
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
-    padding: 0;
-    margin: 0;
+    padding: 0px;
+    margin: 0px;
     list-style-type: none;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
-    z-index: 150;
+    z-index: 2;
 }
 
 ul.nav li {
@@ -67,8 +67,9 @@ ul.nav li.hover:hover a {
 
 ul.nav .animation {
     position: absolute;
-    height: 100%;
-    border-radius: 20px;
+    height: 46px;
+    width: 150px;
+    border-radius: 25px;
     background-color: #ffffff;
     transition: all 0.5s ease;
     z-index: 1;
