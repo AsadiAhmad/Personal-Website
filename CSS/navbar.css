@@ -17,9 +17,7 @@ nav.parent-nav {
 
 ul.nav {
     margin-top: 0;
-    /* position: relative; */
     display: flex;
-    /* justify-content: space-between; */
     align-items: center;
     padding: 0px;
     margin: 0px;
@@ -73,4 +71,31 @@ ul.nav .animation {
     background-color: #ffffff;
     transition: all 0.5s ease;
     z-index: 1;
+}
+
+@media (max-width: 1000px) {
+    nav.parent-nav {
+        max-width: 450px;
+    }
+}
+
+@media (max-width: 550px) {
+    nav.parent-nav {
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 450px) {
+    nav.parent-nav {
+        max-width: 300px;
+    }
+
+    ul.nav a {
+        height: 35px;
+        font-size: 11px;
+    }
+
+    ul.nav .animation {
+        height: 37px;
+    }
 }
