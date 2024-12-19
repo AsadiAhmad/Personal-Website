@@ -7,6 +7,16 @@ const camera = new THREE.PerspectiveCamera(
 );
 const renderer = new THREE.WebGLRenderer({ alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.domElement.style.position = "fixed";
+renderer.domElement.style.top = "0";
+renderer.domElement.style.left = "0";
+renderer.domElement.style.width = "100%";
+renderer.domElement.style.height = "100%";
+renderer.domElement.style.border = "none";
+renderer.domElement.style.margin = "0";
+renderer.domElement.style.padding = "0";
+renderer.domElement.style.zIndex = "-1";
+renderer.domElement.style.overflow = "hidden";
 document.getElementById("particle-wave").appendChild(renderer.domElement);
 
 const particleCount = 1500;
@@ -78,10 +88,10 @@ function animateCamera() {
 }
 
 function animate() {
-  requestAnimationFrame(animate);
-  animateParticles();
-  animateCamera();
-  renderer.render(scene, camera);
+    requestAnimationFrame(animate);
+    animateParticles();
+    animateCamera();
+    renderer.render(scene, camera);
 }
 
 animate();
