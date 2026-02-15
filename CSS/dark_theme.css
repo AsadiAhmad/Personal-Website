@@ -1,0 +1,187 @@
+/* Theme tokens */
+:root {
+  --page-bg: #0c1018;
+  --text-primary: #e7ecf8;
+  --nav-bg: rgba(6, 10, 18, 0.7);
+  --nav-border: rgba(255, 255, 255, 0.15);
+  --nav-link: #f1f4fb;
+  --nav-hover: #0f1723;
+  --nav-active-bg: #ffffff;
+  --nav-active-text: #111827;
+  --toggle-bg: rgba(6, 10, 18, 0.85);
+  --toggle-border: rgba(255, 255, 255, 0.2);
+  --toggle-icon: #f4f7ff;
+  --toggle-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  --toggle-hover-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  --toggle-glow: rgba(255, 255, 255, 0.35);
+  --nav-width: 590px;
+}
+
+body[data-theme='light'] {
+  --page-bg: #f1f5ff;
+  --text-primary: #0f172a;
+  --nav-bg: rgba(255, 255, 255, 0.52);
+  --nav-border: rgba(15, 23, 42, 0.15);
+  --nav-link: #1e293b;
+  --nav-hover: #0b1220;
+  --nav-active-bg: #0f172a;
+  --nav-active-text: #f8fbff;
+  --toggle-bg: rgba(255, 255, 255, 0.9);
+  --toggle-border: rgba(15, 23, 42, 0.25);
+  --toggle-icon: #0f172a;
+  --toggle-shadow: 0 10px 25px rgba(15, 23, 42, 0.18);
+  --toggle-hover-shadow: 0 12px 30px rgba(15, 23, 42, 0.25);
+  --toggle-glow: rgba(15, 23, 42, 0.2);
+}
+
+body {
+  background-color: var(--page-bg);
+  color: var(--text-primary);
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+/* Navbar theme override */
+nav.parent-nav {
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  background-color: var(--nav-bg) !important;
+  border-color: var(--nav-border) !important;
+}
+
+ul.nav a {
+  color: var(--nav-link) !important;
+}
+
+ul.nav li:hover a {
+  color: var(--nav-hover) !important;
+}
+
+ul.nav li.active a,
+ul.nav li.active:hover a {
+  color: var(--nav-active-text) !important;
+}
+
+ul.nav .animation {
+  background-color: var(--nav-active-bg) !important;
+}
+
+@media (max-width: 550px) {
+  .nav-mobile-toggle {
+    background: var(--toggle-bg) !important;
+    border-color: var(--toggle-border) !important;
+    color: var(--toggle-icon) !important;
+  }
+
+  ul.nav {
+    background-color: var(--toggle-bg) !important;
+    border-color: var(--toggle-border) !important;
+  }
+
+  ul.nav li.active a {
+    background-color: var(--nav-active-bg) !important;
+    color: var(--nav-active-text) !important;
+  }
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  position: fixed;
+  top: 30px;
+  left: 50%;
+  margin-left: calc((var(--nav-width) / 2) + 12px);
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--toggle-border);
+  border-radius: 50%;
+  background: var(--toggle-bg);
+  color: var(--toggle-icon);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 3;
+  box-shadow: var(--toggle-shadow);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: var(--toggle-hover-shadow), 0 0 18px var(--toggle-glow);
+}
+
+.theme-toggle:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.theme-toggle .icon {
+  position: absolute;
+  font-size: 20px;
+  line-height: 1;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+body[data-theme='dark'] .theme-toggle .icon-sun {
+  opacity: 0;
+  transform: rotate(-110deg) scale(0.35);
+}
+
+body[data-theme='dark'] .theme-toggle .icon-moon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+body[data-theme='light'] .theme-toggle .icon-sun {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+body[data-theme='light'] .theme-toggle .icon-moon {
+  opacity: 0;
+  transform: rotate(110deg) scale(0.35);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 1000px) {
+  :root {
+    --nav-width: 450px;
+  }
+}
+
+@media (max-width: 550px) {
+  :root {
+    --nav-width: 220px;
+  }
+
+  .theme-toggle {
+    width: 40px;
+    height: 40px;
+    margin-left: calc((var(--nav-width) / 2) + 10px);
+  }
+
+  .theme-toggle .icon {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 450px) {
+  :root {
+    --nav-width: 200px;
+  }
+
+  .theme-toggle {
+    width: 38px;
+    height: 38px;
+  }
+}
+

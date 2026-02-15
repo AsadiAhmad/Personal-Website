@@ -15,6 +15,10 @@ nav.parent-nav {
   border: 1px solid rgba(255, 255, 255, 0.125);
 }
 
+.nav-mobile-toggle {
+  display: none;
+}
+
 ul.nav {
   margin-top: 0;
   display: flex;
@@ -75,27 +79,111 @@ ul.nav .animation {
 
 @media (max-width: 1000px) {
   nav.parent-nav {
-    max-width: 450px;
+    max-width: 500px;
   }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 650px) {
   nav.parent-nav {
-    max-width: 400px;
+    max-width: 220px;
+    padding: 6px;
+    border-radius: 24px;
+    overflow: visible;
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .nav-mobile-toggle {
+    width: 100%;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 14px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 19px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: geometricPrecision;
+  }
+
+  .nav-mobile-toggle::after {
+    content: '\25BE';
+    font-size: 11px;
+  }
+
+  nav.parent-nav.mobile-open .nav-mobile-toggle::after {
+    content: '\25B4';
+  }
+
+  ul.nav {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: 100%;
+    padding: 6px;
+    border-radius: 16px;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background-color: rgba(0, 0, 0, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  nav.parent-nav.mobile-open ul.nav {
+    display: flex;
+  }
+
+  ul.nav li {
+    width: 100%;
+    flex: none;
+  }
+
+  ul.nav a {
+    height: 36px;
+    justify-content: flex-start;
+    padding: 0 12px;
+    border-radius: 12px;
+    font-size: 13px;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: geometricPrecision;
+  }
+
+  ul.nav li:hover a {
+    color: white !important;
+  }
+
+  ul.nav li.active a {
+    background-color: #fff;
+    color: #000;
+  }
+
+  ul.nav .animation {
+    display: none;
   }
 }
 
 @media (max-width: 450px) {
   nav.parent-nav {
-    max-width: 300px;
+    max-width: 200px;
+  }
+
+  .nav-mobile-toggle {
+    height: 36px;
+    padding: 0 12px;
+    font-size: 13px;
   }
 
   ul.nav a {
-    height: 35px;
-    font-size: 11px;
-  }
-
-  ul.nav .animation {
-    height: 37px;
+    height: 34px;
+    font-size: 12px;
   }
 }
