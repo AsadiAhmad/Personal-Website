@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = navList.querySelectorAll('li');
     const navAnchors = navList.querySelectorAll('li a');
     const animationDiv = navList.querySelector('.animation');
-    const mobileBreakpoint = 550;
+    const mobileBreakpoint = 650;
 
     let activeLink = null;
 
@@ -45,8 +45,19 @@ document.addEventListener('DOMContentLoaded', () => {
         navLinks.forEach((link) => link.classList.remove('active', 'hover'));
     }
 
+    function normalizePath(path) {
+        if (!path) return '/';
+        let normalized = path.toLowerCase().replace(/\/+$/, '');
+        if (normalized === '') normalized = '/';
+        if (normalized.endsWith('/index.html')) normalized = normalized.slice(0, -'/index.html'.length) || '/';
+        return normalized;
+    }
+
+    const currentPath = normalizePath(window.location.pathname);
+
     navAnchors.forEach((anchor) => {
-        if (anchor.pathname === window.location.pathname) {
+        const anchorPath = normalizePath(anchor.pathname);
+        if (anchorPath === currentPath) {
             activeLink = anchor.parentElement;
             activeLink.classList.add('active');
         }
@@ -62,14 +73,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     navLinks.forEach((link) => {
         link.addEventListener('mouseenter', () => {
-            if (isMobile()) return;
+            // if (isMobile()) return;
             resetActiveState();
             link.classList.add('hover');
             updatePointer(link);
         });
 
         link.addEventListener('mouseleave', () => {
-            if (isMobile()) return;
+            // if (isMobile()) return;
             link.classList.remove('hover');
             activeLink.classList.add('active');
             updatePointer(activeLink);

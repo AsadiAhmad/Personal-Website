@@ -38,7 +38,7 @@ ul.nav .animation {
   background-color: var(--nav-active-bg) !important;
 }
 
-@media (max-width: 550px) {
+@media (max-width: 650px) {
   .nav-mobile-toggle {
     background: var(--toggle-bg) !important;
     border-color: var(--toggle-border) !important;
@@ -51,6 +51,11 @@ ul.nav .animation {
   }
 
   ul.nav li.active a {
+    background-color: var(--nav-active-bg) !important;
+    color: var(--nav-active-text) !important;
+  }
+
+  ul.nav li:hover a {
     background-color: var(--nav-active-bg) !important;
     color: var(--nav-active-text) !important;
   }

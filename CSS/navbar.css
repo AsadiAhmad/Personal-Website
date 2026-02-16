@@ -171,11 +171,13 @@ ul.nav .animation {
 
   ul.nav li:hover a {
     color: var(--nav-link) !important;
+    transition: background-color 0.5s ease, color 0.5s ease;
   }
 
   ul.nav li.active a {
     background-color: var(--nav-active-bg);
     color: var(--nav-active-text);
+    transition: background-color 0.5s ease, color 0.5s ease;
   }
 
   ul.nav .animation {

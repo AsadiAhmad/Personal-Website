@@ -31,7 +31,7 @@ body[data-theme='light'] {
   --nav-bg: rgba(255, 255, 255, 0.52);
   --nav-border: rgba(15, 23, 42, 0.15);
   --nav-link: #1e293b;
-  --nav-hover: #0b1220;
+  --nav-hover: #f8fbff;
   --nav-active-bg: #0f172a;
   --nav-active-text: #f8fbff;
   --nav-mobile-bg: rgba(255, 255, 255, 0.95);
