@@ -27,7 +27,7 @@
 }
 
 .hero-blob {
-  background: #456de5;
+  background: var(--accent-primary);
   z-index: 0;
 }
 
@@ -59,7 +59,7 @@
 }
 
 .hero-title span {
-  color: #456de5;
+  color: var(--accent-primary);
 }
 
 .hero-actions {
@@ -84,13 +84,13 @@
 }
 
 .hero-btn-primary {
-  background: #456de5;
-  color: #ffffff;
+  background: var(--accent-primary);
+  color: var(--text-on-accent);
 }
 
 .hero-btn-secondary {
-  background: #111827;
-  color: #ffffff;
+  background: var(--btn-secondary-bg);
+  color: var(--text-on-dark);
 }
 
 @media (max-width: 980px) {

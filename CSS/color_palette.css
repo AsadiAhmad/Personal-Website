@@ -1,0 +1,45 @@
+﻿/* Shared color palette */
+:root {
+  --page-bg: #0c1018;
+  --text-primary: #e7ecf8;
+
+  --nav-bg: rgba(6, 10, 18, 0.7);
+  --nav-border: rgba(255, 255, 255, 0.15);
+  --nav-link: #f1f4fb;
+  --nav-hover: #0f1723;
+  --nav-active-bg: #ffffff;
+  --nav-active-text: #111827;
+  --nav-mobile-bg: rgba(0, 0, 0, 0.9);
+
+  --toggle-bg: rgba(6, 10, 18, 0.85);
+  --toggle-border: rgba(255, 255, 255, 0.2);
+  --toggle-icon: #f4f7ff;
+  --toggle-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  --toggle-hover-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  --toggle-glow: rgba(255, 255, 255, 0.35);
+
+  --accent-primary: #456de5;
+  --btn-secondary-bg: #111827;
+  --text-on-accent: #ffffff;
+  --text-on-dark: #ffffff;
+}
+
+body[data-theme='light'] {
+  --page-bg: #f1f5ff;
+  --text-primary: #0f172a;
+
+  --nav-bg: rgba(255, 255, 255, 0.52);
+  --nav-border: rgba(15, 23, 42, 0.15);
+  --nav-link: #1e293b;
+  --nav-hover: #0b1220;
+  --nav-active-bg: #0f172a;
+  --nav-active-text: #f8fbff;
+  --nav-mobile-bg: rgba(255, 255, 255, 0.95);
+
+  --toggle-bg: rgba(255, 255, 255, 0.9);
+  --toggle-border: rgba(15, 23, 42, 0.25);
+  --toggle-icon: #0f172a;
+  --toggle-shadow: 0 10px 25px rgba(15, 23, 42, 0.18);
+  --toggle-hover-shadow: 0 12px 30px rgba(15, 23, 42, 0.25);
+  --toggle-glow: rgba(15, 23, 42, 0.2);
+}

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
 nav.parent-nav {
   position: fixed;
@@ -11,8 +11,8 @@ nav.parent-nav {
   border-radius: 25px;
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
-  background-color: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.125);
+  background-color: var(--nav-bg);
+  border: 1px solid var(--nav-border);
 }
 
 .nav-mobile-toggle {
@@ -40,7 +40,7 @@ ul.nav a {
   height: 45px;
   flex-grow: 1;
   text-decoration: none;
-  color: white;
+  color: var(--nav-link);
   font-size: 14px;
   display: flex;
   align-items: center;
@@ -51,20 +51,20 @@ ul.nav a {
 }
 
 ul.nav li:hover a {
-  color: black !important;
+  color: var(--nav-hover) !important;
 }
 
 ul.nav li.active a {
-  color: black;
+  color: var(--nav-active-text);
   font-weight: 600;
 }
 
 ul.nav li.active:hover a {
-  color: black !important;
+  color: var(--nav-active-text) !important;
 }
 
 ul.nav li.hover:hover a {
-  color: white;
+  color: var(--nav-link);
 }
 
 ul.nav .animation {
@@ -72,7 +72,7 @@ ul.nav .animation {
   height: 46px;
   width: 150px;
   border-radius: 25px;
-  background-color: #ffffff;
+  background-color: var(--nav-active-bg);
   transition: all 0.5s ease;
   z-index: 1;
 }
@@ -91,7 +91,7 @@ ul.nav .animation {
     overflow: visible;
     backdrop-filter: blur(16px) saturate(180%);
     -webkit-backdrop-filter: blur(16px) saturate(180%);
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: var(--nav-bg);
   }
 
   .nav-mobile-toggle {
@@ -101,10 +101,10 @@ ul.nav .animation {
     align-items: center;
     justify-content: space-between;
     padding: 0 14px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--toggle-border);
     border-radius: 19px;
-    background: rgba(255, 255, 255, 0.08);
-    color: #fff;
+    background: var(--toggle-bg);
+    color: var(--nav-link);
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
     font-weight: 500;
@@ -132,8 +132,8 @@ ul.nav .animation {
     border-radius: 16px;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
-    background-color: rgba(0, 0, 0, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.125);
+    background-color: var(--nav-mobile-bg);
+    border: 1px solid var(--nav-border);
     flex-direction: column;
     gap: 4px;
   }
@@ -158,12 +158,12 @@ ul.nav .animation {
   }
 
   ul.nav li:hover a {
-    color: white !important;
+    color: var(--nav-link) !important;
   }
 
   ul.nav li.active a {
-    background-color: #fff;
-    color: #000;
+    background-color: var(--nav-active-bg);
+    color: var(--nav-active-text);
   }
 
   ul.nav .animation {
