@@ -93,9 +93,20 @@ ul.nav .animation {
 
 .theme-toggle .icon {
   position: absolute;
-  font-size: 20px;
+  width: 70%;
+  height: 70%;
   line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   transition: transform 0.35s ease, opacity 0.35s ease;
+  padding: 3px;
+}
+
+.theme-toggle .icon svg {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
 }
 
 body[data-theme='dark'] .theme-toggle .icon-sun {
@@ -139,10 +150,6 @@ body[data-theme='light'] .theme-toggle .icon-moon {
 @media (max-width: 550px) {
   .theme-toggle {
     margin-left: calc((var(--nav-width) / 2) + 10px);
-  }
-
-  .theme-toggle .icon {
-    font-size: 17px;
   }
 }
 

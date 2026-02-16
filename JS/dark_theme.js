@@ -1,9 +1,9 @@
 (function () {
     const THEME_KEY = 'site-theme';
     const root = document.body;
-    const nav = document.querySelector('nav.parent-nav');
+    const toggleButton = document.querySelector('.theme-toggle');
 
-    if (!root || !nav) return;
+    if (!root || !toggleButton) return;
 
     function getPreferredTheme() {
         const stored = localStorage.getItem(THEME_KEY);
@@ -28,18 +28,7 @@
         applyTheme(next);
     }
 
-    const toggleButton = document.createElement('button');
-    toggleButton.type = 'button';
-    toggleButton.className = 'theme-toggle';
-    toggleButton.innerHTML = [
-        '<span class="icon icon-sun" aria-hidden="true">&#9728;</span>',
-        '<span class="icon icon-moon" aria-hidden="true">&#9789;</span>',
-        '<span class="sr-only">Toggle theme</span>'
-    ].join('');
-
-    nav.insertAdjacentElement('afterend', toggleButton);
     applyTheme(getPreferredTheme());
 
     toggleButton.addEventListener('click', toggleTheme);
 })();
-
