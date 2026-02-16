@@ -1,7 +1,11 @@
 ﻿@import url('/CSS/color_palette.css');
 
+/* color */
+
 :root {
-  --nav-width: 590px;
+  --theme-toggle-width: 46px;
+  --theme-toggle-height: 46px;
+  --theme-toggle-top: 30px;
 }
 
 body {
@@ -10,7 +14,6 @@ body {
   transition: background-color 0.35s ease, color 0.35s ease;
 }
 
-/* Navbar theme override */
 nav.parent-nav {
   backdrop-filter: blur(16px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
@@ -56,11 +59,11 @@ ul.nav .animation {
 /* Theme toggle button */
 .theme-toggle {
   position: fixed;
-  top: 30px;
+  top: var(--theme-toggle-top);
   left: 50%;
   margin-left: calc((var(--nav-width) / 2) + 12px);
-  width: 46px;
-  height: 46px;
+  width: var(--theme-toggle-width);
+  height: var(--theme-toggle-height);
   border: 1px solid var(--toggle-border);
   border-radius: 50%;
   background: var(--toggle-bg);
@@ -122,20 +125,14 @@ body[data-theme='light'] .theme-toggle .icon-moon {
   border: 0;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 650px) {
   :root {
-    --nav-width: 450px;
+    --theme-toggle-top: 34px;
   }
 }
 
 @media (max-width: 550px) {
-  :root {
-    --nav-width: 220px;
-  }
-
   .theme-toggle {
-    width: 40px;
-    height: 40px;
     margin-left: calc((var(--nav-width) / 2) + 10px);
   }
 
@@ -146,11 +143,8 @@ body[data-theme='light'] .theme-toggle .icon-moon {
 
 @media (max-width: 450px) {
   :root {
-    --nav-width: 200px;
-  }
-
-  .theme-toggle {
-    width: 38px;
-    height: 38px;
+    --theme-toggle-width: 40px;
+    --theme-toggle-height: 40px;
+    --theme-toggle-top: 36px;
   }
 }

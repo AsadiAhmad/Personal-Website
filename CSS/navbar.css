@@ -1,5 +1,9 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
+:root {
+  --nav-width: 590px;
+}
+
 nav.parent-nav {
   position: fixed;
   top: 30px;
@@ -7,7 +11,7 @@ nav.parent-nav {
   transform: translateX(-50%);
   z-index: 2;
   width: 100%;
-  max-width: 590px;
+  max-width: var(--nav-width);
   border-radius: 25px;
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
@@ -78,14 +82,22 @@ ul.nav .animation {
 }
 
 @media (max-width: 1000px) {
+  :root {
+    --nav-width: 500px;
+  }
+
   nav.parent-nav {
-    max-width: 500px;
+    max-width: var(--nav-width);
   }
 }
 
 @media (max-width: 650px) {
+  :root {
+    --nav-width: 220px;
+  }
+
   nav.parent-nav {
-    max-width: 220px;
+    max-width: var(--nav-width);
     padding: 6px;
     border-radius: 24px;
     overflow: visible;
@@ -172,8 +184,12 @@ ul.nav .animation {
 }
 
 @media (max-width: 450px) {
+  :root {
+    --nav-width: 200px;
+  }
+
   nav.parent-nav {
-    max-width: 200px;
+    max-width: var(--nav-width);
   }
 
   .nav-mobile-toggle {
