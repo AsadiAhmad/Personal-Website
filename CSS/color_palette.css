@@ -14,9 +14,6 @@
   --toggle-bg: rgba(6, 10, 18, 0.85);
   --toggle-border: rgba(255, 255, 255, 0.2);
   --toggle-icon: #f4f7ff;
-  --toggle-shadow: 0px 0px 25px rgba(0, 0, 0, 0.25);
-  --toggle-hover-shadow: 0px 0px 30px rgba(0, 0, 0, 0.35);
-  --toggle-glow: rgba(255, 255, 255, 0.35);
 
   --accent-primary: #456de5;
   --btn-secondary-bg: #111827;
@@ -39,7 +36,4 @@ body[data-theme='light'] {
   --toggle-bg: rgba(255, 255, 255, 0.9);
   --toggle-border: rgba(15, 23, 42, 0.25);
   --toggle-icon: #0f172a;
-  --toggle-shadow: 0 0px 25px rgba(15, 23, 42, 0.18);
-  --toggle-hover-shadow: 0 0px 30px rgba(15, 23, 42, 0.25);
-  --toggle-glow: rgba(15, 23, 42, 0.2);
 }

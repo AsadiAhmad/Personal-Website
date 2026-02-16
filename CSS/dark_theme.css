@@ -78,13 +78,11 @@ ul.nav .animation {
   justify-content: center;
   cursor: pointer;
   z-index: 3;
-  box-shadow: var(--toggle-shadow);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  transition: transform 0.25s ease, border-color 0.25s ease;
 }
 
 .theme-toggle:hover {
   transform: translateY(-2px) scale(1.03);
-  box-shadow: var(--toggle-hover-shadow), 0 0 18px var(--toggle-glow);
 }
 
 .theme-toggle:active {

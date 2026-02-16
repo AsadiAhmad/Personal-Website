@@ -1,0 +1,34 @@
+/* Centralized shadows */
+
+:root {
+  --dark-shadow-base: 0px 0px 18px rgba(15, 23, 42, 0.3);
+  --dark-shadow-hover: 0px 0px 24px rgba(15, 23, 42, 0.5);
+  --light-shadow-base: 0px 0px 18px rgba(255, 255, 255, 0.2);
+  --light-shadow-hover: 0px 0px 24px rgba(255, 255, 255, 0.4);
+}
+
+.dark-shadow {
+  box-shadow: var(--dark-shadow-base);
+  transition: box-shadow 0.25s ease;
+}
+
+.dark-shadow:hover {
+  box-shadow: var(--dark-shadow-hover);
+}
+
+.dark-shadow:active {
+  box-shadow: var(--dark-shadow-base);
+}
+
+.light-shadow {
+  box-shadow: var(--light-shadow-base);
+  transition: box-shadow 0.25s ease;
+}
+
+.light-shadow:hover {
+  box-shadow: var(--light-shadow-hover);
+}
+
+.light-shadow:active {
+  box-shadow: var(--light-shadow-base);
+}

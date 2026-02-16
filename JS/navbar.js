@@ -14,6 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileToggle = document.createElement('button');
     mobileToggle.type = 'button';
     mobileToggle.className = 'nav-mobile-toggle';
+    mobileToggle.classList.add(
+        document.body.getAttribute('data-theme') === 'light' ? 'dark-shadow' : 'light-shadow'
+    );
     mobileToggle.setAttribute('aria-label', 'Toggle navigation menu');
     mobileToggle.setAttribute('aria-expanded', 'false');
     navElement.insertBefore(mobileToggle, navList);

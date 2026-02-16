@@ -20,6 +20,14 @@
             );
             toggleButton.setAttribute('title', theme === 'dark' ? 'Light mode' : 'Dark mode');
         }
+        const addShadowClass = theme === 'dark' ? 'light-shadow' : 'dark-shadow';
+        const removeShadowClass = theme === 'dark' ? 'dark-shadow' : 'light-shadow';
+        document
+            .querySelectorAll('.theme-toggle, .hero-btn, .nav-mobile-toggle')
+            .forEach((element) => {
+                element.classList.remove(removeShadowClass);
+                element.classList.add(addShadowClass);
+            });
     }
 
     function toggleTheme() {
