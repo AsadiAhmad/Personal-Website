@@ -107,6 +107,56 @@
   color: var(--text-on-dark);
 }
 
+/* =========================
+   Bio Section
+========================= */
+.bio {
+  padding: 70px 8%;
+  background: var(--section-muted-bg);
+  border-top: 1px solid var(--section-muted-border);
+  border-bottom: 1px solid var(--section-muted-border);
+}
+
+.bio-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  display: grid;
+  gap: 20px;
+}
+
+.bio-title {
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-primary);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1.2;
+}
+
+.bio-text {
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-primary);
+  font-size: clamp(1rem, 1.6vw, 1.12rem);
+  line-height: 1.85;
+  max-width: 900px;
+}
+
+.bio-btn {
+  justify-self: start;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 11px 24px;
+  border-radius: 10px;
+  background: var(--accent-primary);
+  color: var(--text-on-accent);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.bio-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
 @media (max-width: 980px) {
   .hero {
     gap: 40px;
@@ -126,5 +176,15 @@
   }
   .hero-actions {
     justify-content: center;
+  }
+  .bio {
+    padding-inline: 6%;
+  }
+  .bio-btn {
+    justify-self: center;
+  }
+  .bio-title,
+  .bio-text {
+    text-align: center;
   }
 }

@@ -19,6 +19,8 @@
   --btn-secondary-bg: #111827;
   --text-on-accent: #ffffff;
   --text-on-dark: #ffffff;
+  --section-muted-bg: #121a2a;
+  --section-muted-border: rgba(255, 255, 255, 0.1);
 }
 
 body[data-theme='light'] {
@@ -36,4 +38,6 @@ body[data-theme='light'] {
   --toggle-bg: rgba(255, 255, 255, 0.9);
   --toggle-border: rgba(15, 23, 42, 0.25);
   --toggle-icon: #0f172a;
+  --section-muted-bg: #e7edff;
+  --section-muted-border: rgba(15, 23, 42, 0.12);
 }
