@@ -136,6 +136,7 @@
   color: var(--text-primary);
   font-size: clamp(1rem, 1.6vw, 1.12rem);
   line-height: 1.85;
+  text-align: justify;
   max-width: 900px;
 }
 
@@ -185,6 +186,6 @@
   }
   .bio-title,
   .bio-text {
-    text-align: center;
+    text-align: left;
   }
 }
