@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileToggle = document.createElement('button');
     mobileToggle.type = 'button';
     mobileToggle.className = 'nav-mobile-toggle';
+    mobileToggle.classList.add('fw-medium');
     mobileToggle.classList.add(
         document.body.getAttribute('data-theme') === 'light' ? 'dark-shadow' : 'light-shadow'
     );
@@ -46,6 +47,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function resetActiveState() {
         navLinks.forEach((link) => link.classList.remove('active', 'hover'));
+        navAnchors.forEach((anchor) => anchor.classList.remove('fw-semibold'));
+    }
+
+    function updateActiveWeightClass() {
+        navAnchors.forEach((anchor) => anchor.classList.remove('fw-semibold'));
+        if (!activeLink) return;
+        const activeAnchor = activeLink.querySelector('a');
+        if (activeAnchor) {
+            activeAnchor.classList.add('fw-semibold');
+        }
     }
 
     function normalizePath(path) {
@@ -71,6 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
         activeLink.classList.add('active');
     }
 
+    updateActiveWeightClass();
     updateToggleLabel();
     updatePointer(activeLink);
 
@@ -86,6 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // if (isMobile()) return;
             link.classList.remove('hover');
             activeLink.classList.add('active');
+            updateActiveWeightClass();
             updatePointer(activeLink);
         });
 
@@ -93,6 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
             resetActiveState();
             link.classList.add('active');
             activeLink = link;
+            updateActiveWeightClass();
             updateToggleLabel();
             updatePointer(activeLink);
 

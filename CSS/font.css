@@ -1,0 +1,61 @@
+/* Centralized local fonts */
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/Fonts/Poppins-Regular.woff2') format('woff2'),
+       url('/Fonts/Poppins-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/Fonts/Poppins-Medium.woff2') format('woff2'),
+       url('/Fonts/Poppins-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/Fonts/Poppins-SemiBold.woff2') format('woff2'),
+       url('/Fonts/Poppins-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/Fonts/Poppins-SemiBold.woff2') format('woff2'),
+       url('/Fonts/Poppins-SemiBold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-primary: 'Poppins', sans-serif;
+}
+
+.font-poppins {
+  font-family: var(--font-primary);
+}
+
+.fw-regular {
+  font-weight: 400;
+}
+
+.fw-medium {
+  font-weight: 500;
+}
+
+.fw-semibold {
+  font-weight: 600;
+}
+
+.fw-bold {
+  font-weight: 700;
+}

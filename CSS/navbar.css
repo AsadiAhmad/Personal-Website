@@ -1,6 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-
-:root {
+﻿:root {
   --nav-width: 590px;
 }
 
@@ -30,8 +28,6 @@ ul.nav {
   padding: 0px;
   margin: 0px;
   list-style-type: none;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 500;
   z-index: 2;
 }
 
@@ -60,7 +56,6 @@ ul.nav li:hover a {
 
 ul.nav li.active a {
   color: var(--nav-active-text);
-  font-weight: 600;
 }
 
 ul.nav li.active:hover a {
@@ -117,9 +112,7 @@ ul.nav .animation {
     border-radius: 19px;
     background: var(--toggle-bg);
     color: var(--nav-link);
-    font-family: 'Poppins', sans-serif;
     font-size: 14px;
-    font-weight: 500;
     cursor: pointer;
     -webkit-font-smoothing: antialiased;
     text-rendering: geometricPrecision;
