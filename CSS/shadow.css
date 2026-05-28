@@ -5,7 +5,14 @@
   --dark-shadow-hover: 0px 0px 24px rgba(15, 23, 42, 0.5);
   --light-shadow-base: 0px 0px 18px rgba(255, 255, 255, 0.2);
   --light-shadow-hover: 0px 0px 24px rgba(255, 255, 255, 0.4);
+
+  --dark-logo-shadow-base: drop-shadow(0px 0px 12px rgba(15, 23, 42, 0.4));
+  --dark-logo-shadow-hover: drop-shadow(0px 0px 16px rgba(15, 23, 42, 0.5));
+  --light-logo-shadow-base: drop-shadow(0px 0px 12px rgba(255, 255, 255, 0.5));
+  --light-logo-shadow-hover: drop-shadow(0px 0px 16px rgba(255, 255, 255, 0.68));
 }
+
+/* buttons */
 
 .dark-shadow {
   box-shadow: var(--dark-shadow-base);
@@ -31,4 +38,32 @@
 
 .light-shadow:active {
   box-shadow: var(--light-shadow-base);
+}
+
+/* logos */
+
+.logo-dark-shadow {
+  filter: var(--dark-logo-shadow-base);
+  transition: filter 0.25s ease, transform 0.2s ease;
+}
+
+.logo-dark-shadow:hover {
+  filter: var(--dark-logo-shadow-hover);
+}
+
+.logo-dark-shadow:active {
+  filter: var(--dark-logo-shadow-base);
+}
+
+.logo-light-shadow {
+  filter: var(--light-logo-shadow-base);
+  transition: filter 0.25s ease, transform 0.2s ease;
+}
+
+.logo-light-shadow:hover {
+  filter: var(--light-logo-shadow-hover);
+}
+
+.logo-light-shadow:active {
+  filter: var(--light-logo-shadow-base);
 }

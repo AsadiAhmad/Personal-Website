@@ -62,12 +62,29 @@
   gap: 26px;
 }
 
+.education-item + .education-item {
+  position: relative;
+  padding-top: 28px;
+  margin-top: 28px;
+}
+
+.education-item + .education-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(180px, 36vw);
+  height: 1px;
+  background: rgba(148, 163, 184, 0.45);
+  transform: translateX(-50%);
+}
+
 .education-marker {
   position: relative;
-  width: 96px;
-  height: 96px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
-  background: #ffffff;
+  background: transparent;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -75,45 +92,21 @@
   z-index: 1;
 }
 
-.education-marker::before,
-.education-marker::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 3px;
-  height: 56px;
-  background: var(--accent-primary);
-  z-index: -1;
-}
-
-.education-marker::before {
-  bottom: 100%;
-}
-
-.education-marker::after {
-  top: 100%;
-}
-
-.education-item:first-child .education-marker::before {
-  opacity: 0;
-}
-
-.education-item:last-child .education-marker::after {
-  opacity: 0;
-}
-
 .education-marker img {
-  width: 58px;
-  height: 58px;
+  width: 82px;
+  height: 82px;
   object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.education-marker:hover img {
+  transform: translateY(-2px) scale(1.03);
 }
 
 .education-content {
-  background: var(--page-bg);
-  border: 1px solid var(--section-muted-border);
-  border-radius: 20px;
-  padding: 24px 24px 22px;
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
 }
 
 .education-content h2 {
@@ -156,9 +149,23 @@
     gap: 18px;
   }
 
-  .education-marker::before,
-  .education-marker::after {
-    display: none;
+  .education-item + .education-item {
+    padding-top: 24px;
+    margin-top: 24px;
+  }
+
+  .education-item + .education-item::before {
+    width: min(140px, 42vw);
+  }
+
+  .education-marker {
+    width: 104px;
+    height: 104px;
+  }
+
+  .education-marker img {
+    width: 72px;
+    height: 72px;
   }
 
   .education-content {
