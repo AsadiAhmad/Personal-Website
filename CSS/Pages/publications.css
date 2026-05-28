@@ -1,0 +1,46 @@
+.publications-header {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 130px 8% 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-height: 80vh;
+}
+
+.publications-title {
+  color: var(--accent-primary);
+  font-size: clamp(2rem, 4.2vw, 3.1rem);
+  line-height: 1.15;
+  text-align: center;
+}
+
+.publications-subtitle {
+  color: var(--text-primary);
+  font-size: clamp(1rem, 2.1vw, 1.35rem);
+  line-height: 1.65;
+  max-width: 900px;
+  margin: 0 auto;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.publications-main {
+  padding: 0 0 70px;
+}
+
+@media (max-width: 760px) {
+  .publications-header {
+    padding-top: 124px;
+    padding-bottom: 36px;
+    gap: 12px;
+    min-height: auto;
+  }
+
+  .publications-subtitle {
+    padding-top: 20px;
+    text-align: justify;
+  }
+}
