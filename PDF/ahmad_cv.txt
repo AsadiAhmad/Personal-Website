@@ -1,0 +1,169 @@
+About
+
+Ahmad Asadi
+
+I’m a passionate Computer Vision Engineer with hands-on experience
+building and deploying deep learning systems for visual recognition
+tasks. Demonstrated experience contributing to open-source projects,
+developing real-time AI applications, and assisting in academic research.
+Proficient in Python, PyTorch, and OpenCV, with practical experience
+deploying models on CUDA-enabled GPUs. Currently involved in
+computer vision research, including a submitted manuscript on scalecompensated training for kidney stone and brain tumor detection, and
+serving as a peer reviewer for computer vision research in the journal
+Expert Systems with Applications (Elsevier).
+
+Computer Vision
+Researcher
+
+Research
+
+Contact
+
+Under Review Article
+
+ahmadasadi1381.22@gmail.com
+
++98 920 361 6419
+
+Scale-Compensated Training A Generalizable Paradigm
+for Small Object Detection in Medical Imaging
+January 2026
+Submitted to Expert Systems with Applications (Elsevier)
+
+Website: ahmadasadi.ir
+Linkedin: asadi-ahmad
+
+Work Experience
+
+Github: AsadiAhmad
+Google Scholar
+ORCID: 0009-0007-9587-709X
+asadi.ahmad@ut.ac.ir
+
+Computer Vision Intern
+Resanai . Part-time
+Dec 2025 - Feb 2026 . 2mos
+Worked on computer vision tasks using PyTorch.
+Studied fundamentals of computer vision, linear
+algebra, and PyTorch
+
+Tehran, Tehran Province, Iran
+
+Cyber Security Intern
+IDA Ltd Part-time
+
+Top Skills
+Computer Vision
+Image Processing
+Deep Learning
+Machine Learning
+Python
+Pytorch
+Torch Vision
+OpenCV
+Numpy
+Pandas
+Numba
+CUDA
+GPU Optimization
+
+Mar 2024 – Jul 2024 . 5mos
+Learned OpenStreetMap (OSM), code signing, and digital
+certificates (CRT, PFX). Worked with timestamping,
+patching, and hash handling techniques
+
+Software Engineer Intern
+Green Network Knowledge . Full-time
+Jul 2022 - Aug 2022 . 1mos
+
+Built web applications for employee profile presentation.
+Developed reusable card components for a profile
+presentation system
+
+Reviewing
+Peer Reviewer - Elsevier Journal
+Elsevier
+May 2026
+Peer Reviewer - Elsevier Journal
+(Expert System With Application)
+
+Languages
+
+Academic Experience
+
+English (Professional Working)
+Persian (Native)
+
+Research and Teaching Assistant
+University of Tehran
+May 2025 - Feb 2026
+
+Certificates
+Fundamentals of Accelerated
+Computing with CUDA Python NVIDIA
+Getting Started with Deep
+Learning - NVIDIA
+Deep Learning based on
+Computer Vision
+Computer Vision and Image
+Processing with OpenCV Maktabkhooneh
+Python Programming - CS50
+(Harvard University)
+Python Programming Technical & Vocational Training
+Introduction to Linear Algebra Maktabkhooneh
+
+Assisted in course Machine Learning. Collaborating
+on anomaly detection research projects under
+faculty supervision.
+
+Teaching Assistant
+University of Zanjan
+Sep 2021 – Jul 2024
+Assisted in courses: Artificial Intelligence, Programming
+Languages, Compiler Design, Logic Circuits, and
+Fundamentals of Programming – taught students in C,
+C++, and Python through lectures, labs, and practical
+assignments.
+
+Open-Source Contributor
+M3-Lab's IM-IAD Project
+2023
+Resolved two open issues in the "IM-IAD Industrial
+Image Anomaly Detection" GitHub repository.
+Enhanced code compatibility for Google Colab
+execution.
+
+Projects
+Real-Time Gesture Detection: Developed a CUDA-accelerated
+application using OpenCV and PyTorch for hand gesture recognition
+Grayscale Image Colorization: Implemented deep learning models to
+colorize grayscale images.
+Face Recognition & Swapping: Built applications for face detection,
+recognition, and swapping using deep learning techniques.
+Kidney Stone Detection: Currently developing a YOLO-based model
+for detecting kidney stones, incorporating adversarial attack strategies.
+and +40 other AI Related Projects in Github
+
+Education
+University of Tehran
+Master's degree, Computer Science and Artificial
+Intelligence
+
+Sep 2024 - Now
+Grade : 16.17/20
+
+University of Zanjan
+Bachelor's degree, Computer Software Engineering
+
+Sep 2020 - Sep 2024
+Grade : 18.08/20
+Second Ranked Student (Top 2.5%)
+
+National Organization for Development of
+Exceptional Talents (Sampad)
+High School Diploma, Math and Physics
+
+Sep 2017 - Jun 2020
+Grade : 17.83/20
+
+
