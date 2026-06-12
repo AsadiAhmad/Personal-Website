@@ -1,3 +1,5 @@
+@import url('/CSS/color_palette.css');
+
 .projects-header {
   max-width: 1000px;
   margin: 0 auto;
@@ -153,15 +155,15 @@ img.project-thumb {
   text-decoration: none;
   font-size: 0.82rem;
   line-height: 1;
-  background: rgba(69, 109, 229, 0.12);
-  border: 1px solid rgba(69, 109, 229, 0.25);
+  background: var(--project-link-bg);
+  border: 1px solid var(--project-link-border);
   transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .project-content a:hover {
   text-decoration: none;
-  background: rgba(69, 109, 229, 0.2);
-  border-color: rgba(69, 109, 229, 0.35);
+  background: var(--project-link-bg-hover);
+  border-color: var(--project-link-border-hover);
 }
 
 .project-tags {
@@ -180,15 +182,15 @@ img.project-thumb {
   font-size: 0.72rem;
   line-height: 1;
   color: var(--text-primary);
-  background: rgba(69, 109, 229, 0.08);
-  border: 1px solid rgba(69, 109, 229, 0.22);
+  background: var(--project-tag-bg);
+  border: 1px solid var(--project-tag-border);
   transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .project-tag:hover {
   transform: translateY(-1px);
-  background: rgba(69, 109, 229, 0.16);
-  border-color: rgba(69, 109, 229, 0.4);
+  background: var(--project-tag-bg-hover);
+  border-color: var(--project-tag-border-hover);
 }
 
 .project-tech {
@@ -203,8 +205,8 @@ img.project-thumb {
   height: 35px;
   padding: 4px;
   border-radius: 50%;
-  background: rgba(69, 109, 229, 0.12);
-  border: 1px solid rgba(69, 109, 229, 0.25);
+  background: var(--project-tech-bg);
+  border: 1px solid var(--project-tech-border);
   object-fit: contain;
   display: block;
   transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
@@ -212,13 +214,8 @@ img.project-thumb {
 
 .tech-icon-img:hover {
   transform: translateY(-2px) scale(1.05);
-  background: rgba(69, 109, 229, 0.2);
-  border-color: rgba(69, 109, 229, 0.45);
-}
-
-body[data-theme='light'] .tech-icon-img {
-  background: rgba(69, 109, 229, 0.1);
-  border-color: rgba(69, 109, 229, 0.2);
+  background: var(--project-tech-bg-hover);
+  border-color: var(--project-tech-border-hover);
 }
 
 body[data-theme='light'] .project-card {

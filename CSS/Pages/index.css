@@ -1,6 +1,8 @@
 ﻿/* =========================
    Hero Section
 ========================= */
+@import url('/CSS/color_palette.css');
+
 .hero {
   min-height: 100vh;
   display: flex;

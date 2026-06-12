@@ -1,7 +1,9 @@
-﻿/* Shared color palette */
+/* Shared color palette */
 :root {
   --page-bg: #0c1018;
   --text-primary: #e7ecf8;
+  --text-secondary: #6b7280;
+  --section-divider: rgb(148 163 184 / 0.45);
 
   --nav-bg: rgba(6, 10, 18, 0.7);
   --nav-border: rgba(255, 255, 255, 0.15);
@@ -16,16 +18,31 @@
   --toggle-icon: #f4f7ff;
 
   --accent-primary: #456de5;
+  --accent-primary-rgb: 69 109 229;
   --btn-secondary-bg: #111827;
   --text-on-accent: #ffffff;
   --text-on-dark: #ffffff;
   --section-muted-bg: #121a2a;
   --section-muted-border: rgba(255, 255, 255, 0.1);
+  --project-link-bg: rgb(var(--accent-primary-rgb) / 0.12);
+  --project-link-bg-hover: rgb(var(--accent-primary-rgb) / 0.20);
+  --project-link-border: rgb(var(--accent-primary-rgb) / 0.25);
+  --project-link-border-hover: rgb(var(--accent-primary-rgb) / 0.35);
+  --project-tag-bg: rgb(var(--accent-primary-rgb) / 0.08);
+  --project-tag-bg-hover: rgb(var(--accent-primary-rgb) / 0.16);
+  --project-tag-border: rgb(var(--accent-primary-rgb) / 0.22);
+  --project-tag-border-hover: rgb(var(--accent-primary-rgb) / 0.40);
+  --project-tech-bg: rgb(var(--accent-primary-rgb) / 0.12);
+  --project-tech-bg-hover: rgb(var(--accent-primary-rgb) / 0.20);
+  --project-tech-border: rgb(var(--accent-primary-rgb) / 0.25);
+  --project-tech-border-hover: rgb(var(--accent-primary-rgb) / 0.45);
 }
 
 body[data-theme='light'] {
   --page-bg: #f1f5ff;
   --text-primary: #0f172a;
+  --text-secondary: #64748b;
+  --section-divider: rgb(15 23 42 / 0.16);
 
   --nav-bg: rgba(255, 255, 255, 0.52);
   --nav-border: rgba(15, 23, 42, 0.15);

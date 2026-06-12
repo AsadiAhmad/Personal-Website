@@ -1,3 +1,5 @@
+@import url('/CSS/color_palette.css');
+
 .projects-header {
   max-width: 1000px;
   margin: 0 auto;
@@ -77,7 +79,7 @@
   left: 50%;
   width: min(180px, 36vw);
   height: 1px;
-  background: rgba(148, 163, 184, 0.45);
+  background: var(--section-divider);
   transform: translateX(-50%);
 }
 
@@ -140,7 +142,7 @@
 }
 
 .education-time {
-  color: #6b7280;
+  color: var(--text-secondary);
   opacity: 1;
   font-size: clamp(0.88rem, 1.3vw, 0.98rem);
   line-height: 1.5;
