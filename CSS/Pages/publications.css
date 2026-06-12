@@ -67,26 +67,3 @@
   margin-top: 75px;
   margin-bottom: 30px;
 }
-
-@media (max-width: 760px) {
-  .publications-header {
-    padding-top: 124px;
-    padding-bottom: 36px;
-    gap: 12px;
-    min-height: auto;
-  }
-
-  .publications-subtitle {
-    padding-top: 20px;
-    text-align: justify;
-  }
-
-  .publication-section {
-    padding: 24px 6%;
-  }
-
-  .publication-section-title {
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
-}

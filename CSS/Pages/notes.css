@@ -28,10 +28,3 @@
   padding-top: 10px;
   text-align: center;
 }
-
-@media (max-width: 768px) {
-  .projects-header {
-    padding: 110px 6% 56px;
-    min-height: auto;
-  }
-}
