@@ -67,3 +67,120 @@
   margin-top: 75px;
   margin-bottom: 30px;
 }
+
+.reviewing-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.reviewing-item {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr) minmax(220px, 280px);
+  align-items: center;
+  gap: 26px;
+}
+
+.reviewing-marker {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.reviewing-logo {
+  width: 82px;
+  height: 82px;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.reviewing-marker:hover .reviewing-logo {
+  transform: translateY(-2px) scale(1.03);
+}
+
+.reviewing-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.reviewing-content h3 {
+  color: var(--text-primary);
+  font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+  line-height: 1.35;
+  margin: 0;
+}
+
+.reviewing-source {
+  color: var(--text-primary);
+  opacity: 0.9;
+  font-size: clamp(0.95rem, 1.5vw, 1.08rem);
+  margin: 0;
+}
+
+.reviewing-content p {
+  color: var(--text-primary);
+  opacity: 0.9;
+  font-size: clamp(0.92rem, 1.35vw, 1rem);
+  line-height: 1.7;
+  margin: 10px 0 0;
+}
+
+.reviewing-certificate {
+  justify-self: end;
+  width: min(280px, 100%);
+}
+
+.reviewing-certificate img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  .reviewing-item {
+    grid-template-columns: 120px 1fr;
+  }
+
+  .reviewing-certificate {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: min(360px, 100%);
+    padding-top: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .reviewing-item {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 18px;
+  }
+
+  .reviewing-marker {
+    width: 104px;
+    height: 104px;
+  }
+
+  .reviewing-logo {
+    width: 72px;
+    height: 72px;
+  }
+
+  .reviewing-content {
+    width: 100%;
+  }
+
+  .reviewing-certificate {
+    width: min(100%, 320px);
+    padding-top: 4px;
+  }
+}
