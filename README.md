@@ -2,9 +2,9 @@
 
 Build your personal website with this repo
 
-## Tech :hammer_and_wrench: Languages and Tools
+## 🛠️ Tech
 
-## 🏭⚙️ Builder
+## 🏭 Builder
 
 ## 🪪 License 
 
