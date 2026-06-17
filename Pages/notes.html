@@ -4,15 +4,15 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta content="Official website of Ahmad Asadi, a Computer Vision researcher focused on efficient deep learning models and image processing" name="description"/>
+<meta content="Read Ahmad Asadi's notes about Computer Vision, Computer Science, Math and AI" name="description"/>
 <meta content="Ahmad Asadi" name="author"/>
-<meta content="Ahmad Asadi, Computer Vision Researcher, AI Researcher, Image Processing, Deep Learning, Machine Learning, University of Tehran" name="keywords"/>
-<meta content="Official website of Ahmad Asadi | Computer Vision Researcher" property="og:title"/>
-<meta content="Computer Vision Researcher | M.Sc AI Student at University of Tehran" property="og:description"/>
-<meta content="https://ahmadasadi.ir/image/Personal/professional.jpg" property="og:image"/>
-<meta content="https://ahmadasadi.ir" property="og:url"/>
+<meta content="Ahmad Asadi Notes" name="keywords"/>
+<meta content="Notes about Computer Science and AI" property="og:title"/>
+<meta content="Read Ahmad Asadi's notes about Computer Vision, Computer Science, Math and AI" property="og:description"/>
+<meta content="https://ahmadasadi.ir/image/Personal/personal.jpg" property="og:image"/>
+<meta content="https://ahmadasadi.ir/Pages/notes.html" property="og:url"/>
 <meta content="website" property="og:type"/>
-<title>Ahmad Asadi | Computer Vision Researcher</title>
+<title>Notes about Computer Science and AI</title>
 <link href="/image/Logo/Logo.svg" rel="icon" type="image/svg+xml"/>
 <style data-file="all.css">*,
 *::after,
@@ -515,253 +515,59 @@ body[data-theme='light'] .theme-toggle .icon-moon {
   filter: var(--light-logo-shadow-base);
 }
 </style>
-<style data-file="index.css">/* Hero Section */
+<style data-file="notes.css">@import url('/CSS/color_palette.css');
 
-@import url('/CSS/color_palette.css');
-
-.hero {
-  min-height: 100vh;
+.projects-header {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 130px 8% 70px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 80px;
-  padding: 130px 8% 70px;
-}
-
-.hero-image-wrap {
-  --hero-shape: 56% 44% 52% 48% / 42% 56% 44% 58%;
-  position: relative;
-  width: min(380px, 35vw);
-  aspect-ratio: 1 / 1;
-}
-
-.hero-blob,
-.hero-image {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: var(--hero-shape);
-}
-
-.hero-blob {
-  background: var(--accent-primary);
-  z-index: 0;
-}
-
-.hero-image {
-  z-index: 1;
-  object-fit: cover;
-  display: block;
-}
-
-.hero-content {
-  max-width: 520px;
-}
-
-.hero-title {
-  color: var(--text-primary);
-  font-size: clamp(1.7rem, 4.2vw, 3rem);
-  line-height: 1.2;
-  margin-bottom: 30px;
-}
-
-.hero-title span {
-  color: var(--accent-primary);
-}
-
-.hero-subtitle {
-  color: var(--text-primary);
-  font-size: clamp(1.05rem, 2.3vw, 1.5rem);
-  line-height: 1.3;
-  margin-bottom: 10px;
-}
-
-.hero-email {
-  display: inline-block;
-  color: var(--text-primary);
-  text-decoration: none;
-  font-size: clamp(0.95rem, 1.8vw, 1.2rem);
-  margin-top: -12px;
-  margin-bottom: 28px;
-}
-
-.hero-email:hover {
-  text-decoration: underline;
-}
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
   gap: 14px;
+  min-height: 80vh;
 }
 
-.hero-btn {
-  text-decoration: none;
-  font-size: 0.95rem;
-  padding: 12px 26px;
-  border-radius: 10px;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+.projects-title {
+  color: var(--accent-primary);
+  font-size: clamp(2rem, 4.2vw, 3.1rem);
+  line-height: 1.15;
+  text-align: center;
 }
 
-.hero-btn:hover {
-  transform: translateY(-2px);
-  opacity: 0.95;
-}
-
-.hero-btn-primary {
-  background: var(--accent-primary);
-  color: var(--text-on-accent);
-}
-
-.hero-btn-secondary {
-  background: var(--btn-secondary-bg);
-  color: var(--text-on-dark);
-}
-
-/* =========================
-   Bio Section
-========================= */
-.bio {
-  padding: 70px 8%;
-  background: var(--section-muted-bg);
-  border-top: 1px solid var(--section-muted-border);
-  border-bottom: 1px solid var(--section-muted-border);
-}
-
-.bio-inner {
-  max-width: 980px;
-  margin: 0 auto;
-  display: grid;
-  gap: 20px;
-}
-
-.bio-title {
+.projects-subtitle {
   color: var(--text-primary);
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-  line-height: 1.2;
-}
-
-.bio-text {
-  color: var(--text-primary);
-  font-size: clamp(1rem, 1.6vw, 1.12rem);
-  line-height: 1.85;
-  text-align: justify;
+  font-size: clamp(1rem, 2.1vw, 1.35rem);
+  line-height: 1.65;
   max-width: 900px;
-}
-
-.bio-btn {
-  justify-self: start;
-  text-decoration: none;
-  font-size: 0.95rem;
-  padding: 11px 24px;
-  border-radius: 10px;
-  background: var(--accent-primary);
-  color: var(--text-on-accent);
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-.bio-btn:hover {
-  transform: translateY(-2px);
-  opacity: 0.95;
-}
-
-@media (max-width: 980px) {
-  .hero {
-    gap: 40px;
-    padding-top: 120px;
-  }
-}
-
-@media (max-width: 760px) {
-  .hero {
-    flex-direction: column;
-    text-align: center;
-    gap: 25px;
-    padding-inline: 6%;
-  }
-  .hero-image-wrap {
-    width: min(380px, 70vw);
-  }
-  .hero-actions {
-    justify-content: center;
-  }
-  .bio {
-    padding-inline: 6%;
-  }
-  .bio-btn {
-    justify-self: center;
-  }
-  .bio-title,
-  .bio-text {
-    text-align: left;
-  }
+  margin: 0 auto;
+  padding-top: 10px;
+  text-align: center;
 }
 </style>
 <script data-no-inline="" type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Ahmad Asadi",
-    "givenName": "Ahmad",
-    "familyName": "Asadi",
-    "url": "https://ahmadasadi.ir",
+    "@type": "CollectionPage",
+    "@id": "https://ahmadasadi.ir/Pages/notes.html",
+    "url": "https://ahmadasadi.ir/Pages/notes.html",
+    "name": "Notes about Computer Science and AI",
+    "description": "Read Ahmad Asadi's notes about Computer Vision, Computer Science, Math and AI",
+    "isPartOf": {
+      "@type": "WebSite",
+      "@id": "https://ahmadasadi.ir",
+      "name": "Ahmad Asadi | Computer Vision Researcher"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Ahmad Asadi",
+      "url": "https://ahmadasadi.ir"
+    },
     "image": "https://ahmadasadi.ir/image/Personal/personal.jpg",
-    "description": "Computer Vision Researcher focused on efficient deep learning models and image processing",
-    "email": "ahmadasadi1381.22@gmail.com",
-    "sameAs": [
-      "https://github.com/AsadiAhmad",
-      "https://linkedin.com/in/asadi-ahmad",
-      "https://scholar.google.com/citations?user=kLSNsD8AAAAJ&hl=en"
-    ],
-    "jobTitle": "Computer Vision Researcher",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "University of Tehran",
-      "department": "Computer Science"
-    },
-    "alumniOf": {
-      "@type": "CollegeOrUniversity",
-      "name": "University of Tehran"
-    },
-    "knowsAbout": [
-      "Computer Vision",
-      "Deep Learning",
-      "Image Processing",
-      "Machine Learning",
-      "Efficient Neural Networks"
-    ],
-    "hasOccupation": {
-      "@type": "Research",
-      "description": "Researching efficient deep learning models for computer vision applications",
-      "keywords": "efficient deep learning, computer vision, model compression, image processing"
-    },
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Tehran",
-      "addressCountry": "IR"
-    },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "contactType": "professional",
-      "email": "ahmadasadi1381.22@gmail.com",
-      "availableLanguage": ["English", "Persian"]
-    },
-    "nationality": {
-      "@type": "Country",
-      "name": "Iran"
-    },
-    "birthPlace": {
-      "@type": "Place",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Qazvin",
-        "addressCountry": "IR"
-      }
-    },
-    "mainEntityOfPage": {
-      "@type": "ProfilePage",
-      "@id": "https://ahmadasadi.ir"
+    "about": {
+      "@type": "Thing",
+      "description": "Notes about Computer Vision, Computer Science, Math and AI"
     }
   }
   </script>
@@ -794,33 +600,10 @@ body[data-theme='light'] .theme-toggle .icon-moon {
 </span>
 <span class="sr-only">Toggle theme</span>
 </button>
-<header>
-<section class="hero" id="home">
-<div class="hero-image-wrap">
-<div aria-hidden="true" class="hero-blob"></div>
-<img alt="Portrait of Ahmad Asadi" class="hero-image" src="/image/Personal/professional.jpg"/>
-</div>
-<div class="hero-content">
-<h1 class="hero-title fw-bold"><span>Ahmad Asadi,</span><br/>Computer Vision Researcher</h1>
-<h2 class="hero-subtitle fw-medium">M.Sc AI Student at University of Tehran</h2>
-<a class="hero-email fw-regular" href="mailto:asadi.ahmad@ut.ac.ir">asadi.ahmad@ut.ac.ir</a>
-<div class="hero-actions">
-<a class="hero-btn hero-btn-primary light-shadow fw-semibold" download="" href="https://scholar.google.com/citations?user=kLSNsD8AAAAJ&amp;hl=en">View Researchs</a>
-<a class="hero-btn hero-btn-secondary light-shadow fw-semibold" href="/PDF/AhmadAsadiCV.pdf">Download CV</a>
-</div>
-</div>
-</section>
+<header class="projects-header">
+<h1 class="projects-title fw-bold">Notes</h1>
+<h2 class="projects-subtitle fw-medium">Read Ahmad Asadi's notes about Computer Vision, Computer Science, Math and AI.</h2>
 </header>
-<section class="bio" id="bio">
-<div class="bio-inner">
-<h2 class="bio-title fw-semibold">Bio</h2>
-<p class="bio-text fw-regular">
-        Master's student at University of Tehran with a focus on developing efficient computer vision models for deployment on low-resource systems. Research interests span machine learning optimization, medical imaging applications, and practical AI systems that bridge theoretical advances with real-world constraints. Committed to creating accessible, high-performance solutions that push the boundaries of what's possible with limited computational resources.
-      </p>
-<a class="bio-btn hero-btn light-shadow fw-semibold" href="/Pages/about.html">About</a>
-</div>
-</section>
-<!-- <svg style="display:none;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600"><defs><linearGradient id="linear-gradient" x1="92.03" x2="304.37" y1="221.12" y2="592.86" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#0099d6"/><stop offset="1" stop-color="#06568e"/></linearGradient><linearGradient id="linear-gradient-2" x1="421.71" x2="542.9" y1="288.69" y2="498.04" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#007fbe"/><stop offset="1" stop-color="#005085"/></linearGradient><style>.cls-3{display:none;stroke:#231f20;stroke-miterlimit:10;fill:none}</style></defs><g id="Layer_1"><path d="M430.9 430.6 250.84 120.55l-.91-1.55c-6.13-10.02-16.81-16-28.56-16-13.42 0-25.52 7.99-30.81 20.36L12.79 431.25l-.16.29c-3.13 5.17-4.78 11.13-4.78 17.23 0 18.46 15.02 33.49 33.49 33.49h119.84c18.46 0 33.49-15.02 33.49-33.49s-15.02-33.49-33.49-33.49H98.96l122.46-212.13 150.7 259.05 3.67 6.3.18.31c6.39 8.55 16.16 13.45 26.83 13.45 18.46 0 33.49-15.02 33.49-33.49 0-6.52-1.87-12.81-5.37-18.17Z" style="fill:url(#linear-gradient)"/><path d="M583.37 440.39 443.74 198.93l-.88-1.52c-5.15-8.45-14.14-13.5-24.05-13.5s-19.84 5.65-24.78 14.73l-48.89 84.68-.12.22v.47l32.52 56 41.28-71.55 115.05 198.93.6 1.02c5.04 8.53 14.33 13.83 24.25 13.83 15.55 0 28.2-12.65 28.2-28.2 0-4.79-1.22-9.51-3.54-13.66Z" style="fill:url(#linear-gradient-2)"/></g></svg> -->
 <script data-file="dark_theme.js">(function () {
     const THEME_KEY = 'site-theme';
     const root = document.body;

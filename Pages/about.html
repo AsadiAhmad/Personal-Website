@@ -4,15 +4,15 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta content="Official website of Ahmad Asadi, a Computer Vision researcher focused on efficient deep learning models and image processing" name="description"/>
+<meta content="Learn about Ahmad Asadi, his academic background, experiences, research interests in AI and Computer Vision, and his professional journey in image processing and machine learning." name="description"/>
 <meta content="Ahmad Asadi" name="author"/>
-<meta content="Ahmad Asadi, Computer Vision Researcher, AI Researcher, Image Processing, Deep Learning, Machine Learning, University of Tehran" name="keywords"/>
-<meta content="Official website of Ahmad Asadi | Computer Vision Researcher" property="og:title"/>
-<meta content="Computer Vision Researcher | M.Sc AI Student at University of Tehran" property="og:description"/>
-<meta content="https://ahmadasadi.ir/image/Personal/professional.jpg" property="og:image"/>
-<meta content="https://ahmadasadi.ir" property="og:url"/>
+<meta content="Ahmad Asadi About" name="keywords"/>
+<meta content="About Ahmad Asadi" property="og:title"/>
+<meta content="Learn about Ahmad Asadi, his academic background, experiences and research interests" property="og:description"/>
+<meta content="https://ahmadasadi.ir/image/Personal/personal.jpg" property="og:image"/>
+<meta content="https://ahmadasadi.ir/Pages/about.html" property="og:url"/>
 <meta content="website" property="og:type"/>
-<title>Ahmad Asadi | Computer Vision Researcher</title>
+<title>About Ahmad Asadi</title>
 <link href="/image/Logo/Logo.svg" rel="icon" type="image/svg+xml"/>
 <style data-file="all.css">*,
 *::after,
@@ -515,256 +515,231 @@ body[data-theme='light'] .theme-toggle .icon-moon {
   filter: var(--light-logo-shadow-base);
 }
 </style>
-<style data-file="index.css">/* Hero Section */
+<style data-file="about.css">@import url('/CSS/color_palette.css');
 
-@import url('/CSS/color_palette.css');
+.projects-header {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 130px 8% 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-height: 80vh;
+}
 
-.hero {
-  min-height: 100vh;
+.projects-title {
+  color: var(--accent-primary);
+  font-size: clamp(2rem, 4.2vw, 3.1rem);
+  line-height: 1.15;
+  text-align: center;
+}
+
+.projects-subtitle {
+  color: var(--text-primary);
+  font-size: clamp(1rem, 2.1vw, 1.35rem);
+  line-height: 1.65;
+  max-width: 900px;
+  margin: 0 auto;
+  padding-top: 10px;
+}
+
+.about-main {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 0 90px;
+}
+
+.education-section {
+  width: 100%;
+  padding: 34px 8%;
+  background: var(--section-muted-bg);
+}
+
+.education-title {
+  color: var(--text-primary);
+  font-size: clamp(1.35rem, 2.8vw, 2.4rem);
+  line-height: 1.2;
+  max-width: 1000px;
+  padding-top: 25px;
+  padding-bottom: 55px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.education-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.education-item {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  align-items: center;
+  gap: 26px;
+}
+
+.education-item + .education-item {
+  position: relative;
+  padding-top: 28px;
+  margin-top: 28px;
+}
+
+.education-item + .education-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(180px, 36vw);
+  height: 1px;
+  background: var(--section-divider);
+  transform: translateX(-50%);
+}
+
+.education-marker {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: transparent;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 80px;
-  padding: 130px 8% 70px;
-}
-
-.hero-image-wrap {
-  --hero-shape: 56% 44% 52% 48% / 42% 56% 44% 58%;
-  position: relative;
-  width: min(380px, 35vw);
-  aspect-ratio: 1 / 1;
-}
-
-.hero-blob,
-.hero-image {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: var(--hero-shape);
-}
-
-.hero-blob {
-  background: var(--accent-primary);
-  z-index: 0;
-}
-
-.hero-image {
   z-index: 1;
-  object-fit: cover;
-  display: block;
 }
 
-.hero-content {
-  max-width: 520px;
+.education-marker img {
+  width: 82px;
+  height: 82px;
+  object-fit: contain;
+  transition: transform 0.2s ease;
 }
 
-.hero-title {
+.experience-marker-text {
   color: var(--text-primary);
-  font-size: clamp(1.7rem, 4.2vw, 3rem);
-  line-height: 1.2;
-  margin-bottom: 30px;
+  font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+  letter-spacing: 0.08em;
+  line-height: 1;
 }
 
-.hero-title span {
-  color: var(--accent-primary);
+.education-marker:hover img {
+  transform: translateY(-2px) scale(1.03);
 }
 
-.hero-subtitle {
-  color: var(--text-primary);
-  font-size: clamp(1.05rem, 2.3vw, 1.5rem);
-  line-height: 1.3;
-  margin-bottom: 10px;
-}
-
-.hero-email {
-  display: inline-block;
-  color: var(--text-primary);
-  text-decoration: none;
-  font-size: clamp(0.95rem, 1.8vw, 1.2rem);
-  margin-top: -12px;
-  margin-bottom: 28px;
-}
-
-.hero-email:hover {
-  text-decoration: underline;
-}
-
-.hero-actions {
+.education-content {
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
   display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
+  flex-direction: column;
+  gap: 6px;
 }
 
-.hero-btn {
-  text-decoration: none;
-  font-size: 0.95rem;
-  padding: 12px 26px;
-  border-radius: 10px;
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-.hero-btn:hover {
-  transform: translateY(-2px);
-  opacity: 0.95;
-}
-
-.hero-btn-primary {
-  background: var(--accent-primary);
-  color: var(--text-on-accent);
-}
-
-.hero-btn-secondary {
-  background: var(--btn-secondary-bg);
-  color: var(--text-on-dark);
-}
-
-/* =========================
-   Bio Section
-========================= */
-.bio {
-  padding: 70px 8%;
-  background: var(--section-muted-bg);
-  border-top: 1px solid var(--section-muted-border);
-  border-bottom: 1px solid var(--section-muted-border);
-}
-
-.bio-inner {
-  max-width: 980px;
-  margin: 0 auto;
-  display: grid;
-  gap: 20px;
-}
-
-.bio-title {
+.education-content h2 {
   color: var(--text-primary);
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-  line-height: 1.2;
+  font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+  line-height: 1.35;
+  margin: 0;
 }
 
-.bio-text {
+.education-content h3 {
   color: var(--text-primary);
-  font-size: clamp(1rem, 1.6vw, 1.12rem);
-  line-height: 1.85;
-  text-align: justify;
-  max-width: 900px;
+  opacity: 0.9;
+  font-size: clamp(0.95rem, 1.5vw, 1.08rem);
+  margin: 0;
 }
 
-.bio-btn {
-  justify-self: start;
-  text-decoration: none;
-  font-size: 0.95rem;
-  padding: 11px 24px;
-  border-radius: 10px;
-  background: var(--accent-primary);
-  color: var(--text-on-accent);
-  transition: transform 0.2s ease, opacity 0.2s ease;
+.education-content .education-level {
+  opacity: 0.9;
 }
 
-.bio-btn:hover {
-  transform: translateY(-2px);
-  opacity: 0.95;
+.education-time {
+  color: var(--text-secondary);
+  opacity: 1;
+  font-size: clamp(0.88rem, 1.3vw, 0.98rem);
+  line-height: 1.5;
+  margin: 0;
 }
 
-@media (max-width: 980px) {
-  .hero {
-    gap: 40px;
-    padding-top: 120px;
-  }
+.education-content p {
+  color: var(--text-primary);
+  opacity: 0.9;
+  font-size: clamp(0.92rem, 1.35vw, 1rem);
+  line-height: 1.7;
+  margin: 10px 0 0;
 }
 
-@media (max-width: 760px) {
-  .hero {
-    flex-direction: column;
-    text-align: center;
-    gap: 25px;
-    padding-inline: 6%;
+@media (max-width: 768px) {
+  .about-main {
+    padding-bottom: 72px;
   }
-  .hero-image-wrap {
-    width: min(380px, 70vw);
+
+  .education-section {
+    padding: 24px 6%;
   }
-  .hero-actions {
-    justify-content: center;
+
+  .education-item {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 18px;
   }
-  .bio {
-    padding-inline: 6%;
+
+  .education-item + .education-item {
+    padding-top: 24px;
+    margin-top: 24px;
   }
-  .bio-btn {
-    justify-self: center;
+
+  .education-item + .education-item::before {
+    width: min(140px, 42vw);
   }
-  .bio-title,
-  .bio-text {
-    text-align: left;
+
+  .education-marker {
+    width: 104px;
+    height: 104px;
+  }
+
+  .education-marker img {
+    width: 72px;
+    height: 72px;
+  }
+
+  .education-content {
+    width: 100%;
   }
 }
 </style>
 <script data-no-inline="" type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Ahmad Asadi",
-    "givenName": "Ahmad",
-    "familyName": "Asadi",
-    "url": "https://ahmadasadi.ir",
-    "image": "https://ahmadasadi.ir/image/Personal/personal.jpg",
-    "description": "Computer Vision Researcher focused on efficient deep learning models and image processing",
-    "email": "ahmadasadi1381.22@gmail.com",
-    "sameAs": [
-      "https://github.com/AsadiAhmad",
-      "https://linkedin.com/in/asadi-ahmad",
-      "https://scholar.google.com/citations?user=kLSNsD8AAAAJ&hl=en"
-    ],
-    "jobTitle": "Computer Vision Researcher",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "University of Tehran",
-      "department": "Computer Science"
+    "@type": "ProfilePage",
+    "@id": "https://ahmadasadi.ir/Pages/about.html",
+    "url": "https://ahmadasadi.ir/Pages/about.html",
+    "name": "About Ahmad Asadi",
+    "description": "Learn about Ahmad Asadi, his academic background, experiences, research interests in AI and Computer Vision, and his professional journey in image processing and machine learning.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "@id": "https://ahmadasadi.ir",
+      "name": "Ahmad Asadi | Computer Vision Researcher"
     },
-    "alumniOf": {
-      "@type": "CollegeOrUniversity",
-      "name": "University of Tehran"
+    "mainEntity": {
+      "@type": "Person",
+      "name": "Ahmad Asadi",
+      "url": "https://ahmadasadi.ir",
+      "image": "https://ahmadasadi.ir/image/Personal/personal.jpg",
+      "description": "Learn about Ahmad Asadi, his academic background, experiences and research interests",
+      "sameAs": [
+        "https://github.com/AsadiAhmad",
+        "https://linkedin.com/in/asadi-ahmad"
+      ]
     },
-    "knowsAbout": [
-      "Computer Vision",
-      "Deep Learning",
-      "Image Processing",
-      "Machine Learning",
-      "Efficient Neural Networks"
-    ],
-    "hasOccupation": {
-      "@type": "Research",
-      "description": "Researching efficient deep learning models for computer vision applications",
-      "keywords": "efficient deep learning, computer vision, model compression, image processing"
-    },
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Tehran",
-      "addressCountry": "IR"
-    },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "contactType": "professional",
-      "email": "ahmadasadi1381.22@gmail.com",
-      "availableLanguage": ["English", "Persian"]
-    },
-    "nationality": {
-      "@type": "Country",
-      "name": "Iran"
-    },
-    "birthPlace": {
-      "@type": "Place",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Qazvin",
-        "addressCountry": "IR"
-      }
-    },
-    "mainEntityOfPage": {
-      "@type": "ProfilePage",
-      "@id": "https://ahmadasadi.ir"
-    }
+    "image": "https://ahmadasadi.ir/image/Personal/personal.jpg"
   }
-  </script>
+</script>
 </head>
 <!-- Google tag (gtag.js) -->
 <script async="" data-no-inline="" src="https://www.googletagmanager.com/gtag/js?id=G-P46W9GQNQK"></script>
@@ -794,33 +769,196 @@ body[data-theme='light'] .theme-toggle .icon-moon {
 </span>
 <span class="sr-only">Toggle theme</span>
 </button>
-<header>
-<section class="hero" id="home">
-<div class="hero-image-wrap">
-<div aria-hidden="true" class="hero-blob"></div>
-<img alt="Portrait of Ahmad Asadi" class="hero-image" src="/image/Personal/professional.jpg"/>
-</div>
-<div class="hero-content">
-<h1 class="hero-title fw-bold"><span>Ahmad Asadi,</span><br/>Computer Vision Researcher</h1>
-<h2 class="hero-subtitle fw-medium">M.Sc AI Student at University of Tehran</h2>
-<a class="hero-email fw-regular" href="mailto:asadi.ahmad@ut.ac.ir">asadi.ahmad@ut.ac.ir</a>
-<div class="hero-actions">
-<a class="hero-btn hero-btn-primary light-shadow fw-semibold" download="" href="https://scholar.google.com/citations?user=kLSNsD8AAAAJ&amp;hl=en">View Researchs</a>
-<a class="hero-btn hero-btn-secondary light-shadow fw-semibold" href="/PDF/AhmadAsadiCV.pdf">Download CV</a>
-</div>
-</div>
-</section>
+<header class="projects-header">
+<h1 class="projects-title fw-bold">About</h1>
+<h2 class="projects-subtitle fw-medium">Learn about Ahmad Asadi, his academic background, experiences, research interests in AI and Computer Vision, and his professional journey in image processing and machine learning.</h2>
 </header>
-<section class="bio" id="bio">
-<div class="bio-inner">
-<h2 class="bio-title fw-semibold">Bio</h2>
-<p class="bio-text fw-regular">
-        Master's student at University of Tehran with a focus on developing efficient computer vision models for deployment on low-resource systems. Research interests span machine learning optimization, medical imaging applications, and practical AI systems that bridge theoretical advances with real-world constraints. Committed to creating accessible, high-performance solutions that push the boundaries of what's possible with limited computational resources.
-      </p>
-<a class="bio-btn hero-btn light-shadow fw-semibold" href="/Pages/about.html">About</a>
+<main class="about-main">
+<section aria-labelledby="education-title" class="education-section">
+<h2 class="education-title fw-bold" id="education-title">Education</h2>
+<div class="education-list">
+<article class="education-item">
+<div aria-hidden="true" class="education-marker">
+<img alt="" class="logo" decoding="async" loading="lazy" src="/image/University/university_of_tehran.svg"/>
+</div>
+<div class="education-content">
+<h2 class="fw-semibold">University of Tehran</h2>
+<h3 class="education-level fw-medium">Master's Degree</h3>
+<h3 class="fw-medium">Computer Science</h3>
+<p class="education-time fw-medium">Sep 2024 - Present</p>
+<p class="fw-regular">Focused on algorithms, machine learning, and computer vision coursework. Maintained strong academic performance while completing practical, research-oriented projects.</p>
+</div>
+</article>
+<article class="education-item">
+<div aria-hidden="true" class="education-marker">
+<img alt="" class="logo" decoding="async" loading="lazy" src="/image/University/university_of_zanjan.svg"/>
+</div>
+<div class="education-content">
+<h2 class="fw-semibold">University of Zanjan</h2>
+<h3 class="education-level fw-medium">Bachelor's Degree</h3>
+<h3 class="fw-medium">Computer Engineering</h3>
+<p class="education-time fw-medium">Sep 2021 - Jul 2024</p>
+<p class="fw-regular">Built a solid foundation in software engineering and systems design, with key achievements in core technical courses and applied development work.</p>
+</div>
+</article>
+<article class="education-item">
+<div aria-hidden="true" class="education-marker">
+<img alt="" class="logo" decoding="async" loading="lazy" src="/image/University/sampad.svg"/>
+</div>
+<div class="education-content">
+<h2 class="fw-semibold">National Organization for Development of Exceptional Talents (Sampad)</h2>
+<h3 class="education-level fw-medium">High School Diploma</h3>
+<h3 class="fw-medium">Math and Physics</h3>
+<p class="education-time fw-medium">Sep 2017 - Jun 2020</p>
+<p class="fw-regular">Completed a strong secondary education focused on mathematics and physics, building a solid foundation for advanced study in science and engineering.</p>
+</div>
+</article>
 </div>
 </section>
-<!-- <svg style="display:none;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600"><defs><linearGradient id="linear-gradient" x1="92.03" x2="304.37" y1="221.12" y2="592.86" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#0099d6"/><stop offset="1" stop-color="#06568e"/></linearGradient><linearGradient id="linear-gradient-2" x1="421.71" x2="542.9" y1="288.69" y2="498.04" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#007fbe"/><stop offset="1" stop-color="#005085"/></linearGradient><style>.cls-3{display:none;stroke:#231f20;stroke-miterlimit:10;fill:none}</style></defs><g id="Layer_1"><path d="M430.9 430.6 250.84 120.55l-.91-1.55c-6.13-10.02-16.81-16-28.56-16-13.42 0-25.52 7.99-30.81 20.36L12.79 431.25l-.16.29c-3.13 5.17-4.78 11.13-4.78 17.23 0 18.46 15.02 33.49 33.49 33.49h119.84c18.46 0 33.49-15.02 33.49-33.49s-15.02-33.49-33.49-33.49H98.96l122.46-212.13 150.7 259.05 3.67 6.3.18.31c6.39 8.55 16.16 13.45 26.83 13.45 18.46 0 33.49-15.02 33.49-33.49 0-6.52-1.87-12.81-5.37-18.17Z" style="fill:url(#linear-gradient)"/><path d="M583.37 440.39 443.74 198.93l-.88-1.52c-5.15-8.45-14.14-13.5-24.05-13.5s-19.84 5.65-24.78 14.73l-48.89 84.68-.12.22v.47l32.52 56 41.28-71.55 115.05 198.93.6 1.02c5.04 8.53 14.33 13.83 24.25 13.83 15.55 0 28.2-12.65 28.2-28.2 0-4.79-1.22-9.51-3.54-13.66Z" style="fill:url(#linear-gradient-2)"/></g></svg> -->
+<section aria-labelledby="work-experience-title" class="education-section work-experience-section">
+<h2 class="education-title fw-bold" id="work-experience-title">Work Experience</h2>
+<div class="education-list">
+<article class="education-item">
+<div aria-hidden="true" class="education-marker">
+<img alt="" class="logo" decoding="async" loading="lazy" src="/image/Companies/Resanai.svg"/>
+</div>
+<div class="education-content">
+<h2 class="fw-semibold">Resanai</h2>
+<h3 class="education-level fw-medium">Computer Vision Intern</h3>
+<p class="education-time fw-medium">Dec 2025 - Feb 2026 | Part-time</p>
+<p class="fw-regular">Worked on computer vision tasks using PyTorch. Studied fundamentals of computer vision, linear algebra, and PyTorch.</p>
+</div>
+</article>
+<article class="education-item">
+<div aria-hidden="true" class="education-marker">
+<img alt="" class="logo" decoding="async" loading="lazy" src="/image/Companies/IDA.svg"/>
+</div>
+<div class="education-content">
+<h2 class="fw-semibold">IDA Ltd</h2>
+<h3 class="education-level fw-medium">Cyber Security Intern</h3>
+<p class="education-time fw-medium">Mar 2024 - Jul 2024 | Part-time</p>
+<p class="fw-regular">Learned OpenStreetMap (OSM), code signing, and digital certificates (CRT, PFX). Worked with timestamping, patching, and hash handling techniques.</p>
+</div>
+</article>
+<article class="education-item">
+<div aria-hidden="true" class="education-marker">
+<span class="experience-marker-text fw-bold">GNK</span>
+</div>
+<div class="education-content">
+<h2 class="fw-semibold">Green Network Knowledge</h2>
+<h3 class="education-level fw-medium">Software Engineer Intern</h3>
+<p class="education-time fw-medium">Jul 2022 - Aug 2022 | Full-time</p>
+<p class="fw-regular">Built web applications for employee profile presentation. Developed reusable card components for a profile presentation system.</p>
+</div>
+</article>
+</div>
+</section>
+<section aria-labelledby="academic-experience-title" class="education-section academic-experience-section">
+<h2 class="education-title fw-bold" id="academic-experience-title">Academic Experience</h2>
+<div class="education-list">
+<article class="education-item">
+<div aria-hidden="true" class="education-marker">
+<img alt="" class="logo" decoding="async" loading="lazy" src="/image/University/university_of_tehran.svg"/>
+</div>
+<div class="education-content">
+<h2 class="fw-semibold">Machine Learning Teacher Assistant</h2>
+<h3 class="education-level fw-medium">University of Tehran</h3>
+<p class="education-time fw-medium">Sep 2025 - Feb 2026 | Part-time | 6 mos</p>
+</div>
+</article>
+<article class="education-item">
+<div aria-hidden="true" class="education-marker">
+<img alt="" class="logo" decoding="async" loading="lazy" src="/image/University/university_of_tehran.svg"/>
+</div>
+<div class="education-content">
+<h2 class="fw-semibold">Computer Vision Research Assistant</h2>
+<h3 class="education-level fw-medium">University of Tehran</h3>
+<p class="education-time fw-medium">May 2025 - Jul 2025 | Part-time | 3 mos</p>
+</div>
+</article>
+<article class="education-item">
+<div aria-hidden="true" class="education-marker">
+<img alt="" class="logo" decoding="async" loading="lazy" src="/image/University/university_of_zanjan.svg"/>
+</div>
+<div class="education-content">
+<h2 class="fw-semibold">AI Teacher Assistant</h2>
+<h3 class="education-level fw-medium">University of Zanjan</h3>
+<p class="education-time fw-medium">Feb 2024 - Jul 2024 | Part-time | 6 mos</p>
+</div>
+</article>
+<article class="education-item">
+<div aria-hidden="true" class="education-marker">
+<img alt="" class="logo" decoding="async" loading="lazy" src="/image/University/university_of_zanjan.svg"/>
+</div>
+<div class="education-content">
+<h2 class="fw-semibold">Programming Language Design Teacher Assistant</h2>
+<h3 class="education-level fw-medium">University of Zanjan</h3>
+<p class="education-time fw-medium">Feb 2024 - Jul 2024 | Part-time | 6 mos</p>
+</div>
+</article>
+<article class="education-item">
+<div aria-hidden="true" class="education-marker">
+<img alt="" class="logo" decoding="async" loading="lazy" src="/image/University/university_of_zanjan.svg"/>
+</div>
+<div class="education-content">
+<h2 class="fw-semibold">Compiler Design Teacher Assistant</h2>
+<h3 class="education-level fw-medium">University of Zanjan</h3>
+<p class="education-time fw-medium">Sep 2023 - Feb 2024 | Part-time | 6 mos</p>
+</div>
+</article>
+<article class="education-item">
+<div aria-hidden="true" class="education-marker">
+<img alt="" class="logo" decoding="async" loading="lazy" src="/image/University/university_of_zanjan.svg"/>
+</div>
+<div class="education-content">
+<h2 class="fw-semibold">Logic Circuit Teacher Assistant</h2>
+<h3 class="education-level fw-medium">University of Zanjan</h3>
+<p class="education-time fw-medium">Feb 2023 - Jul 2023 | Part-time | 6 mos</p>
+</div>
+</article>
+<article class="education-item">
+<div aria-hidden="true" class="education-marker">
+<img alt="" class="logo" decoding="async" loading="lazy" src="/image/University/university_of_zanjan.svg"/>
+</div>
+<div class="education-content">
+<h2 class="fw-semibold">Logic Circuit Teacher Assistant</h2>
+<h3 class="education-level fw-medium">University of Zanjan</h3>
+<p class="education-time fw-medium">Sep 2022 - Feb 2023 | Part-time | 6 mos</p>
+</div>
+</article>
+<article class="education-item">
+<div aria-hidden="true" class="education-marker">
+<img alt="" class="logo" decoding="async" loading="lazy" src="/image/University/university_of_zanjan.svg"/>
+</div>
+<div class="education-content">
+<h2 class="fw-semibold">Fundamentals of Python Programming Teacher Assistant</h2>
+<h3 class="education-level fw-medium">University of Zanjan</h3>
+<p class="education-time fw-medium">Sep 2022 - Feb 2023 | Part-time | 6 mos</p>
+</div>
+</article>
+<article class="education-item">
+<div aria-hidden="true" class="education-marker">
+<img alt="" class="logo" decoding="async" loading="lazy" src="/image/University/university_of_zanjan.svg"/>
+</div>
+<div class="education-content">
+<h2 class="fw-semibold">Fundamentals of C++ Programming Teacher Assistant</h2>
+<h3 class="education-level fw-medium">University of Zanjan</h3>
+<p class="education-time fw-medium">Sep 2022 - Feb 2023 | Part-time | 6 mos</p>
+</div>
+</article>
+<article class="education-item">
+<div aria-hidden="true" class="education-marker">
+<img alt="" class="logo" decoding="async" loading="lazy" src="/image/University/university_of_zanjan.svg"/>
+</div>
+<div class="education-content">
+<h2 class="fw-semibold">Fundamentals of C Programming Teacher Assistant</h2>
+<h3 class="education-level fw-medium">University of Zanjan</h3>
+<p class="education-time fw-medium">Sep 2021 - Feb 2022 | Part-time | 6 mos</p>
+</div>
+</article>
+</div>
+</section>
+</main>
 <script data-file="dark_theme.js">(function () {
     const THEME_KEY = 'site-theme';
     const root = document.body;

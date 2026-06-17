@@ -1,31 +1,783 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Explore the Computer Vision, Computer Science and AI projects by Ahmad Asadi">
-  <meta name="author" content="Ahmad Asadi">
-  <meta name="keywords" content="Ahmad Asadi Projects">
-  <meta property="og:title" content="Projects | Computer Science & AI Implementations">
-  <meta property="og:description" content="Explore the Computer Vision, Computer Science and AI projects by Ahmad Asadi">
-  <meta property="og:image" content="https://ahmadasadi.ir/image/Personal/personal.jpg">
-  <meta property="og:url" content="https://ahmadasadi.ir/HTML/projects.html">
-  <meta property="og:type" content="website">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Explore the Computer Vision, Computer Science and AI projects by Ahmad Asadi" name="description"/>
+<meta content="Ahmad Asadi" name="author"/>
+<meta content="Ahmad Asadi Projects" name="keywords"/>
+<meta content="Projects | Computer Science &amp; AI Implementations" property="og:title"/>
+<meta content="Explore the Computer Vision, Computer Science and AI projects by Ahmad Asadi" property="og:description"/>
+<meta content="https://ahmadasadi.ir/image/Personal/personal.jpg" property="og:image"/>
+<meta content="https://ahmadasadi.ir/Pages/projects.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<title>Projects | Computer Science &amp; AI Implementations</title>
+<link href="/image/Logo/Logo.svg" rel="icon" type="image/svg+xml"/>
+<style data-file="all.css">*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}</style>
+<style data-file="font.css">/* Centralized local fonts */
 
-  <title>Projects | Computer Science & AI Implementations</title>
-  <link rel="icon" type="image/svg+xml" href="/image/Logo/Logo.svg">
-  <link rel="stylesheet" href="/CSS/all.css">
-  <link rel="stylesheet" href="/CSS/font.css">
-  <link rel="stylesheet" href="/CSS/navbar.css">
-  <link rel="stylesheet" href="/CSS/dark_theme.css">
-  <link rel="stylesheet" href="/CSS/shadow.css">
-  <link rel="stylesheet" href="/CSS/Pages/projects.css">
-  <script type="application/ld+json" data-no-inline>
+@font-face {
+  font-family: 'Poppins';
+  src: url('/Fonts/Poppins-Regular.woff2') format('woff2'),
+       url('/Fonts/Poppins-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/Fonts/Poppins-Medium.woff2') format('woff2'),
+       url('/Fonts/Poppins-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/Fonts/Poppins-SemiBold.woff2') format('woff2'),
+       url('/Fonts/Poppins-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/Fonts/Poppins-SemiBold.woff2') format('woff2'),
+       url('/Fonts/Poppins-SemiBold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-primary: 'Poppins', sans-serif;
+}
+
+.font-poppins {
+  font-family: var(--font-primary);
+}
+
+.fw-regular {
+  font-weight: 400;
+}
+
+.fw-medium {
+  font-weight: 500;
+}
+
+.fw-semibold {
+  font-weight: 600;
+}
+
+.fw-bold {
+  font-weight: 700;
+}
+</style>
+<style data-file="navbar.css">:root {
+  --nav-width: 590px;
+}
+
+nav.parent-nav {
+  position: fixed;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  width: 100%;
+  max-width: var(--nav-width);
+  border-radius: 25px;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: var(--nav-bg);
+  border: 1px solid var(--nav-border);
+}
+
+.nav-mobile-toggle {
+  display: none;
+}
+
+ul.nav {
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  padding: 0px;
+  margin: 0px;
+  list-style-type: none;
+  z-index: 2;
+}
+
+ul.nav li {
+  flex: 1;
+  text-align: center;
+}
+
+ul.nav a {
+  height: 45px;
+  flex-grow: 1;
+  text-decoration: none;
+  color: var(--nav-link);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+ul.nav li:hover a {
+  color: var(--nav-hover) !important;
+}
+
+ul.nav li.active a {
+  color: var(--nav-active-text);
+}
+
+ul.nav li.active:hover a {
+  color: var(--nav-active-text) !important;
+}
+
+ul.nav li.hover:hover a {
+  color: var(--nav-link);
+}
+
+ul.nav .animation {
+  position: absolute;
+  height: 46px;
+  width: 150px;
+  border-radius: 25px;
+  background-color: var(--nav-active-bg);
+  transition: all 0.5s ease;
+  z-index: 1;
+}
+
+@media (max-width: 1000px) {
+  :root {
+    --nav-width: 500px;
+  }
+
+  nav.parent-nav {
+    max-width: var(--nav-width);
+  }
+}
+
+@media (max-width: 650px) {
+  :root {
+    --nav-width: 220px;
+  }
+
+  nav.parent-nav {
+    max-width: var(--nav-width);
+    padding: 6px;
+    border-radius: 24px;
+    overflow: visible;
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: var(--nav-bg);
+  }
+
+  .nav-mobile-toggle {
+    width: 100%;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 14px;
+    border: 1px solid var(--toggle-border);
+    border-radius: 19px;
+    background: var(--toggle-bg);
+    color: var(--nav-link);
+    font-size: 14px;
+    cursor: pointer;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: geometricPrecision;
+  }
+
+  .nav-mobile-toggle::after {
+    content: '\25BE';
+    font-size: 11px;
+  }
+
+  nav.parent-nav.mobile-open .nav-mobile-toggle::after {
+    content: '\25B4';
+  }
+
+  ul.nav {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: 100%;
+    padding: 6px;
+    border-radius: 16px;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background-color: var(--nav-mobile-bg);
+    border: 1px solid var(--nav-border);
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  nav.parent-nav.mobile-open ul.nav {
+    display: flex;
+  }
+
+  ul.nav li {
+    width: 100%;
+    flex: none;
+  }
+
+  ul.nav a {
+    height: 36px;
+    justify-content: flex-start;
+    padding: 0 12px;
+    border-radius: 12px;
+    font-size: 13px;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: geometricPrecision;
+  }
+
+  ul.nav li:hover a {
+    color: var(--nav-link) !important;
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+
+  ul.nav li.active a {
+    background-color: var(--nav-active-bg);
+    color: var(--nav-active-text);
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+
+  ul.nav .animation {
+    display: none;
+  }
+}
+
+@media (max-width: 450px) {
+  :root {
+    --nav-width: 200px;
+  }
+
+  nav.parent-nav {
+    max-width: var(--nav-width);
+  }
+
+  .nav-mobile-toggle {
+    height: 36px;
+    padding: 0 12px;
+    font-size: 13px;
+  }
+
+  ul.nav a {
+    height: 34px;
+    font-size: 12px;
+  }
+}
+</style>
+<style data-file="dark_theme.css">@import url('/CSS/color_palette.css');
+
+/* color */
+
+:root {
+  --theme-toggle-width: 46px;
+  --theme-toggle-height: 46px;
+  --theme-toggle-top: 30px;
+}
+
+body {
+  background-color: var(--page-bg);
+  color: var(--text-primary);
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+nav.parent-nav {
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  background-color: var(--nav-bg) !important;
+  border-color: var(--nav-border) !important;
+}
+
+ul.nav a {
+  color: var(--nav-link) !important;
+}
+
+ul.nav li:hover a {
+  color: var(--nav-hover) !important;
+}
+
+ul.nav li.active a,
+ul.nav li.active:hover a {
+  color: var(--nav-active-text) !important;
+}
+
+ul.nav .animation {
+  background-color: var(--nav-active-bg) !important;
+}
+
+@media (max-width: 650px) {
+  .nav-mobile-toggle {
+    background: var(--toggle-bg) !important;
+    border-color: var(--toggle-border) !important;
+    color: var(--toggle-icon) !important;
+  }
+
+  ul.nav {
+    background-color: var(--toggle-bg) !important;
+    border-color: var(--toggle-border) !important;
+  }
+
+  ul.nav li.active a {
+    background-color: var(--nav-active-bg) !important;
+    color: var(--nav-active-text) !important;
+  }
+
+  ul.nav li:hover a {
+    background-color: var(--nav-active-bg) !important;
+    color: var(--nav-active-text) !important;
+  }
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  position: fixed;
+  top: var(--theme-toggle-top);
+  left: 50%;
+  margin-left: calc((var(--nav-width) / 2) + 12px);
+  width: var(--theme-toggle-width);
+  height: var(--theme-toggle-height);
+  border: 1px solid var(--toggle-border);
+  border-radius: 50%;
+  background: var(--toggle-bg);
+  color: var(--toggle-icon);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 3;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px) scale(1.03);
+}
+
+.theme-toggle:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.theme-toggle .icon {
+  position: absolute;
+  width: 70%;
+  height: 70%;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+  padding: 3px;
+}
+
+.theme-toggle .icon svg {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+body[data-theme='dark'] .theme-toggle .icon-sun {
+  opacity: 0;
+  transform: rotate(-110deg) scale(0.35);
+}
+
+body[data-theme='dark'] .theme-toggle .icon-moon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+body[data-theme='light'] .theme-toggle .icon-sun {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+body[data-theme='light'] .theme-toggle .icon-moon {
+  opacity: 0;
+  transform: rotate(110deg) scale(0.35);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 650px) {
+  :root {
+    --theme-toggle-top: 34px;
+  }
+}
+
+@media (max-width: 550px) {
+  .theme-toggle {
+    margin-left: calc((var(--nav-width) / 2) + 10px);
+  }
+}
+
+@media (max-width: 450px) {
+  :root {
+    --theme-toggle-width: 40px;
+    --theme-toggle-height: 40px;
+    --theme-toggle-top: 36px;
+  }
+}
+</style>
+<style data-file="shadow.css">/* Centralized shadows */
+
+:root {
+  --dark-shadow-base: 0px 0px 18px rgba(15, 23, 42, 0.3);
+  --dark-shadow-hover: 0px 0px 24px rgba(15, 23, 42, 0.5);
+  --light-shadow-base: 0px 0px 18px rgba(255, 255, 255, 0.2);
+  --light-shadow-hover: 0px 0px 24px rgba(255, 255, 255, 0.4);
+
+  --dark-logo-shadow-base: drop-shadow(0px 0px 12px rgba(15, 23, 42, 0.4));
+  --dark-logo-shadow-hover: drop-shadow(0px 0px 16px rgba(15, 23, 42, 0.5));
+  --light-logo-shadow-base: drop-shadow(0px 0px 12px rgba(255, 255, 255, 0.5));
+  --light-logo-shadow-hover: drop-shadow(0px 0px 16px rgba(255, 255, 255, 0.68));
+}
+
+/* buttons */
+
+.dark-shadow {
+  box-shadow: var(--dark-shadow-base);
+  transition: box-shadow 0.25s ease;
+}
+
+.dark-shadow:hover {
+  box-shadow: var(--dark-shadow-hover);
+}
+
+.dark-shadow:active {
+  box-shadow: var(--dark-shadow-base);
+}
+
+.light-shadow {
+  box-shadow: var(--light-shadow-base);
+  transition: box-shadow 0.25s ease;
+}
+
+.light-shadow:hover {
+  box-shadow: var(--light-shadow-hover);
+}
+
+.light-shadow:active {
+  box-shadow: var(--light-shadow-base);
+}
+
+/* logos */
+
+.logo-dark-shadow {
+  filter: var(--dark-logo-shadow-base);
+  transition: filter 0.25s ease, transform 0.2s ease;
+}
+
+.logo-dark-shadow:hover {
+  filter: var(--dark-logo-shadow-hover);
+}
+
+.logo-dark-shadow:active {
+  filter: var(--dark-logo-shadow-base);
+}
+
+.logo-light-shadow {
+  filter: var(--light-logo-shadow-base);
+  transition: filter 0.25s ease, transform 0.2s ease;
+}
+
+.logo-light-shadow:hover {
+  filter: var(--light-logo-shadow-hover);
+}
+
+.logo-light-shadow:active {
+  filter: var(--light-logo-shadow-base);
+}
+</style>
+<style data-file="projects.css">@import url('/CSS/color_palette.css');
+
+.projects-header {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 130px 8% 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-height: 80vh;
+}
+
+.projects-title {
+  color: var(--accent-primary);
+  font-size: clamp(2rem, 4.2vw, 3.1rem);
+  line-height: 1.15;
+  text-align: center;
+}
+
+.projects-subtitle {
+  color: var(--text-primary);
+  font-size: clamp(1rem, 2.1vw, 1.35rem);
+  line-height: 1.65;
+  max-width: 900px;
+  margin: 0 auto;
+  padding-top: 10px;
+}
+
+.projects-main {
+  padding: 0 0 70px;
+}
+
+.project-section {
+  margin: 0;
+  padding: 34px 8%;
+  border: none;
+  border-radius: 0;
+}
+
+.project-section:nth-of-type(odd) {
+  background: var(--section-muted-bg);
+}
+
+.project-section:nth-of-type(even) {
+  background: var(--page-bg);
+}
+
+.section-title {
+  color: var(--text-primary);
+  font-size: clamp(1.35rem, 2.8vw, 2.4rem);
+  line-height: 1.2;
+  max-width: 1000px;
+  padding-top: 25px;
+  padding-bottom: 55px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.project-list {
+  display: grid;
+  gap: 14px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.project-card {
+  min-height: 160px;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 36px;
+  align-items: stretch;
+  background: transparent;
+  border: none;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.project-thumb {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  min-height: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  display: block;
+  object-fit: contain;
+  object-position: center;
+  border: none;
+}
+
+img.project-thumb {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.project-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+.project-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.project-content h3 {
+  order: 1;
+}
+
+.project-content .project-tech {
+  order: 2;
+}
+
+.project-content h4 {
+  order: 3;
+}
+
+.project-content .project-tags {
+  order: 4;
+}
+
+.project-content > a {
+  order: 5;
+}
+
+.project-content h3 {
+  color: var(--text-primary);
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  line-height: 1.3;
+}
+
+.project-content h4 {
+  color: var(--text-primary);
+  opacity: 0.9;
+  font-size: clamp(0.92rem, 1.7vw, 1.02rem);
+  line-height: 1.6;
+}
+
+.project-content a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  height: 30px;
+  padding: 0 12px;
+  border-radius: 999px;
+  color: var(--accent-primary);
+  text-decoration: none;
+  font-size: 0.82rem;
+  line-height: 1;
+  background: var(--project-link-bg);
+  border: 1px solid var(--project-link-border);
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.project-content a:hover {
+  text-decoration: none;
+  background: var(--project-link-bg-hover);
+  border-color: var(--project-link-border-hover);
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.project-tag {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  line-height: 1;
+  color: var(--text-primary);
+  background: var(--project-tag-bg);
+  border: 1px solid var(--project-tag-border);
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.project-tag:hover {
+  transform: translateY(-1px);
+  background: var(--project-tag-bg-hover);
+  border-color: var(--project-tag-border-hover);
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 0;
+}
+
+.tech-icon-img {
+  width: 35px;
+  height: 35px;
+  padding: 4px;
+  border-radius: 50%;
+  background: var(--project-tech-bg);
+  border: 1px solid var(--project-tech-border);
+  object-fit: contain;
+  display: block;
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.tech-icon-img:hover {
+  transform: translateY(-2px) scale(1.05);
+  background: var(--project-tech-bg-hover);
+  border-color: var(--project-tech-border-hover);
+}
+
+body[data-theme='light'] .project-card {
+  background: transparent;
+  border: none;
+}
+
+@media (max-width: 760px) {
+  .projects-header {
+    padding-top: 124px;
+    padding-bottom: 36px;
+    gap: 12px;
+  }
+
+  .projects-subtitle{
+    text-align: justify;
+    padding-top: 20px;
+  }
+
+  .section-title {
+    padding-top: 20px;
+    padding-bottom: 25px;
+  }
+
+  .project-section {
+    padding: 24px 6%;
+  }
+
+  .project-card {
+    gap: 16px;
+    min-height: 0;
+    grid-template-columns: 1fr;
+  }
+
+  .project-thumb {
+    aspect-ratio: 16 / 10;
+  }
+}
+</style>
+<script data-no-inline="" type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "@id": "https://ahmadasadi.ir/HTML/projects.html",
-    "url": "https://ahmadasadi.ir/HTML/projects.html",
+    "@id": "https://ahmadasadi.ir/Pages/projects.html",
+    "url": "https://ahmadasadi.ir/Pages/projects.html",
     "name": "Projects | Computer Science & AI Implementations",
     "description": "Explore the Computer Vision, Computer Science and AI projects by Ahmad Asadi",
     "isPartOf": {
@@ -40,87 +792,86 @@
     },
     "image": "https://ahmadasadi.ir/image/Personal/personal.jpg"
   }
-  </script> 
+  </script>
 </head>
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P46W9GQNQK" data-no-inline></script>
-<script data-no-inline>
+<script async="" data-no-inline="" src="https://www.googletagmanager.com/gtag/js?id=G-P46W9GQNQK"></script>
+<script data-no-inline="">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-P46W9GQNQK');
 </script>
 <body class="font-poppins">
-  <nav class="parent-nav">
-    <ul class="nav fw-medium">
-      <li><a href="/HTML/index.html">Home</a></li>
-      <li><a href="/HTML/projects.html">Projects</a></li>
-      <li><a href="/HTML/publications.html">Publications</a></li>
-      <li><a href="/HTML/notes.html">Notes</a></li>
-      <li><a href="/HTML/about.html">About</a></li>
-      <div class="animation"></div>
-    </ul>
-  </nav>
-  <button type="button" class="theme-toggle light-shadow">
-    <span class="icon icon-sun" aria-hidden="true">
-      <svg width="35px" height="35px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M17 12C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17 12Z" fill="#0f172a"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 1.25C12.4142 1.25 12.75 1.58579 12.75 2V4C12.75 4.41421 12.4142 4.75 12 4.75C11.5858 4.75 11.25 4.41421 11.25 4V2C11.25 1.58579 11.5858 1.25 12 1.25ZM3.66865 3.71609C3.94815 3.41039 4.42255 3.38915 4.72825 3.66865L6.95026 5.70024C7.25596 5.97974 7.2772 6.45413 6.9977 6.75983C6.7182 7.06553 6.2438 7.08677 5.9381 6.80727L3.71609 4.77569C3.41039 4.49619 3.38915 4.02179 3.66865 3.71609ZM20.3314 3.71609C20.6109 4.02179 20.5896 4.49619 20.2839 4.77569L18.0619 6.80727C17.7562 7.08677 17.2818 7.06553 17.0023 6.75983C16.7228 6.45413 16.744 5.97974 17.0497 5.70024L19.2718 3.66865C19.5775 3.38915 20.0518 3.41039 20.3314 3.71609ZM1.25 12C1.25 11.5858 1.58579 11.25 2 11.25H4C4.41421 11.25 4.75 11.5858 4.75 12C4.75 12.4142 4.41421 12.75 4 12.75H2C1.58579 12.75 1.25 12.4142 1.25 12ZM19.25 12C19.25 11.5858 19.5858 11.25 20 11.25H22C22.4142 11.25 22.75 11.5858 22.75 12C22.75 12.4142 22.4142 12.75 22 12.75H20C19.5858 12.75 19.25 12.4142 19.25 12ZM17.0255 17.0252C17.3184 16.7323 17.7933 16.7323 18.0862 17.0252L20.3082 19.2475C20.6011 19.5404 20.601 20.0153 20.3081 20.3082C20.0152 20.6011 19.5403 20.601 19.2475 20.3081L17.0255 18.0858C16.7326 17.7929 16.7326 17.3181 17.0255 17.0252ZM6.97467 17.0253C7.26756 17.3182 7.26756 17.7931 6.97467 18.086L4.75244 20.3082C4.45955 20.6011 3.98468 20.6011 3.69178 20.3082C3.39889 20.0153 3.39889 19.5404 3.69178 19.2476L5.91401 17.0253C6.2069 16.7324 6.68177 16.7324 6.97467 17.0253ZM12 19.25C12.4142 19.25 12.75 19.5858 12.75 20V22C12.75 22.4142 12.4142 22.75 12 22.75C11.5858 22.75 11.25 22.4142 11.25 22V20C11.25 19.5858 11.5858 19.25 12 19.25Z" fill="#0f172a"></path> </g></svg>
-    </span>
-    <span class="icon icon-moon" aria-hidden="true">
-      <svg width="35px" height="35px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12 22C17.5228 22 22 17.5228 22 12C22 11.5373 21.3065 11.4608 21.0672 11.8568C19.9289 13.7406 17.8615 15 15.5 15C11.9101 15 9 12.0899 9 8.5C9 6.13845 10.2594 4.07105 12.1432 2.93276C12.5392 2.69347 12.4627 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#ffffff"></path> </g></svg>
-    </span>
-    <span class="sr-only">Toggle theme</span>
-  </button>
-
-  <header class="projects-header">
-    <h1 class="projects-title fw-bold">Projects</h1>
-    <h2 class="projects-subtitle fw-medium">A collection of research-driven and engineering-focused projects spanning algorithms, artificial intelligence, software systems, and applied development.</h2>
-  </header>
-  <main class="projects-main">
-    <section class="project-section" id="computer-vision">
-      <h2 class="section-title fw-bold">Computer Vision</h2>
-      <div class="project-list">
-        <article class="project-card">
-          <img class="project-thumb" src="/image/Projects/ComputerVision/100_Sports_Image_Classification/sport.png" alt="Computer Vision Project 01 thumbnail" loading="lazy" decoding="async">
-          <div class="project-content">
-            <h3 class="fw-semibold">100 Sports Image Classification</h3>
-            <h4 class="fw-regular">A deep learning project for sport image classification using a custom VGG19-based architecture with integrated Grad-CAM heatmap visualization for model interpretability. </h4>
-            <a class="fw-semibold" href="https://github.com/AsadiAhmad/100-Sports-Image-Classification" target="_blank" rel="noopener">View on GitHub</a>
-            <div class="project-tags fw-medium" aria-label="Project tags">
-              <span class="project-tag">Computer Vision</span>              
-              <span class="project-tag">Deep Learning</span>
-              <span class="project-tag">Cuda</span>
-              <span class="project-tag">Grad Cam</span>
-              <span class="project-tag">Cuda</span>
-              <span class="project-tag">Pytorch</span>
-              <span class="project-tag">GPU Acceleration</span>
-              <span class="project-tag">Image Classification</span>
-              <span class="project-tag">Transfer Learning</span>
-              <span class="project-tag">VGG19</span>
-              <span class="project-tag">Data Augmentation</span>
-              <span class="project-tag">Explainable-AI</span>
-              <span class="project-tag">Sports Analytics</span>
-              <span class="project-tag">Mixed Precision Training</span>
-              <span class="project-tag">Heatmap Visualization</span>
-              <span class="project-tag">Sports Classification</span>
-              <span class="project-tag">Pytorch Grad Cam</span>
-            </div>
-            <div class="project-tech" aria-label="Technologies used">
-              <img class="tech-icon-img" src="/image/Tech/python.svg" alt="Python" title="Python" loading="lazy" decoding="async">
-              <img class="tech-icon-img" src="/image/Tech/jupyter.svg" alt="Jupyter" title="Jupyter" loading="lazy" decoding="async">
-              <img class="tech-icon-img" src="/image/Tech/googlecolab.svg" alt="Googlecolab" title="Googlecolab" loading="lazy" decoding="async">
-              <img class="tech-icon-img" src="/image/Tech/opencv.svg" alt="Opencv" title="Opencv" loading="lazy" decoding="async">
-              <img class="tech-icon-img" src="/image/Tech/numpy.svg" alt="Numpy" title="Numpy" loading="lazy" decoding="async">
-              <img class="tech-icon-img" src="/image/Tech/tqdm.svg" alt="TQDM" title="TQDM" loading="lazy" decoding="async">
-              <img class="tech-icon-img" src="/image/Tech/cuda.svg" alt="Cuda" title="Cuda" loading="lazy" decoding="async">
-              <img class="tech-icon-img" src="/image/Tech/pytorch.svg" alt="Pytorch" title="Pytorch" loading="lazy" decoding="async">
-              <img class="tech-icon-img" src="/image/Tech/torchvision.svg" alt="Torchvision" title="Torchvision" loading="lazy" decoding="async">
-              <img class="tech-icon-img" src="/image/Tech/kaggle.svg" alt="Kaggle" title="Kaggle" loading="lazy" decoding="async">
-              <img class="tech-icon-img" src="/image/Tech/matplotlib.svg" alt="Matplotlib" title="Matplotlib" loading="lazy" decoding="async">
-              <img class="tech-icon-img" src="/image/Tech/pillow.svg" alt="Pillow" title="Pillow" loading="lazy" decoding="async">
-            </div>
-          </div>
-        </article>
-        <!-- <article class="project-card">
+<nav class="parent-nav">
+<ul class="nav fw-medium">
+<li><a href="/index.html">Home</a></li>
+<li><a href="/Pages/projects.html">Projects</a></li>
+<li><a href="/Pages/publications.html">Publications</a></li>
+<li><a href="/Pages/notes.html">Notes</a></li>
+<li><a href="/Pages/about.html">About</a></li>
+<div class="animation"></div>
+</ul>
+</nav>
+<button class="theme-toggle light-shadow" type="button">
+<span aria-hidden="true" class="icon icon-sun">
+<svg fill="none" height="35px" viewbox="0 0 24 24" width="35px" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M17 12C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17 12Z" fill="#0f172a"></path> <path clip-rule="evenodd" d="M12 1.25C12.4142 1.25 12.75 1.58579 12.75 2V4C12.75 4.41421 12.4142 4.75 12 4.75C11.5858 4.75 11.25 4.41421 11.25 4V2C11.25 1.58579 11.5858 1.25 12 1.25ZM3.66865 3.71609C3.94815 3.41039 4.42255 3.38915 4.72825 3.66865L6.95026 5.70024C7.25596 5.97974 7.2772 6.45413 6.9977 6.75983C6.7182 7.06553 6.2438 7.08677 5.9381 6.80727L3.71609 4.77569C3.41039 4.49619 3.38915 4.02179 3.66865 3.71609ZM20.3314 3.71609C20.6109 4.02179 20.5896 4.49619 20.2839 4.77569L18.0619 6.80727C17.7562 7.08677 17.2818 7.06553 17.0023 6.75983C16.7228 6.45413 16.744 5.97974 17.0497 5.70024L19.2718 3.66865C19.5775 3.38915 20.0518 3.41039 20.3314 3.71609ZM1.25 12C1.25 11.5858 1.58579 11.25 2 11.25H4C4.41421 11.25 4.75 11.5858 4.75 12C4.75 12.4142 4.41421 12.75 4 12.75H2C1.58579 12.75 1.25 12.4142 1.25 12ZM19.25 12C19.25 11.5858 19.5858 11.25 20 11.25H22C22.4142 11.25 22.75 11.5858 22.75 12C22.75 12.4142 22.4142 12.75 22 12.75H20C19.5858 12.75 19.25 12.4142 19.25 12ZM17.0255 17.0252C17.3184 16.7323 17.7933 16.7323 18.0862 17.0252L20.3082 19.2475C20.6011 19.5404 20.601 20.0153 20.3081 20.3082C20.0152 20.6011 19.5403 20.601 19.2475 20.3081L17.0255 18.0858C16.7326 17.7929 16.7326 17.3181 17.0255 17.0252ZM6.97467 17.0253C7.26756 17.3182 7.26756 17.7931 6.97467 18.086L4.75244 20.3082C4.45955 20.6011 3.98468 20.6011 3.69178 20.3082C3.39889 20.0153 3.39889 19.5404 3.69178 19.2476L5.91401 17.0253C6.2069 16.7324 6.68177 16.7324 6.97467 17.0253ZM12 19.25C12.4142 19.25 12.75 19.5858 12.75 20V22C12.75 22.4142 12.4142 22.75 12 22.75C11.5858 22.75 11.25 22.4142 11.25 22V20C11.25 19.5858 11.5858 19.25 12 19.25Z" fill="#0f172a" fill-rule="evenodd"></path> </g></svg>
+</span>
+<span aria-hidden="true" class="icon icon-moon">
+<svg fill="none" height="35px" stroke="#ffffff" viewbox="0 0 24 24" width="35px" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12 22C17.5228 22 22 17.5228 22 12C22 11.5373 21.3065 11.4608 21.0672 11.8568C19.9289 13.7406 17.8615 15 15.5 15C11.9101 15 9 12.0899 9 8.5C9 6.13845 10.2594 4.07105 12.1432 2.93276C12.5392 2.69347 12.4627 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#ffffff"></path> </g></svg>
+</span>
+<span class="sr-only">Toggle theme</span>
+</button>
+<header class="projects-header">
+<h1 class="projects-title fw-bold">Projects</h1>
+<h2 class="projects-subtitle fw-medium">A collection of research-driven and engineering-focused projects spanning algorithms, artificial intelligence, software systems, and applied development.</h2>
+</header>
+<main class="projects-main">
+<section class="project-section" id="computer-vision">
+<h2 class="section-title fw-bold">Computer Vision</h2>
+<div class="project-list">
+<article class="project-card">
+<img alt="Computer Vision Project 01 thumbnail" class="project-thumb" decoding="async" loading="lazy" src="/image/Projects/ComputerVision/100_Sports_Image_Classification/sport.png"/>
+<div class="project-content">
+<h3 class="fw-semibold">100 Sports Image Classification</h3>
+<h4 class="fw-regular">A deep learning project for sport image classification using a custom VGG19-based architecture with integrated Grad-CAM heatmap visualization for model interpretability. </h4>
+<a class="fw-semibold" href="https://github.com/AsadiAhmad/100-Sports-Image-Classification" rel="noopener" target="_blank">View on GitHub</a>
+<div aria-label="Project tags" class="project-tags fw-medium">
+<span class="project-tag">Computer Vision</span>
+<span class="project-tag">Deep Learning</span>
+<span class="project-tag">Cuda</span>
+<span class="project-tag">Grad Cam</span>
+<span class="project-tag">Cuda</span>
+<span class="project-tag">Pytorch</span>
+<span class="project-tag">GPU Acceleration</span>
+<span class="project-tag">Image Classification</span>
+<span class="project-tag">Transfer Learning</span>
+<span class="project-tag">VGG19</span>
+<span class="project-tag">Data Augmentation</span>
+<span class="project-tag">Explainable-AI</span>
+<span class="project-tag">Sports Analytics</span>
+<span class="project-tag">Mixed Precision Training</span>
+<span class="project-tag">Heatmap Visualization</span>
+<span class="project-tag">Sports Classification</span>
+<span class="project-tag">Pytorch Grad Cam</span>
+</div>
+<div aria-label="Technologies used" class="project-tech">
+<img alt="Python" class="tech-icon-img" decoding="async" loading="lazy" src="/image/Tech/python.svg" title="Python"/>
+<img alt="Jupyter" class="tech-icon-img" decoding="async" loading="lazy" src="/image/Tech/jupyter.svg" title="Jupyter"/>
+<img alt="Googlecolab" class="tech-icon-img" decoding="async" loading="lazy" src="/image/Tech/googlecolab.svg" title="Googlecolab"/>
+<img alt="Opencv" class="tech-icon-img" decoding="async" loading="lazy" src="/image/Tech/opencv.svg" title="Opencv"/>
+<img alt="Numpy" class="tech-icon-img" decoding="async" loading="lazy" src="/image/Tech/numpy.svg" title="Numpy"/>
+<img alt="TQDM" class="tech-icon-img" decoding="async" loading="lazy" src="/image/Tech/tqdm.svg" title="TQDM"/>
+<img alt="Cuda" class="tech-icon-img" decoding="async" loading="lazy" src="/image/Tech/cuda.svg" title="Cuda"/>
+<img alt="Pytorch" class="tech-icon-img" decoding="async" loading="lazy" src="/image/Tech/pytorch.svg" title="Pytorch"/>
+<img alt="Torchvision" class="tech-icon-img" decoding="async" loading="lazy" src="/image/Tech/torchvision.svg" title="Torchvision"/>
+<img alt="Kaggle" class="tech-icon-img" decoding="async" loading="lazy" src="/image/Tech/kaggle.svg" title="Kaggle"/>
+<img alt="Matplotlib" class="tech-icon-img" decoding="async" loading="lazy" src="/image/Tech/matplotlib.svg" title="Matplotlib"/>
+<img alt="Pillow" class="tech-icon-img" decoding="async" loading="lazy" src="/image/Tech/pillow.svg" title="Pillow"/>
+</div>
+</div>
+</article>
+<!-- <article class="project-card">
           <div class="project-thumb" aria-hidden="true"></div>
           <div class="project-content">
             <h3>Computer Vision Project 02</h3>
@@ -139,10 +890,9 @@
             </div>
           </div>
         </article> -->
-      </div>
-    </section>
-
-    <!-- <section class="project-section" id="image-processing">
+</div>
+</section>
+<!-- <section class="project-section" id="image-processing">
       <h2 class="section-title">Image Processing</h2>
       <div class="project-list">
         <article class="project-card">
@@ -185,8 +935,7 @@
         </article>
       </div>
     </section> -->
-
-    <!-- <section class="project-section" id="information-retrieval">
+<!-- <section class="project-section" id="information-retrieval">
       <h2 class="section-title">Information Retrieval</h2>
       <div class="project-list">
         <article class="project-card">
@@ -229,8 +978,7 @@
         </article>
       </div>
     </section> -->
-
-    <!-- <section class="project-section" id="nlp">
+<!-- <section class="project-section" id="nlp">
       <h2 class="section-title">NLP</h2>
       <div class="project-list">
         <article class="project-card">
@@ -273,8 +1021,7 @@
         </article>
       </div>
     </section> -->
-
-    <!-- <section class="project-section" id="neural-network">
+<!-- <section class="project-section" id="neural-network">
       <h2 class="section-title">Neural Network</h2>
       <div class="project-list">
         <article class="project-card">
@@ -317,8 +1064,7 @@
         </article>
       </div>
     </section> -->
-
-    <!-- <section class="project-section" id="machine-learning">
+<!-- <section class="project-section" id="machine-learning">
       <h2 class="section-title">Machine Learning</h2>
       <div class="project-list">
         <article class="project-card">
@@ -361,8 +1107,7 @@
         </article>
       </div>
     </section> -->
-
-    <!-- <section class="project-section" id="algorithms">
+<!-- <section class="project-section" id="algorithms">
       <h2 class="section-title">Algorithms</h2>
       <div class="project-list">
         <article class="project-card">
@@ -405,8 +1150,7 @@
         </article>
       </div>
     </section> -->
-
-    <!-- <section class="project-section" id="web-dev">
+<!-- <section class="project-section" id="web-dev">
       <h2 class="section-title">Web Dev</h2>
       <div class="project-list">
         <article class="project-card">
@@ -449,8 +1193,7 @@
         </article>
       </div>
     </section> -->
-
-    <!-- <section class="project-section" id="game-dev">
+<!-- <section class="project-section" id="game-dev">
       <h2 class="section-title">Game Dev</h2>
       <div class="project-list">
         <article class="project-card">
@@ -493,8 +1236,7 @@
         </article>
       </div>
     </section> -->
-
-    <!-- <section class="project-section" id="managment-apps">
+<!-- <section class="project-section" id="managment-apps">
       <h2 class="section-title">Managment Apps</h2>
       <div class="project-list">
         <article class="project-card">
@@ -537,8 +1279,7 @@
         </article>
       </div>
     </section> -->
-
-    <!-- <section class="project-section" id="simulators">
+<!-- <section class="project-section" id="simulators">
       <h2 class="section-title">Simulators</h2>
       <div class="project-list">
         <article class="project-card">
@@ -581,8 +1322,7 @@
         </article>
       </div>
     </section> -->
-
-    <!-- <section class="project-section" id="calculators">
+<!-- <section class="project-section" id="calculators">
       <h2 class="section-title">Calculators</h2>
       <div class="project-list">
         <article class="project-card">
@@ -625,8 +1365,7 @@
         </article>
       </div>
     </section> -->
-
-    <!-- <section class="project-section" id="compilers">
+<!-- <section class="project-section" id="compilers">
       <h2 class="section-title">Compilers</h2>
       <div class="project-list">
         <article class="project-card">
@@ -669,8 +1408,7 @@
         </article>
       </div>
     </section> -->
-
-    <!-- <section class="project-section" id="schedulers">
+<!-- <section class="project-section" id="schedulers">
       <h2 class="section-title">Schedulers</h2>
       <div class="project-list">
         <article class="project-card">
@@ -713,8 +1451,7 @@
         </article>
       </div>
     </section> -->
-
-    <!-- <section class="project-section" id="hardware">
+<!-- <section class="project-section" id="hardware">
       <h2 class="section-title">Hardware</h2>
       <div class="project-list">
         <article class="project-card">
@@ -757,11 +1494,247 @@
         </article>
       </div>
     </section> -->
+</main>
+<script data-file="dark_theme.js">(function () {
+    const THEME_KEY = 'site-theme';
+    const root = document.body;
+    const toggleButton = document.querySelector('.theme-toggle');
 
-  </main>
+    if (!root || !toggleButton) return;
 
-  <script src="/JS/dark_theme.js"></script>
-  <script src="/JS/navbar.js"></script>
-  <script src="/JS/mobile_toch_controll.js"></script>
+    function getPreferredTheme() {
+        const stored = localStorage.getItem(THEME_KEY);
+        if (stored === 'light' || stored === 'dark') return stored;
+        return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+
+    function applyTheme(theme) {
+        root.setAttribute('data-theme', theme);
+        if (toggleButton) {
+            toggleButton.setAttribute(
+                'aria-label',
+                theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'
+            );
+            toggleButton.setAttribute('title', theme === 'dark' ? 'Light mode' : 'Dark mode');
+        }
+        const addShadowClass = theme === 'dark' ? 'light-shadow' : 'dark-shadow';
+        const removeShadowClass = theme === 'dark' ? 'dark-shadow' : 'light-shadow';
+        const addLogoShadowClass = theme === 'dark' ? 'logo-light-shadow' : 'logo-dark-shadow';
+        const removeLogoShadowClass = theme === 'dark' ? 'logo-dark-shadow' : 'logo-light-shadow';
+        document
+            .querySelectorAll('.theme-toggle, .hero-btn, .nav-mobile-toggle')
+            .forEach((element) => {
+                element.classList.remove(removeShadowClass);
+                element.classList.add(addShadowClass);
+            });
+        document
+            .querySelectorAll('.logo')
+            .forEach((element) => {
+                element.classList.remove(removeLogoShadowClass);
+                element.classList.add(addLogoShadowClass);
+            });
+    }
+
+    function toggleTheme() {
+        const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        localStorage.setItem(THEME_KEY, next);
+        applyTheme(next);
+    }
+
+    applyTheme(getPreferredTheme());
+
+    toggleButton.addEventListener('click', toggleTheme);
+})();
+</script>
+<script data-file="navbar.js">document.addEventListener('DOMContentLoaded', () => {
+    const navElement = document.querySelector('nav.parent-nav');
+    const navList = document.querySelector('ul.nav');
+
+    if (!navElement || !navList) return;
+
+    const navLinks = navList.querySelectorAll('li');
+    const navAnchors = navList.querySelectorAll('li a');
+    const animationDiv = navList.querySelector('.animation');
+    const mobileBreakpoint = 650;
+
+    let activeLink = null;
+
+    const mobileToggle = document.createElement('button');
+    mobileToggle.type = 'button';
+    mobileToggle.className = 'nav-mobile-toggle';
+    mobileToggle.classList.add('fw-medium');
+    mobileToggle.classList.add(
+        document.body.getAttribute('data-theme') === 'light' ? 'dark-shadow' : 'light-shadow'
+    );
+    mobileToggle.setAttribute('aria-label', 'Toggle navigation menu');
+    mobileToggle.setAttribute('aria-expanded', 'false');
+    navElement.insertBefore(mobileToggle, navList);
+
+    function isMobile() {
+        return window.innerWidth <= mobileBreakpoint;
+    }
+
+    function updateToggleLabel() {
+        if (!activeLink) return;
+        const activeAnchor = activeLink.querySelector('a');
+        if (activeAnchor) {
+            mobileToggle.textContent = activeAnchor.textContent.trim();
+        }
+    }
+
+    function closeMobileMenu() {
+        navElement.classList.remove('mobile-open');
+        mobileToggle.setAttribute('aria-expanded', 'false');
+    }
+
+    function updatePointer(target) {
+        if (!animationDiv || isMobile()) return;
+        animationDiv.style.width = target.offsetWidth + 4 + 'px';
+        animationDiv.style.left = target.offsetLeft - 2 + 'px';
+    }
+
+    function resetActiveState() {
+        navLinks.forEach((link) => link.classList.remove('active', 'hover'));
+        navAnchors.forEach((anchor) => anchor.classList.remove('fw-semibold'));
+    }
+
+    function updateActiveWeightClass() {
+        navAnchors.forEach((anchor) => anchor.classList.remove('fw-semibold'));
+        if (!activeLink) return;
+        const activeAnchor = activeLink.querySelector('a');
+        if (activeAnchor) {
+            activeAnchor.classList.add('fw-semibold');
+        }
+    }
+
+    function normalizePath(path) {
+        if (!path) return '/';
+        let normalized = path.toLowerCase().replace(/\/+$/, '');
+        if (normalized === '') normalized = '/';
+        if (normalized.endsWith('/index.html')) normalized = normalized.slice(0, -'/index.html'.length) || '/';
+        return normalized;
+    }
+
+    const currentPath = normalizePath(window.location.pathname);
+
+    navAnchors.forEach((anchor) => {
+        const anchorPath = normalizePath(anchor.pathname);
+        if (anchorPath === currentPath) {
+            activeLink = anchor.parentElement;
+            activeLink.classList.add('active');
+        }
+    });
+
+    if (!activeLink) {
+        activeLink = navLinks[0];
+        activeLink.classList.add('active');
+    }
+
+    updateActiveWeightClass();
+    updateToggleLabel();
+    updatePointer(activeLink);
+
+    navLinks.forEach((link) => {
+        link.addEventListener('mouseenter', () => {
+            // if (isMobile()) return;
+            resetActiveState();
+            link.classList.add('hover');
+            updatePointer(link);
+        });
+
+        link.addEventListener('mouseleave', () => {
+            // if (isMobile()) return;
+            link.classList.remove('hover');
+            activeLink.classList.add('active');
+            updateActiveWeightClass();
+            updatePointer(activeLink);
+        });
+
+        link.addEventListener('click', () => {
+            resetActiveState();
+            link.classList.add('active');
+            activeLink = link;
+            updateActiveWeightClass();
+            updateToggleLabel();
+            updatePointer(activeLink);
+
+            if (isMobile()) {
+                closeMobileMenu();
+            }
+        });
+    });
+
+    mobileToggle.addEventListener('click', () => {
+        const isOpen = navElement.classList.toggle('mobile-open');
+        mobileToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!isMobile()) return;
+        if (!navElement.contains(event.target)) {
+            closeMobileMenu();
+        }
+    });
+
+    window.addEventListener('resize', () => {
+        if (!isMobile()) {
+            closeMobileMenu();
+            updatePointer(activeLink);
+        }
+    });
+});
+</script>
+<script data-file="mobile_toch_controll.js">document.addEventListener('DOMContentLoaded', () => {
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    let touchStartY = 0;
+    let touchEndY = 0;
+
+    const navLinks = document.querySelectorAll('ul.nav li a');
+    const currentPageIndex = Array.from(navLinks).findIndex(link => link.href === window.location.href);
+
+    window.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+    });
+
+    window.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        touchEndY = e.changedTouches[0].screenY;
+
+        handleSwipeGesture();
+    });
+
+    function handleSwipeGesture() {
+        const deltaX = touchEndX - touchStartX;
+        const deltaY = touchEndY - touchStartY;
+
+        const angleRadians = Math.atan2(deltaY, deltaX);
+        let angleDegrees = angleRadians * (180 / Math.PI);
+
+        if (angleDegrees < 0) {
+            angleDegrees += 360;
+        }
+
+        const isRight = angleDegrees >= 315 || angleDegrees < 45;
+        const isLeft = angleDegrees >= 135 && angleDegrees < 225;
+
+        const swipeDistance = touchEndX - touchStartX;
+        const swipeThreshold = 50;
+
+        if (Math.abs(swipeDistance) > swipeThreshold) {
+            if (isRight & !isLeft) {
+                if (currentPageIndex > 0) {
+                    window.location.href = navLinks[currentPageIndex - 1].href;
+                }       
+            } else if (!isRight & isLeft) {
+                if (currentPageIndex < navLinks.length - 1) {
+                    window.location.href = navLinks[currentPageIndex + 1].href;
+                }
+            }
+        }
+    }
+});</script>
 </body>
 </html>
