@@ -1,39 +1,32 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
+<urlset xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
     <loc>https://ahmadasadi.ir/</loc>
-    <lastmod>2026-02-15T17:16:12+00:00</lastmod>
+    <lastmod>2026-06-17T14:21:54+00:00</lastmod>
     <priority>1.00</priority>
   </url>
   <url>
     <loc>https://ahmadasadi.ir/index.html</loc>
-    <lastmod>2026-02-15T17:16:12+00:00</lastmod>
+    <lastmod>2026-06-17T14:21:54+00:00</lastmod>
     <priority>1.00</priority>
   </url>
   <url>
-    <loc>https://ahmadasadi.ir/HTML/projects.html</loc>
-    <lastmod>2026-02-15T17:16:12+00:00</lastmod>
+    <loc>https://ahmadasadi.ir/Pages/projects.html</loc>
+    <lastmod>2026-06-17T14:21:54+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://ahmadasadi.ir/HTML/publication.html</loc>
-    <lastmod>2026-02-15T17:16:12+00:00</lastmod>
+    <loc>https://ahmadasadi.ir/Pages/publications.html</loc>
+    <lastmod>2026-06-17T14:21:54+00:00</lastmod>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://ahmadasadi.ir/HTML/notes.html</loc>
-    <lastmod>2026-02-15T17:16:12+00:00</lastmod>
+    <loc>https://ahmadasadi.ir/Pages/notes.html</loc>
+    <lastmod>2026-06-17T14:21:54+00:00</lastmod>
     <priority>0.70</priority>
   </url>
   <url>
-    <loc>https://ahmadasadi.ir/HTML/about.html</loc>
-    <lastmod>2026-02-15T17:16:12+00:00</lastmod>
+    <loc>https://ahmadasadi.ir/Pages/about.html</loc>
+    <lastmod>2026-06-17T14:21:54+00:00</lastmod>
     <priority>0.60</priority>
   </url>
 </urlset>
