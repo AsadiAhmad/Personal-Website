@@ -73,7 +73,7 @@ def save(root, output_folder, file):
     else:
         output_file = output_folder / file.name
 
-    output_file.write_text(str(soup), encoding="utf-8")
+    output_file.write_text(soup.prettify(), encoding="utf-8")
 
 if __name__=="__main__":
     # Extracting Directoreis
