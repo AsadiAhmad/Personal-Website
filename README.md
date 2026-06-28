@@ -1,6 +1,6 @@
 # Personal-Website
 
-Build your personal website with this repo. This website has the most SEO, Performace, Security and animations. Also this website known as academic protfolio.
+Create your personal academic portfolio with this repository. It focuses on SEO optimization, high performance, security best practices, and modern animations to deliver a fast and professional online presence.
 
 <div display=flex align=center>
   <img src="/image/Screenshots/1-MainPageDark.PNG"/>
