@@ -49,7 +49,7 @@ For better directing things we have three approachs in sliding animation:
 - `none directing`: Means page should have not slide or do anything.
 - `left directing`: Means page should have slide to left.
 
-and we put this information in each nav buttions:
+And we put this information in each nav buttons in the href like `?direction=left"`:
 
 ```HTML
 <nav class="parent-nav">
@@ -61,7 +61,7 @@ and we put this information in each nav buttions:
       <li><a href="/HTML/about.html?direction=right">About</a></li>
       <div class="animation"></div>
     </ul>
-  </nav>
+</nav>
 ```
 
 Each page of this website have four animations:
