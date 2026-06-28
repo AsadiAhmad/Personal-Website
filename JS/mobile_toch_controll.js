@@ -5,8 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let touchStartY = 0;
     let touchEndY = 0;
 
-    const navLinks = document.querySelectorAll('ul.nav li a');
-    const currentPageIndex = Array.from(navLinks).findIndex(link => link.href === window.location.href);
+    const navLinks = Array.from(
+        document.querySelectorAll('ul.nav li a'),
+        link => link.getAttribute('href')
+    );
+    const cleanLinks = navLinks.map(link => link.split('?')[0]);
+    const currentPageIndex = cleanLinks.findIndex(link => link === window.location.pathname);
 
     window.addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].screenX;
@@ -18,6 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
         touchEndY = e.changedTouches[0].screenY;
 
         handleSwipeGesture();
+        // console.log(navLinks.length - 1);
+        // console.log(currentPageIndex);
     });
 
     function handleSwipeGesture() {
@@ -31,20 +37,20 @@ document.addEventListener('DOMContentLoaded', () => {
             angleDegrees += 360;
         }
 
-        const isRight = angleDegrees >= 315 || angleDegrees < 45;
-        const isLeft = angleDegrees >= 135 && angleDegrees < 225;
+        const isRight = angleDegrees >= 135 && angleDegrees < 225;
+        const isLeft = angleDegrees >= 315 || angleDegrees < 45;
 
         const swipeDistance = touchEndX - touchStartX;
         const swipeThreshold = 50;
 
         if (Math.abs(swipeDistance) > swipeThreshold) {
-            if (isRight & !isLeft) {
-                if (currentPageIndex > 0) {
-                    window.location.href = navLinks[currentPageIndex - 1].href;
-                }       
-            } else if (!isRight & isLeft) {
+            if (isRight & !isLeft) { //going right
                 if (currentPageIndex < navLinks.length - 1) {
-                    window.location.href = navLinks[currentPageIndex + 1].href;
+                    window.location.href = cleanLinks[currentPageIndex + 1] + "?direction=right";
+                }       
+            } else if (!isRight & isLeft) { // going left
+                if (currentPageIndex > 0) {
+                    window.location.href = cleanLinks[currentPageIndex - 1] + "?direction=left";
                 }
             }
         }

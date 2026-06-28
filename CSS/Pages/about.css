@@ -28,12 +28,6 @@
   padding-top: 10px;
 }
 
-.about-main {
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 0 90px;
-}
-
 .education-section {
   width: 100%;
   padding: 34px 8%;
@@ -158,10 +152,6 @@
 }
 
 @media (max-width: 768px) {
-  .about-main {
-    padding-bottom: 72px;
-  }
-
   .education-section {
     padding: 24px 6%;
   }

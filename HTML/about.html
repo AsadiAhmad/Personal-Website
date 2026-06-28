@@ -15,10 +15,12 @@
   <title>About Ahmad Asadi</title>
   <link rel="icon" type="image/svg+xml" href="/image/Logo/Logo.svg">
   <link rel="stylesheet" href="/CSS/all.css">
+  <link rel="stylesheet" href="/CSS/All/enable_animation.css">
   <link rel="stylesheet" href="/CSS/font.css">
   <link rel="stylesheet" href="/CSS/navbar.css">
   <link rel="stylesheet" href="/CSS/dark_theme.css">
   <link rel="stylesheet" href="/CSS/shadow.css">
+  <link rel="stylesheet" href="/CSS/Animation/page_swap.css">
   <link rel="stylesheet" href="/CSS/Pages/about.css">
   <link rel="prefetch" href="/HTML/notes.html">
   <link rel="prefetch" href="/HTML/publications.html">
@@ -63,11 +65,11 @@
 <body class="font-poppins">
   <nav class="parent-nav">
     <ul class="nav fw-medium">
-      <li><a href="/HTML/index.html">Home</a></li>
-      <li><a href="/HTML/projects.html">Projects</a></li>
-      <li><a href="/HTML/publications.html">Publications</a></li>
-      <li><a href="/HTML/notes.html">Notes</a></li>
-      <li><a href="/HTML/about.html">About</a></li>
+      <li><a href="/HTML/index.html?direction=left">Home</a></li>
+      <li><a href="/HTML/projects.html?direction=left">Projects</a></li>
+      <li><a href="/HTML/publications.html?direction=left">Publications</a></li>
+      <li><a href="/HTML/notes.html?direction=left">Notes</a></li>
+      <li><a href="/HTML/about.html?direction=none">About</a></li>
       <div class="animation"></div>
     </ul>
   </nav>
@@ -80,11 +82,12 @@
     </span>
     <span class="sr-only">Toggle theme</span>
   </button>
-  <header class="projects-header">
-    <h1 class="projects-title fw-bold">About</h1>
-    <h2 class="projects-subtitle fw-medium">Learn about Ahmad Asadi, his academic background, experiences, research interests in AI and Computer Vision, and his professional journey in image processing and machine learning.</h2>
-  </header>
-  <main class="about-main">
+  
+  <main class="main-slide-show">
+    <header class="projects-header">
+      <h1 class="projects-title fw-bold">About</h1>
+      <h2 class="projects-subtitle fw-medium">Learn about Ahmad Asadi, his academic background, experiences, research interests in AI and Computer Vision, and his professional journey in image processing and machine learning.</h2>
+    </header>
     <section class="education-section" aria-labelledby="education-title">
       <h2 class="education-title fw-bold" id="education-title">Education</h2>
       <div class="education-list">
@@ -273,5 +276,6 @@
   <script src="/JS/dark_theme.js"></script>
   <script src="/JS/navbar.js"></script>
   <script src="/JS/mobile_toch_controll.js"></script>
+  <script src="/JS/transition_tracker.js"></script>
 </body>
 </html>

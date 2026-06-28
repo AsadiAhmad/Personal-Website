@@ -24,6 +24,11 @@
   margin: 0;
 }
   </style>
+  <style data-file="enable_animation.css">
+   @view-transition {
+  navigation: auto;
+}
+  </style>
   <style data-file="font.css">
    /* Centralized local fonts */
 
@@ -522,6 +527,53 @@ body[data-theme='light'] .theme-toggle .icon-moon {
   filter: var(--light-logo-shadow-base);
 }
   </style>
+  <style data-file="page_swap.css">
+   ::view-transition-old(main-page-content),
+::view-transition-new(main-page-content) {
+  animation-duration: 800ms;
+  animation-timing-function: ease-in-out;
+}
+
+[data-direction="right"]::view-transition-old(main-page-content) {
+  animation-name: slide-out-left;
+}
+
+[data-direction="right"]::view-transition-new(main-page-content) {
+  animation-name: slide-in-left;
+}
+
+[data-direction="left"]::view-transition-old(main-page-content) {
+  animation-name: slide-out-right;
+}
+
+[data-direction="left"]::view-transition-new(main-page-content) {
+  animation-name: slide-in-right;
+}
+
+.main-slide-show{
+  view-transition-name: main-page-content;
+}
+
+@keyframes slide-in-left {
+  from { transform: translateX(100vw); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slide-out-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100vw); }
+}
+
+@keyframes slide-in-right {
+  from { transform: translateX(-100vw); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slide-out-right {
+  from { transform: translateX(0); }
+  to { transform: translateX(100vw); }
+}
+  </style>
   <style data-file="notes.css">
    @import url('/CSS/color_palette.css');
 
@@ -597,27 +649,27 @@ body[data-theme='light'] .theme-toggle .icon-moon {
   <nav class="parent-nav">
    <ul class="nav fw-medium">
     <li>
-     <a href="/index.html">
+     <a href="/index.html?direction=left">
       Home
      </a>
     </li>
     <li>
-     <a href="/Pages/projects.html">
+     <a href="/Pages/projects.html?direction=left">
       Projects
      </a>
     </li>
     <li>
-     <a href="/Pages/publications.html">
+     <a href="/Pages/publications.html?direction=left">
       Publications
      </a>
     </li>
     <li>
-     <a href="/Pages/notes.html">
+     <a href="/Pages/notes.html?direction=none">
       Notes
      </a>
     </li>
     <li>
-     <a href="/Pages/about.html">
+     <a href="/Pages/about.html?direction=right">
       About
      </a>
     </li>
@@ -656,14 +708,16 @@ body[data-theme='light'] .theme-toggle .icon-moon {
     Toggle theme
    </span>
   </button>
-  <header class="projects-header">
-   <h1 class="projects-title fw-bold">
-    Notes
-   </h1>
-   <h2 class="projects-subtitle fw-medium">
-    Read Ahmad Asadi's notes about Computer Vision, Computer Science, Math and AI.
-   </h2>
-  </header>
+  <main class="main-slide-show">
+   <header class="projects-header">
+    <h1 class="projects-title fw-bold">
+     Notes
+    </h1>
+    <h2 class="projects-subtitle fw-medium">
+     Read Ahmad Asadi's notes about Computer Vision, Computer Science, Math and AI.
+    </h2>
+   </header>
+  </main>
   <script data-file="dark_theme.js">
    (function () {
     const THEME_KEY = 'site-theme';
@@ -863,8 +917,12 @@ body[data-theme='light'] .theme-toggle .icon-moon {
     let touchStartY = 0;
     let touchEndY = 0;
 
-    const navLinks = document.querySelectorAll('ul.nav li a');
-    const currentPageIndex = Array.from(navLinks).findIndex(link => link.href === window.location.href);
+    const navLinks = Array.from(
+        document.querySelectorAll('ul.nav li a'),
+        link => link.getAttribute('href')
+    );
+    const cleanLinks = navLinks.map(link => link.split('?')[0]);
+    const currentPageIndex = cleanLinks.findIndex(link => link === window.location.pathname);
 
     window.addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].screenX;
@@ -876,6 +934,8 @@ body[data-theme='light'] .theme-toggle .icon-moon {
         touchEndY = e.changedTouches[0].screenY;
 
         handleSwipeGesture();
+        // console.log(navLinks.length - 1);
+        // console.log(currentPageIndex);
     });
 
     function handleSwipeGesture() {
@@ -889,25 +949,28 @@ body[data-theme='light'] .theme-toggle .icon-moon {
             angleDegrees += 360;
         }
 
-        const isRight = angleDegrees >= 315 || angleDegrees < 45;
-        const isLeft = angleDegrees >= 135 && angleDegrees < 225;
+        const isRight = angleDegrees >= 135 && angleDegrees < 225;
+        const isLeft = angleDegrees >= 315 || angleDegrees < 45;
 
         const swipeDistance = touchEndX - touchStartX;
         const swipeThreshold = 50;
 
         if (Math.abs(swipeDistance) > swipeThreshold) {
-            if (isRight & !isLeft) {
-                if (currentPageIndex > 0) {
-                    window.location.href = navLinks[currentPageIndex - 1].href;
-                }       
-            } else if (!isRight & isLeft) {
+            if (isRight & !isLeft) { //going right
                 if (currentPageIndex < navLinks.length - 1) {
-                    window.location.href = navLinks[currentPageIndex + 1].href;
+                    window.location.href = cleanLinks[currentPageIndex + 1] + "?direction=right";
+                }       
+            } else if (!isRight & isLeft) { // going left
+                if (currentPageIndex > 0) {
+                    window.location.href = cleanLinks[currentPageIndex - 1] + "?direction=left";
                 }
             }
         }
     }
 });
+  </script>
+  <script data-file="transition_tracker.js">
+   document.documentElement.dataset.direction = new URLSearchParams(location.search).get("direction");
   </script>
  </body>
 </html>

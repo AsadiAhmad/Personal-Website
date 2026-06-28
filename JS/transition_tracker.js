@@ -1,0 +1,1 @@
+document.documentElement.dataset.direction = new URLSearchParams(location.search).get("direction");
