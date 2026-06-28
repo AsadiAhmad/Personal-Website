@@ -52,6 +52,9 @@ I've used the `:view-transition` to build transitions between pages and keep `SE
 ![https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white]({})
 [![Toturial](https://img.shields.io/badge/nVIDIA-%2376B900.svg?style=for-the-badge&logo=nVIDIA&logoColor=white)](https://www.youtube.com/watch?v=quvE1uu1f_I)
 
+
+[![CUDA](https://img.shields.io/badge/nVIDIA-%2376B900.svg?style=for-the-badge&logo=nVIDIA&logoColor=white)](https://developer.nvidia.com/cuda-toolkit-archive)
+
 For better directing things we have three approachs in sliding animation:
 - `right directing`: Means page should slide to right.
 - `none directing`: Means page should have not slide or do anything.
