@@ -5,6 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let touchStartY = 0;
     let touchEndY = 0;
 
+    let touchStartTime = 0;
+
+    const maxSwipeTime = 500;  // milliseconds
+    const maxSwipeDistance = 50; // milliseconds
+
     const navLinks = Array.from(
         document.querySelectorAll('ul.nav li a'),
         link => link.getAttribute('href')
@@ -15,6 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].screenX;
         touchStartY = e.changedTouches[0].screenY;
+
+        touchStartTime = Date.now();
     });
 
     window.addEventListener('touchend', (e) => {
@@ -24,6 +31,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function handleSwipeGesture() {
+        const swipeTime = Date.now() - touchStartTime;
+
+        if (swipeTime > maxSwipeTime) {
+            return;
+        }
+
         const deltaX = touchEndX - touchStartX;
         const deltaY = touchEndY - touchStartY;
 
@@ -38,9 +51,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const isLeft = angleDegrees >= 315 || angleDegrees < 45;
 
         const swipeDistance = touchEndX - touchStartX;
-        const swipeThreshold = 50;
 
-        if (Math.abs(swipeDistance) > swipeThreshold) {
+        if (Math.abs(swipeDistance) > maxSwipeDistance) {
             if (isRight & !isLeft) { //going right
                 if (currentPageIndex < navLinks.length - 1) {
                     window.location.href = cleanLinks[currentPageIndex + 1] + "?direction=right";
