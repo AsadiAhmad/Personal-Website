@@ -9,14 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('ul.nav li a'),
         link => link.getAttribute('href')
     );
-    const cleanLinks = navLinks.map(link => {
-        const clean = link.split('?')[0];
-        if (clean === "" || clean === "/" || clean === "index.html") {
-            return "/";
-        }
-        return "/" + clean.replace(/^\/+/, "");
-    });
-    const currentPageIndex = cleanLinks.findIndex(link => link === window.location.pathname);
+    const cleanLinks = navLinks.map(link => link.split('?')[0]);
+    const currentPageIndex = (window.location.pathname === "" || window.location.pathname === "/") ? 0 : cleanLinks.findIndex(link => link === window.location.pathname);
 
     window.addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].screenX;
@@ -26,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('touchend', (e) => {
         touchEndX = e.changedTouches[0].screenX;
         touchEndY = e.changedTouches[0].screenY;
-
         handleSwipeGesture();
     });
 
