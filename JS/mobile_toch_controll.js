@@ -9,7 +9,13 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('ul.nav li a'),
         link => link.getAttribute('href')
     );
-    const cleanLinks = navLinks.map(link => link.split('?')[0]);
+    const cleanLinks = navLinks.map(link => {
+        const clean = link.split('?')[0];
+        if (clean === "" || clean === "/" || clean === "index.html") {
+            return "/";
+        }
+        return "/" + clean.replace(/^\/+/, "");
+    });
     const currentPageIndex = cleanLinks.findIndex(link => link === window.location.pathname);
 
     window.addEventListener('touchstart', (e) => {
@@ -22,8 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
         touchEndY = e.changedTouches[0].screenY;
 
         handleSwipeGesture();
-        // console.log(navLinks.length - 1);
-        // console.log(currentPageIndex);
     });
 
     function handleSwipeGesture() {
