@@ -50,10 +50,10 @@ For better directing things we have three approachs in sliding animation:
 - `left directing`: Means page should have slide to left.
 
 Each page of this website have four animations:
-- `slide-in-right`:
-- `slide-out-right`
-- `slide-in-left`: 
-- `slide-out-left`
+- `slide-in-right`: For right directing the destination page should came from left to here.
+- `slide-out-right`: For right directing the current page should came from here to the left.
+- `slide-in-left`: For left directing the destination page should came from right to here.
+- `slide-out-left`: For right directing the current page should came from here to the right.
 
 
 for decision needed animation for navigation between right side and left side i used '''?direction=none''' for storing the information where the user wants to go then i added a js line to help css find it: 
