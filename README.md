@@ -49,7 +49,8 @@ I've used just a `single` fast line js and `most of the structure` is `CSS` and 
 
 ### Totutial
 I've used the `:view-transition` to build transitions between pages and keep `SEO` safe. also I've watched this video and it's helped me a lot:
-![https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white]({https://www.youtube.com/watch?v=quvE1uu1f_I})
+![https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white]({})
+[![Toturial](https://img.shields.io/badge/nVIDIA-%2376B900.svg?style=for-the-badge&logo=nVIDIA&logoColor=white)](https://www.youtube.com/watch?v=quvE1uu1f_I)
 
 For better directing things we have three approachs in sliding animation:
 - `right directing`: Means page should slide to right.
