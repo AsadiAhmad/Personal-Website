@@ -2,6 +2,14 @@
 
 Build your personal website with this repo. This website has the most SEO, Performace, Security and animations. Also this website known as academic protfolio.
 
+<div display=flex align=center>
+  <img src="/image/Screenshots/1-MainPageDark.PNG"/>
+</div>
+
+<div display=flex align=center>
+  <img src="/image/Screenshots/2-MainPageLight.PNG"/>
+</div>
+
 ## 🌐 Live at
 
 The website live at [My Website](https://ahmadasadi.ir)
