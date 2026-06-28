@@ -64,11 +64,35 @@ And we put this information in each nav buttons in the href like `?direction=lef
 </nav>
 ```
 
+So each one of the links tell the JS code that where the user wants to go.
+
 Each page of this website have four animations:
 - `slide-in-right`: For right directing the destination page should came from left to here.
 - `slide-out-right`: For right directing the current page should came from here to the left.
 - `slide-in-left`: For left directing the destination page should came from right to here.
 - `slide-out-left`: For right directing the current page should came from here to the right.
+
+```CSS
+@keyframes slide-in-right {
+  from { transform: translateX(100vw); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slide-out-right {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100vw); }
+}
+
+@keyframes slide-in-left {
+  from { transform: translateX(-100vw); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slide-out-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(100vw); }
+}
+```
 
 
 for decision needed animation for navigation between right side and left side i used '''?direction=none''' for storing the information where the user wants to go then i added a js line to help css find it: 
