@@ -49,6 +49,21 @@ For better directing things we have three approachs in sliding animation:
 - `none directing`: Means page should have not slide or do anything.
 - `left directing`: Means page should have slide to left.
 
+and we put this information in each nav buttions:
+
+```HTML
+<nav class="parent-nav">
+    <ul class="nav fw-medium">
+      <li><a href="/HTML/index.html?direction=left">Home</a></li>
+      <li><a href="/HTML/projects.html?direction=left">Projects</a></li>
+      <li><a href="/HTML/publications.html?direction=none">Publications</a></li>
+      <li><a href="/HTML/notes.html?direction=right">Notes</a></li>
+      <li><a href="/HTML/about.html?direction=right">About</a></li>
+      <div class="animation"></div>
+    </ul>
+  </nav>
+```
+
 Each page of this website have four animations:
 - `slide-in-right`: For right directing the destination page should came from left to here.
 - `slide-out-right`: For right directing the current page should came from here to the left.
