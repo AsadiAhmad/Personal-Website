@@ -44,6 +44,8 @@ This website built with cool new css animation update transition for multi pages
 ### Totutial
 I've used the `:view-transition` to build transitions between pages and keep `SEO` safe.
 
+#### Three directs
+
 For better directing things we have three approachs in sliding animation:
 - `right directing`: Means page should slide to right.
 - `none directing`: Means page should have not slide or do anything.
