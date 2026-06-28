@@ -39,6 +39,8 @@ the builder looks for the html files in the HTML folder localy then build the st
 
 ## 🎥 Animation
 
+This website built with new css animation update transition for multi pages application. So this website have a sliding animation between multi pages. For keeping SEO safe `I've not used single page application`.
+
 This website built with cool animation desgin. I've used the ''':view-transition''' to build slide-in and slide-out animations for the right side and left side. for decision needed animation for navigation between right side and left side i used '''?direction=none''' for storing the information where the user wants to go then i added a js line to help css find it: 
 
 ```Js
@@ -46,9 +48,9 @@ document.documentElement.dataset.direction = new URLSearchParams(location.search
 ```
 
 we had three decisiton url requests:
-- '''?direction=right'''
-- '''?direction=none'''
-- '''?direction=left'''
+- `?direction=right`
+- `?direction=none`
+- `?direction=left`
 
 after that when the user clicks the navigation bar the JS builds
 
