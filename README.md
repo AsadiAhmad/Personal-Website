@@ -66,6 +66,16 @@ And we put this information in each nav buttons in the href like `?direction=lef
 
 So each one of the links tell the JS code that where the user wants to go.
 
+For enabling animations I've created `enable_animation.css` and I've put it on all of my pages:
+
+```CSS
+@view-transition {
+  navigation: auto;
+}
+```
+
+It's very important that add this css to all of pages other way the whole animation won't work.
+
 Each page of this website have four animations:
 - `slide-in-right`: For right directing the destination page should came from left to here.
 - `slide-out-right`: For right directing the current page should came from here to the left.
