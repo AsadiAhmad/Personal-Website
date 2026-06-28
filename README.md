@@ -44,8 +44,6 @@ This website built with cool new css animation update transition for multi pages
 ### Totutial
 I've used the `:view-transition` to build transitions between pages and keep `SEO` safe.
 
-#### Three directs
-
 For better directing things we have three approachs in sliding animation:
 - `right directing`: Means page should slide to right.
 - `none directing`: Means page should have not slide or do anything.
@@ -106,19 +104,64 @@ Each page of this website have four animations:
 }
 ```
 
+The data that needed for animation decistion is on the page so we can check it with this css:
 
-for decision needed animation for navigation between right side and left side i used '''?direction=none''' for storing the information where the user wants to go then i added a js line to help css find it: 
+```CSS
+[data-direction="right"]::view-transition-old(main-page-content) {
+  animation-name: slide-out-right;
+}
+```
+
+In that code the CSS checked if the direction is right to enable that animation.
+
+Also for keeping the nav bar we use a main tag for just moving the main tag in animation swapping:
+
+```HTML
+<nav>
+  <!-- nav content -->
+</nav>
+<main class="main-slide-show">
+  <!-- main content -->
+</main>
+```
+
+```CSS
+.main-slide-show{
+  view-transition-name: main-page-content;
+}
+```
+
+For adding smoothness and sharp animation I've used this:
+
+For Desktop:
+```CSS
+::view-transition-old(main-page-content),
+::view-transition-new(main-page-content) {
+  animation-duration: 800ms;
+  animation-timing-function: ease-in-out;
+}
+```
+
+For Android:
+```CSS
+@media (max-width: 768px) {
+  ::view-transition-old(main-page-content),
+  ::view-transition-new(main-page-content) {
+    animation-duration: 800ms;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+```
+
+Just an JS line helps us to attch it to the HTML document and the css should find it.
 
 ```Js
 document.documentElement.dataset.direction = new URLSearchParams(location.search).get("direction");
 ```
 
-we had three decisiton url requests:
-- `?direction=right`
-- `?direction=none`
-- `?direction=left`
+when user clicks on the nav bar the link would refresh the url and it's `do not stack` like:
 
-after that when the user clicks the navigation bar the JS builds
+`/HTML/index.html?direction=none?direction=right`
 
 ## 🪪 License 
 
