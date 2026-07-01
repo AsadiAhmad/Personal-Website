@@ -33,6 +33,11 @@ def css_replacer(soup, root):
     css_links = soup.find_all("link", rel="stylesheet")
 
     for css in css_links:
+        href = css.get("href")
+        if href.startswith("http://") or href.startswith("https://"):
+            print("CSS: adding:", href)
+            continue
+
         css_path = root / css["href"].lstrip("/")
         css_text = css_path.read_text(encoding="utf-8-sig")
 
