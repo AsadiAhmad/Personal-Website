@@ -14,8 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('ul.nav li a'),
         link => link.getAttribute('href')
     );
-    const cleanLinks = navLinks.map(link => link.split('?')[0]);
-    const currentPageIndex = (window.location.pathname === "" || window.location.pathname === "/") ? 0 : cleanLinks.findIndex(link => link === window.location.pathname);
+    const currentPageIndex = (window.location.pathname === "" || window.location.pathname === "/") ? 0 : navLinks.findIndex(link => link === window.location.pathname);
 
     window.addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].screenX;
@@ -55,11 +54,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (Math.abs(swipeDistance) > maxSwipeDistance) {
             if (isRight & !isLeft) { //going right
                 if (currentPageIndex < navLinks.length - 1) {
-                    window.location.href = cleanLinks[currentPageIndex + 1] + "?direction=right";
+                    document.documentElement.dataset.direction = 'right';
+                    sessionStorage.setItem('direction', 'right');
+                    window.location.href = navLinks[currentPageIndex + 1];
                 }       
             } else if (!isRight & isLeft) { // going left
                 if (currentPageIndex > 0) {
-                    window.location.href = cleanLinks[currentPageIndex - 1] + "?direction=left";
+                    document.documentElement.dataset.direction = 'left';
+                    sessionStorage.setItem('direction', 'left');
+                    window.location.href = navLinks[currentPageIndex - 1];
                 }
             }
         }

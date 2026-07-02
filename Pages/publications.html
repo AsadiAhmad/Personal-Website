@@ -810,27 +810,27 @@ body[data-theme='light'] .theme-toggle .icon-moon {
   <nav class="parent-nav">
    <ul class="nav fw-medium">
     <li>
-     <a href="/index.html?direction=left">
+     <a href="/index.html" onclick="leftDirection()">
       Home
      </a>
     </li>
     <li>
-     <a href="/Pages/projects.html?direction=left">
+     <a href="/Pages/projects.html" onclick="leftDirection()">
       Projects
      </a>
     </li>
     <li>
-     <a href="/Pages/publications.html?direction=none">
+     <a href="/Pages/publications.html" onclick="noneDirection()">
       Publications
      </a>
     </li>
     <li>
-     <a href="/Pages/notes.html?direction=right">
+     <a href="/Pages/notes.html" onclick="rightDirection()">
       Notes
      </a>
     </li>
     <li>
-     <a href="/Pages/about.html?direction=right">
+     <a href="/Pages/about.html" onclick="rightDirection()">
       About
      </a>
     </li>
@@ -1137,8 +1137,7 @@ body[data-theme='light'] .theme-toggle .icon-moon {
         document.querySelectorAll('ul.nav li a'),
         link => link.getAttribute('href')
     );
-    const cleanLinks = navLinks.map(link => link.split('?')[0]);
-    const currentPageIndex = (window.location.pathname === "" || window.location.pathname === "/") ? 0 : cleanLinks.findIndex(link => link === window.location.pathname);
+    const currentPageIndex = (window.location.pathname === "" || window.location.pathname === "/") ? 0 : navLinks.findIndex(link => link === window.location.pathname);
 
     window.addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].screenX;
@@ -1178,11 +1177,15 @@ body[data-theme='light'] .theme-toggle .icon-moon {
         if (Math.abs(swipeDistance) > maxSwipeDistance) {
             if (isRight & !isLeft) { //going right
                 if (currentPageIndex < navLinks.length - 1) {
-                    window.location.href = cleanLinks[currentPageIndex + 1] + "?direction=right";
+                    document.documentElement.dataset.direction = 'right';
+                    sessionStorage.setItem('direction', 'right');
+                    window.location.href = navLinks[currentPageIndex + 1];
                 }       
             } else if (!isRight & isLeft) { // going left
                 if (currentPageIndex > 0) {
-                    window.location.href = cleanLinks[currentPageIndex - 1] + "?direction=left";
+                    document.documentElement.dataset.direction = 'left';
+                    sessionStorage.setItem('direction', 'left');
+                    window.location.href = navLinks[currentPageIndex - 1];
                 }
             }
         }
@@ -1190,7 +1193,27 @@ body[data-theme='light'] .theme-toggle .icon-moon {
 });
   </script>
   <script data-file="transition_tracker.js">
-   document.documentElement.dataset.direction = new URLSearchParams(location.search).get("direction");
+   document.addEventListener('DOMContentLoaded', function() {
+  const direction = sessionStorage.getItem('direction');
+  if (direction) {
+    document.documentElement.dataset.direction = direction;
+  }
+});
+
+function rightDirection() {
+  document.documentElement.dataset.direction = 'right';
+  sessionStorage.setItem('direction', 'right');
+}
+
+function noneDirection() {
+  document.documentElement.dataset.direction = 'none';
+  sessionStorage.setItem('direction', 'none');
+}
+
+function leftDirection() {
+  document.documentElement.dataset.direction = 'left';
+  sessionStorage.setItem('direction', 'left');
+}
   </script>
  </body>
 </html>
