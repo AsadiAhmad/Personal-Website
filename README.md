@@ -177,6 +177,18 @@ when user clicks on the nav bar the link would refresh the url and it's `do not 
 
 `/HTML/index.html?direction=none?direction=right`
 
+## 📈 Performance
+
+This website has a high performance loading each page very fast.
+
+### Font
+
+Instead of using many fonts with different weights and font faces we just use only one variable font to increase the performance in the woff2 format also we use preload in the first of all pages to preload the font before it knows it needed the font.
+
+### Builder
+
+The github pages server is on the America so it's far from most of the countries we use builder to merge most of the files like HTML, CSS, JS into one HTML file so the user needs download each page once instead of downloading them with big dependencies tree.
+
 ## 🪪 License 
 
 This project is licensed under the MIT License.
