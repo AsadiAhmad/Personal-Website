@@ -29,6 +29,68 @@
   navigation: auto;
 }
   </style>
+  <style data-file="color_palette.css">
+   /* Shared color palette */
+:root {
+  --page-bg: #0c1018;
+  --text-primary: #e7ecf8;
+  --text-secondary: #6b7280;
+  --section-divider: rgb(148 163 184 / 0.45);
+
+  --nav-bg: rgba(6, 10, 18, 0.7);
+  --nav-border: rgba(255, 255, 255, 0.15);
+  --nav-link: #f1f4fb;
+  --nav-hover: #0f1723;
+  --nav-active-bg: #ffffff;
+  --nav-active-text: #111827;
+  --nav-mobile-bg: rgba(0, 0, 0, 0.9);
+
+  --toggle-bg: rgba(6, 10, 18, 0.85);
+  --toggle-border: rgba(255, 255, 255, 0.2);
+  --toggle-icon: #f4f7ff;
+
+  --accent-primary: #456de5;
+  --accent-primary-rgb: 69 109 229;
+  --btn-secondary-bg: #111827;
+  --text-on-accent: #ffffff;
+  --text-on-dark: #ffffff;
+  --section-muted-bg: #121a2a;
+  --section-muted-border: rgba(255, 255, 255, 0.1);
+  --project-link-bg: rgb(var(--accent-primary-rgb) / 0.12);
+  --project-link-bg-hover: rgb(var(--accent-primary-rgb) / 0.20);
+  --project-link-border: rgb(var(--accent-primary-rgb) / 0.25);
+  --project-link-border-hover: rgb(var(--accent-primary-rgb) / 0.35);
+  --project-tag-bg: rgb(var(--accent-primary-rgb) / 0.08);
+  --project-tag-bg-hover: rgb(var(--accent-primary-rgb) / 0.16);
+  --project-tag-border: rgb(var(--accent-primary-rgb) / 0.22);
+  --project-tag-border-hover: rgb(var(--accent-primary-rgb) / 0.40);
+  --project-tech-bg: rgb(var(--accent-primary-rgb) / 0.12);
+  --project-tech-bg-hover: rgb(var(--accent-primary-rgb) / 0.20);
+  --project-tech-border: rgb(var(--accent-primary-rgb) / 0.25);
+  --project-tech-border-hover: rgb(var(--accent-primary-rgb) / 0.45);
+}
+
+body[data-theme='light'] {
+  --page-bg: #f1f5ff;
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+  --section-divider: rgb(15 23 42 / 0.16);
+
+  --nav-bg: rgba(255, 255, 255, 0.52);
+  --nav-border: rgba(15, 23, 42, 0.15);
+  --nav-link: #1e293b;
+  --nav-hover: #f8fbff;
+  --nav-active-bg: #0f172a;
+  --nav-active-text: #f8fbff;
+  --nav-mobile-bg: rgba(255, 255, 255, 0.95);
+
+  --toggle-bg: rgba(255, 255, 255, 0.9);
+  --toggle-border: rgba(15, 23, 42, 0.25);
+  --toggle-icon: #0f172a;
+  --section-muted-bg: #e7edff;
+  --section-muted-border: rgba(15, 23, 42, 0.12);
+}
+  </style>
   <style data-file="font.css">
    /* Centralized local fonts */
 
@@ -267,7 +329,7 @@ ul.nav .animation {
 }
   </style>
   <style data-file="dark_theme.css">
-   @import url('/CSS/color_palette.css');
+   /* @import url('/CSS/color_palette.css'); */
 
 /* color */
 
@@ -555,7 +617,7 @@ body[data-theme='light'] .theme-toggle .icon-moon {
 }
   </style>
   <style data-file="notes.css">
-   @import url('/CSS/color_palette.css');
+   /* @import url('/CSS/color_palette.css'); */
 
 .projects-header {
   max-width: 1000px;
