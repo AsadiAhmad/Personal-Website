@@ -1,0 +1,33 @@
+/* Centralized local fonts */
+
+@font-face {
+  font-family: 'PoppinsLocal';
+  src: url('/Fonts/Poppins-VariableFont_wght.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-display: swap;
+  unicode-range: U+0030-0039, U+0041-005A, U+0061-007A, U+0020-007E, U+0000-007F, U+0020, U+0021-002F, U+003A-0040, U+005B-0060, U+007B-007E;
+}
+
+:root {
+  --font-primary: "PoppinsLocal", "System UI", "Luminari" ,"Lucida Sans Unicode" ,"Calibri" ,"Candara" ,"Segoe UI" ,Helvetica ,sans-serif;
+}
+
+.font-poppins {
+  font-family: var(--font-primary);
+}
+
+.fw-regular {
+  font-weight: 400;
+}
+
+.fw-medium {
+  font-weight: 500;
+}
+
+.fw-semibold {
+  font-weight: 600;
+}
+
+.fw-bold {
+  font-weight: 700;
+}
