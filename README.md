@@ -33,7 +33,7 @@ The website live at [My Website](https://ahmadasadi.ir)
 
 ## 📌 Project Type
 
-**`Front-End / Static Website`**
+**Front-End / Static Website**
 
 This project is a `fully static` academic personal portfolio website built with HTML, CSS, and JavaScript and python for converging development files and increase performance. It does not require a backend, database, or server-side application.
 
