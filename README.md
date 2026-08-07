@@ -25,7 +25,7 @@ The website live at [My Website](https://ahmadasadi.ir)
 
 ## 🌐 SEO
 
-This website has most of the SEO techniques for getting more rank in Google search and being rank 1 in the Google search.
+This website has most of the SEO techniques for getting best rank in any search engines and being rank 1 in the Google search.
 
 ### Sitemap
 
