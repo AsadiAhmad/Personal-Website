@@ -59,11 +59,11 @@ It is suitable for:
 | **JavaScript** | Navigation logic, URL handling, and dynamic behavior |
 | **Python** | Automatic website building and dependency merging |
 | **SVG** | Lightweight icons and vector graphics |
-| **Web Fonts (WOFF2)** | Fast local font loading |
+| **Variable Web Fonts (WOFF2)** | Fast and consistent local font loading with custom weights |
 | **GitHub Pages** | Static website hosting |
 | **XML Sitemap** | Helping search engines discover website pages |
 | **robots.txt** | Controlling search-engine crawling |
-| **View Transitions API** | Smooth page-to-page animations without using an SPA |
+| **View Transitions API** | Smooth page-to-page animations using MPA and keeping SEO |
 
 ## 🎯 Main Features
 
