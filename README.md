@@ -95,6 +95,8 @@ This sitemap edited to index more things by Google like the essential `images` a
 
 Also there is no `duplicated` url links cause issue in Google console. all canonical links deleted and converge into one `unique` link for example the link `"/"` and `"/index.html"` converge into one link named `"/"`.
 
+The sitemap has property <changefreq></changefreq> which shows the change frequently of each page helps search engines updated the index and rank of the website.
+
 The structure of current sitemap is :
 
 ```xml
@@ -105,7 +107,8 @@ The structure of current sitemap is :
     xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://ahmadasadi.ir/</loc>
-    <lastmod>2026-06-17T14:21:54+00:00</lastmod>
+    <lastmod>2026-08-07T21:39:05+00:00</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.00</priority>
     <image:image>
       <image:loc>https://ahmadasadi.ir/image/Personal/professional.webp</image:loc>
@@ -113,23 +116,36 @@ The structure of current sitemap is :
   </url>
   <url>
     <loc>https://ahmadasadi.ir/Pages/projects.html</loc>
-    <lastmod>2026-06-17T14:21:54+00:00</lastmod>
+    <lastmod>2026-08-07T21:39:05+00:00</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://ahmadasadi.ir/Pages/publications.html</loc>
-    <lastmod>2026-06-17T14:21:54+00:00</lastmod>
+    <lastmod>2026-08-07T21:39:05+00:00</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
     <loc>https://ahmadasadi.ir/Pages/notes.html</loc>
-    <lastmod>2026-06-17T14:21:54+00:00</lastmod>
+    <lastmod>2026-08-07T21:39:05+00:00</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.70</priority>
   </url>
   <url>
     <loc>https://ahmadasadi.ir/Pages/about.html</loc>
-    <lastmod>2026-06-17T14:21:54+00:00</lastmod>
+    <lastmod>2026-08-07T21:39:05+00:00</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.60</priority>
+    <image:image>
+      <image:loc>https://ahmadasadi.ir/image/Personal/personal.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ahmadasadi.ir/PDF/AhmadAsadi-Computer-Vision-Researcher.pdf</loc>
+    <lastmod>2026-08-07T21:39:05+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
   </url>
 </urlset>
 ```
