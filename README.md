@@ -23,6 +23,18 @@ The website live at [My Website](https://ahmadasadi.ir)
   <img src="https://github.com/devicons/devicon/blob/master/icons/python/python-original.svg" title="Python" alt="Python" width="40" height="40"/>&nbsp;
 </div>
 
+## 📈 Performance
+
+This website has a high performance loading each page very fast.
+
+### Font
+
+Instead of using many fonts with different weights and font faces we just use only one variable font to increase the performance in the woff2 format also we use preload in the first of all pages to preload the font before it knows it needed the font.
+
+### Builder
+
+The github pages server is on the America so it's far from most of the countries we use builder to merge most of the files like HTML, CSS, JS into one HTML file so the user needs download each page once instead of downloading them with big dependencies tree.
+
 ## 🏭 Builder
 
 The builder used for gathering websites resources and material like the CSS, JS and svg files then it mixed all dependencies of the html files that are in the HTML folder into the main root and the Pages Folder preparing the one static html file for increasing the performance of the website.
@@ -176,18 +188,6 @@ document.documentElement.dataset.direction = new URLSearchParams(location.search
 when user clicks on the nav bar the link would refresh the url and it's `do not stack` like:
 
 `/HTML/index.html?direction=none?direction=right`
-
-## 📈 Performance
-
-This website has a high performance loading each page very fast.
-
-### Font
-
-Instead of using many fonts with different weights and font faces we just use only one variable font to increase the performance in the woff2 format also we use preload in the first of all pages to preload the font before it knows it needed the font.
-
-### Builder
-
-The github pages server is on the America so it's far from most of the countries we use builder to merge most of the files like HTML, CSS, JS into one HTML file so the user needs download each page once instead of downloading them with big dependencies tree.
 
 ## 🪪 License 
 
