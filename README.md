@@ -16,17 +16,17 @@ The website live at [My Website](https://ahmadasadi.ir)
 
 ## 📑 Table of Contents
 
-| Section | Description |
-|---|---|
-| [🌐 Live Demo](#-live-demo) | View the live website |
-| [📌 Project Type](#-project-type) | Project type and intended use |
-| [🛠️ Technologies & Architecture](#️-technologies--architecture) | Technologies used and their purpose |
-| [🎯 Main Features](#-main-features) | Main features of the website |
-| [🌐 SEO](#-seo) | SEO optimization and search-engine configuration |
-| [📈 Performance](#-performance) | Performance optimization techniques |
-| [🏭 Builder](#-builder) | Custom Python website builder |
-| [🎥 Animation](#-animation) | Page transition and View Transitions API |
-| [🪪 License](#-license) | Project license |
+| Emoji | Section | Description |
+|:-----:|:--------|:------------|
+| 🌐 | [Live Demo](#-live-demo) | View the live website |
+| 📌 | [Project Type](#-project-type) | Project type and intended use |
+| 🛠️ | [Technologies & Architecture](#️-technologies--architecture) | Technologies used and their purpose |
+| 🎯 | [Main Features](#-main-features) | Main features of the website |
+| 🌐 | [SEO](#-seo) | SEO optimization and search-engine configuration |
+| 📈 | [Performance](#-performance) | Performance optimization techniques |
+| 🏭 | [Builder](#-builder) | Custom Python website builder |
+| 🎥 | [Animation](#-animation) | Page transition and View Transitions API |
+| 🪪 | [License](#-license) | Project license |
 
 ## 📌 Project Type
 
