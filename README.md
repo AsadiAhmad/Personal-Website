@@ -95,7 +95,7 @@ This sitemap edited to index more things by Google like the essential `images` a
 
 Also there is no `duplicated` url links cause issue in Google console. all canonical links deleted and converge into one `unique` link for example the link `"/"` and `"/index.html"` converge into one link named `"/"`.
 
-The sitemap has property <changefreq></changefreq> which shows the change frequently of each page helps search engines updated the index and rank of the website.
+The sitemap has `frequently property` <changefreq></changefreq> which shows the change frequently of each page helps search engines updated the index and rank of the website.
 
 The structure of current sitemap is :
 
