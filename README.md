@@ -14,6 +14,35 @@ Create your personal academic portfolio with this repository. It focuses on SEO 
 
 The website live at [My Website](https://ahmadasadi.ir)
 
+## 📑 Table of Contents
+
+| Section | Description |
+|---|---|
+| [🌐 Live Demo](#-live-demo) | View the live website |
+| [📌 Project Type](#-project-type) | Project type and intended use |
+| [🛠️ Technologies & Architecture](#️-technologies--architecture) | Technologies used and their purpose |
+| [🎯 Main Features](#-main-features) | Main features of the website |
+| [🌐 SEO](#-seo) | SEO optimization and search-engine configuration |
+| [📈 Performance](#-performance) | Performance optimization techniques |
+| [🏭 Builder](#-builder) | Custom Python website builder |
+| [🎥 Animation](#-animation) | Page transition and View Transitions API |
+| [🪪 License](#-license) | Project license |
+
+## 📌 Project Type
+
+**Front-End / Static Website**
+
+This project is a fully static academic personal portfolio website built with HTML, CSS, and JavaScript. It does not require a backend, database, or server-side application.
+
+It is suitable for:
+
+- Academic personal websites
+- Researchers and university students
+- Developers and software engineers
+- CV and portfolio websites
+- Personal project showcases
+- GitHub Pages and other static hosting platforms
+
 ## 🛠️ Tech
 
 <div>
@@ -22,6 +51,36 @@ The website live at [My Website](https://ahmadasadi.ir)
   <img src="https://github.com/devicons/devicon/blob/master/icons/javascript/javascript-original.svg" title="javascript" alt="javascript" width="40" height="40"/>&nbsp;
   <img src="https://github.com/devicons/devicon/blob/master/icons/python/python-original.svg" title="Python" alt="Python" width="40" height="40"/>&nbsp;
 </div>
+
+## 🛠️ Technologies
+
+| Technology | Purpose |
+|---|---|
+| **HTML5** | Website structure and semantic content |
+| **CSS3** | Layout, styling, responsive design, and animations |
+| **JavaScript** | Navigation logic, URL handling, and dynamic behavior |
+| **Python** | Automatic website building and dependency merging |
+| **SVG** | Lightweight icons and vector graphics |
+| **Web Fonts (WOFF2)** | Fast local font loading |
+| **GitHub Pages** | Static website hosting |
+| **XML Sitemap** | Helping search engines discover website pages |
+| **robots.txt** | Controlling search-engine crawling |
+| **View Transitions API** | Smooth page-to-page animations without using an SPA |
+
+## 🎯 Main Features
+
+- 🚀 High-performance static website
+- 🔍 SEO optimized
+- 📱 Responsive design
+- 🎨 Modern page transition animations
+- 🧑‍🎓 Academic portfolio structure
+- 📄 Publication and project pages
+- 🗺️ XML sitemap
+- 🤖 Search-engine crawling control
+- ⚡ Automated HTML/CSS/JS builder
+- 🔒 No backend or database required
+- 🌐 Compatible with static hosting
+- 📦 MIT licensed
 
 ## 🌐 SEO
 
