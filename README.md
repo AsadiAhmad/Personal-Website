@@ -16,7 +16,7 @@ The website live at [My Website](https://ahmadasadi.ir)
 
 ## 📑 Table of Contents
 
-| Emoji | Section | Description |
+| # | Section | Description |
 |:-----:|:--------|:------------|
 | 🌐 | [Live Demo](#-live-demo) | View the live website |
 | 📌 | [Project Type](#-project-type) | Project type and intended use |
