@@ -2,6 +2,8 @@
 
 Create your personal academic portfolio with this repository. It focuses on SEO optimization, high performance, security best practices, and modern animations to deliver a fast and professional online presence.
 
+## 🔍 Preview
+
 <div display=flex align=center>
   <img src="/image/Screenshots/1-MainPageDark.PNG"/>
 </div>
@@ -10,7 +12,7 @@ Create your personal academic portfolio with this repository. It focuses on SEO 
   <img src="/image/Screenshots/2-MainPageLight.PNG"/>
 </div>
 
-## 🌐 Live at
+## 🌐 Live Website
 
 The website live at [My Website](https://ahmadasadi.ir)
 
@@ -18,15 +20,16 @@ The website live at [My Website](https://ahmadasadi.ir)
 
 | # | Section | Description |
 |:-----:|:--------|:------------|
-| 🌐 | [Live Demo](#-live-demo) | View the live website |
+| 🔍 | [Preview](#-preview) | Preview of website |
+| 🌐 | [Live Website](#-live-website) | View the live website |
 | 📌 | [Project Type](#-project-type) | Project type and intended use |
-| 🛠️ | [Technologies & Architecture](#️-technologies--architecture) | Technologies used and their purpose |
+| 🛠️ | [Technologies](#-technologies) | Technologies used and their purpose |
 | 🎯 | [Main Features](#-main-features) | Main features of the website |
 | 🌐 | [SEO](#-seo) | SEO optimization and search-engine configuration |
 | 📈 | [Performance](#-performance) | Performance optimization techniques |
 | 🏭 | [Builder](#-builder) | Custom Python website builder |
 | 🎥 | [Animation](#-animation) | Page transition and View Transitions API |
-| 🪪 | [License](#-license) | Project license |
+| 📋 | [License](#-license) | Project license |
 
 ## 📌 Project Type
 
@@ -69,16 +72,16 @@ It is suitable for:
 
 - 🚀 High-performance static website
 - 🔍 SEO optimized
-- 📱 Responsive design
+- 📱 Responsive design for all devices
 - 🎨 Modern page transition animations
-- 🧑‍🎓 Academic portfolio structure
+- 🎓 Academic portfolio structure
 - 📄 Publication and project pages
 - 🗺️ XML sitemap
 - 🤖 Search-engine crawling control
 - ⚡ Automated HTML/CSS/JS builder
 - 🔒 No backend or database required
 - 🌐 Compatible with static hosting
-- 📦 MIT licensed
+- 📋 MIT licensed
 
 ## 🌐 SEO
 
@@ -324,6 +327,6 @@ when user clicks on the nav bar the link would refresh the url and it's `do not 
 
 `/HTML/index.html?direction=none?direction=right`
 
-## 🪪 License 
+## 📋 License 
 
 This project is licensed under the MIT License.
