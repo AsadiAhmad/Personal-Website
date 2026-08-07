@@ -6,6 +6,7 @@
   <url>
     <loc>https://ahmadasadi.ir/</loc>
     <lastmod>2026-08-07T21:39:05+00:00</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.00</priority>
     <image:image>
       <image:loc>https://ahmadasadi.ir/image/Personal/professional.webp</image:loc>
@@ -14,26 +15,34 @@
   <url>
     <loc>https://ahmadasadi.ir/Pages/projects.html</loc>
     <lastmod>2026-08-07T21:39:05+00:00</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://ahmadasadi.ir/Pages/publications.html</loc>
     <lastmod>2026-08-07T21:39:05+00:00</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
     <loc>https://ahmadasadi.ir/Pages/notes.html</loc>
     <lastmod>2026-08-07T21:39:05+00:00</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.70</priority>
   </url>
   <url>
     <loc>https://ahmadasadi.ir/Pages/about.html</loc>
     <lastmod>2026-08-07T21:39:05+00:00</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.60</priority>
+    <image:image>
+      <image:loc>https://ahmadasadi.ir/image/Personal/personal.jpg</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://ahmadasadi.ir/PDF/AhmadAsadi-Computer-Vision-Researcher.pdf</loc>
     <lastmod>2026-08-07T21:39:05+00:00</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
 </urlset>
