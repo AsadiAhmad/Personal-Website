@@ -72,6 +72,31 @@ The structure of current sitemap is :
 </urlset>
 ```
 
+### robots.txt
+
+```TXT
+User-agent: *
+Disallow: /CSS
+Disallow: /Fonts
+Disallow: /HTML
+Disallow: /JS
+Disallow: /Python
+Disallow: /.gitignore
+
+Allow: /Pages
+Allow: /image
+Allow: /PDF
+Allow: /index.html
+Allow: /CNAME
+Allow: /LICENSE
+Allow: /README.md
+Allow: /robots.txt
+Allow: /routs.map
+Allow: /sitemap.xml
+
+Sitemap: https://ahmadasadi.ir/sitemap.xml
+```
+
 ## 📈 Performance
 
 This website has a high performance loading each page very fast.
