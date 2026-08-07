@@ -72,7 +72,9 @@ The structure of current sitemap is :
 </urlset>
 ```
 
-### robots.txt
+### Robots.txt
+
+The website has robots.txt that allows and disallow search engines from indexing sources
 
 ```TXT
 User-agent: *
