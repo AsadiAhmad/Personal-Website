@@ -24,10 +24,28 @@ def html_link_replacer(html, routes):
     for old, new in routes.items():
 
         if old in html:
-            print(f'HTML: "{old}" -> "{new}"')
+            print(f'HTML: Replace Link "{old}" -> "{new}"')
             html = html.replace(old, new)
 
     return html
+
+def add_onerror_to_images(soup):
+    """
+    Add onerror attribute to all img tags in a BeautifulSoup object (in place).
+
+    The onerror attribute hides the image if it fails to load:
+        onerror="this.style.display='none'"
+
+    Args:
+        soup (BeautifulSoup): A parsed BeautifulSoup object to modify.
+            The object is mutated in place.
+
+    Returns:
+        None: The soup object is modified directly; no value is returned.
+    """
+    for img in soup.find_all('img'):
+        img['onerror'] = "this.style.display='none'"
+        print("HTML: add onerror='none' on:", img.get('src'))
 
 def css_replacer(soup, root):
     css_links = soup.find_all("link", rel="stylesheet")
@@ -41,7 +59,7 @@ def css_replacer(soup, root):
         css_path = root / css["href"].lstrip("/")
         css_text = css_path.read_text(encoding="utf-8-sig")
 
-        print("CSS: working on: " + css_path.name)
+        print("CSS: Merging with html: " + css_path.name)
         style_tag = soup.new_tag("style")
         style_tag["data-file"] = css_path.name
         style_tag.string = css_text
@@ -60,7 +78,7 @@ def js_replacer(soup, root):
         js_path = root / script["src"].lstrip("/")
         js_text = js_path.read_text(encoding="utf-8")
 
-        print("JS: working on:", js_path.name)
+        print("JS: Merging with html: ", js_path.name)
         new_script = soup.new_tag("script")
         new_script["data-file"] = js_path.name
         new_script.string = js_text
@@ -98,8 +116,10 @@ if __name__=="__main__":
         print("----------------------- working on: " + str(file.name))
         html = file.read_text(encoding="utf-8")
         html = html_link_replacer(html, routes)
+        
         soup = BeautifulSoup(html, "html.parser")
 
+        add_onerror_to_images(soup)
         css_replacer(soup, root)
         js_replacer(soup, root)
   
