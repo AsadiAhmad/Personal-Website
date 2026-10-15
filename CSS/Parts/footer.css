@@ -1,0 +1,77 @@
+/* Base Footer Styling */
+.footer {
+  background-color: #1e293b; /* A professional dark slate color */
+  color: #e2e8f0;
+  font-family: system-ui, -apple-system, sans-serif;
+  padding-top: 50px;
+  margin-top: auto; /* Helpful if using flexbox on the main body to push footer down */
+}
+
+.footer-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-top: 0px;
+  padding-bottom: 20px;
+  display: grid;
+  /* Automatically wraps columns to fit the screen size */
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 30px;
+}
+
+/* Headings */
+.footer-col h4 {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #f8fafc;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Lists and Text */
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col ul li {
+  margin-bottom: 12px;
+}
+
+.footer-contact p {
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+  color: #cbd5e1;
+}
+
+/* Link Styling */
+.footer-col a {
+  text-decoration: none;
+  color: #cbd5e1;
+  font-size: 0.95rem;
+  transition: color 0.2s ease-in-out;
+}
+
+.footer-col a:hover {
+  color: #60a5fa;
+}
+
+/* Bottom Copyright Bar */
+.footer-bottom {
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid #334155;
+}
+
+.footer-bottom p {
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.footer-bottom a {
+  color: #94a3b8;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-bottom a:hover {
+  color: #f8fafc;
+}

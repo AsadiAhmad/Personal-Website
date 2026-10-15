@@ -133,6 +133,91 @@ body[data-theme='light'] {
   font-weight: 700;
 }
   </style>
+  <style data-file="side_space.css">
+   .side-space {
+  padding-left: 8%;
+  padding-right: 8%;
+}
+  </style>
+  <style data-file="footer.css">
+   /* Base Footer Styling */
+.footer {
+  background-color: #1e293b; /* A professional dark slate color */
+  color: #e2e8f0;
+  font-family: system-ui, -apple-system, sans-serif;
+  padding-top: 50px;
+  margin-top: auto; /* Helpful if using flexbox on the main body to push footer down */
+}
+
+.footer-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-top: 0px;
+  padding-bottom: 20px;
+  display: grid;
+  /* Automatically wraps columns to fit the screen size */
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 30px;
+}
+
+/* Headings */
+.footer-col h4 {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #f8fafc;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Lists and Text */
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col ul li {
+  margin-bottom: 12px;
+}
+
+.footer-contact p {
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+  color: #cbd5e1;
+}
+
+/* Link Styling */
+.footer-col a {
+  text-decoration: none;
+  color: #cbd5e1;
+  font-size: 0.95rem;
+  transition: color 0.2s ease-in-out;
+}
+
+.footer-col a:hover {
+  color: #60a5fa;
+}
+
+/* Bottom Copyright Bar */
+.footer-bottom {
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid #334155;
+}
+
+.footer-bottom p {
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.footer-bottom a {
+  color: #94a3b8;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-bottom a:hover {
+  color: #f8fafc;
+}
+  </style>
   <style data-file="navbar.css">
    :root {
   --nav-width: 590px;
@@ -624,17 +709,14 @@ body[data-theme='light'] .theme-toggle .icon-moon {
 }
   </style>
   <style data-file="index.css">
-   /* Hero Section */
-
-/* @import url('/CSS/color_palette.css'); */
-
-.hero {
+   .hero {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 80px;
-  padding: 130px 8% 70px;
+  padding-top: 130px;
+  padding-bottom: 70px;
 }
 
 .hero-image-wrap {
@@ -732,7 +814,8 @@ body[data-theme='light'] .theme-toggle .icon-moon {
    Bio Section
 ========================= */
 .bio {
-  padding: 70px 8%;
+  padding-top: 70px;
+  padding-bottom: 70px;
   background: var(--section-muted-bg);
   border-top: 1px solid var(--section-muted-border);
   border-bottom: 1px solid var(--section-muted-border);
@@ -952,39 +1035,37 @@ body[data-theme='light'] .theme-toggle .icon-moon {
    </span>
   </button>
   <main class="main-slide-show">
-   <header>
-    <section class="hero" id="home">
-     <div class="hero-image-wrap">
-      <div aria-hidden="true" class="hero-blob">
-      </div>
-      <img alt="Portrait of Ahmad Asadi" class="hero-image" onerror="this.style.display='none'" src="/image/Personal/professional.webp"/>
+   <header class="side-space hero" id="home">
+    <div class="hero-image-wrap">
+     <div aria-hidden="true" class="hero-blob">
      </div>
-     <div class="hero-content">
-      <h1 class="hero-title fw-bold">
-       <span>
-        Ahmad Asadi,
-       </span>
-       <br/>
-       Computer Vision Researcher
-      </h1>
-      <h2 class="hero-subtitle fw-medium">
-       M.Sc AI Student at University of Tehran
-      </h2>
-      <a class="hero-email fw-regular" href="mailto:asadi.ahmad@ut.ac.ir">
-       asadi.ahmad@ut.ac.ir
+     <img alt="Portrait of Ahmad Asadi" class="hero-image" onerror="this.style.display='none'" src="/image/Personal/professional.webp"/>
+    </div>
+    <div class="hero-content">
+     <h1 class="hero-title fw-bold">
+      <span>
+       Ahmad Asadi,
+      </span>
+      <br/>
+      Computer Vision Researcher
+     </h1>
+     <h2 class="hero-subtitle fw-medium">
+      M.Sc AI Student at University of Tehran
+     </h2>
+     <a class="hero-email fw-regular" href="mailto:asadi.ahmad@ut.ac.ir" rel="noopener" target="_blank">
+      asadi.ahmad@ut.ac.ir
+     </a>
+     <div class="hero-actions">
+      <a class="hero-btn hero-btn-primary light-shadow fw-semibold" download="" href="https://scholar.google.com/citations?user=kLSNsD8AAAAJ&amp;hl=en" rel="noopener" target="_blank">
+       View Researchs
       </a>
-      <div class="hero-actions">
-       <a class="hero-btn hero-btn-primary light-shadow fw-semibold" download="" href="https://scholar.google.com/citations?user=kLSNsD8AAAAJ&amp;hl=en">
-        View Researchs
-       </a>
-       <a class="hero-btn hero-btn-secondary light-shadow fw-semibold" href="/PDF/AhmadAsadi-Computer-Vision-Researcher.pdf">
-        Download CV
-       </a>
-      </div>
+      <a class="hero-btn hero-btn-secondary light-shadow fw-semibold" href="/PDF/AhmadAsadi-Computer-Vision-Researcher.pdf">
+       Download CV
+      </a>
      </div>
-    </section>
+    </div>
    </header>
-   <section class="bio" id="bio">
+   <section class="side-space bio" id="bio">
     <div class="bio-inner">
      <h2 class="bio-title fw-semibold">
       Bio
@@ -997,8 +1078,126 @@ body[data-theme='light'] .theme-toggle .icon-moon {
      </a>
     </div>
    </section>
+   <footer class="side-space footer">
+    <div class="footer-container">
+     <div class="footer-col footer-contact">
+      <h4>
+       Ahmad Asadi
+      </h4>
+      <p>
+       Computer Vision Researcher
+      </p>
+      <p>
+       M.Sc AI Student at University of Tehran
+      </p>
+      <p>
+       <a href="mailto:asadi.ahmad@ut.ac.ir" rel="noopener" target="_blank">
+        asadi.ahmad@ut.ac.ir
+       </a>
+      </p>
+     </div>
+     <div class="footer-col">
+      <h4>
+       Research
+      </h4>
+      <ul>
+       <li>
+        <a href="https://scholar.google.com/citations?user=kLSNsD8AAAAJ&amp;hl=en" rel="noopener" target="_blank">
+         Google Scholar
+        </a>
+       </li>
+       <li>
+        <a href="https://orcid.org/0009-0007-9587-709X" rel="noopener" target="_blank">
+         ORCID
+        </a>
+       </li>
+       <li>
+        <a href="https://www.researchgate.net/profile/Ahmad-Asadi-7" rel="noopener" target="_blank">
+         ResearchGate
+        </a>
+       </li>
+       <li>
+        <a href="https://civilica.com/p/573747/" rel="noopener" target="_blank">
+         Civilica ISC
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="footer-col">
+      <h4>
+       Programming
+      </h4>
+      <ul>
+       <li>
+        <a href="https://github.com/AsadiAhmad" rel="noopener" target="_blank">
+         GitHub
+        </a>
+       </li>
+       <li>
+        <a href="https://www.npmjs.com/~ahmadasadi" rel="noopener" target="_blank">
+         NPM
+        </a>
+       </li>
+       <li>
+        <a href="https://www.hackerrank.com/profile/Ahmadasadi1381_1" rel="noopener" target="_blank">
+         Hacker Rank
+        </a>
+       </li>
+       <li>
+        <a href="https://stackoverflow.com/users/14779807/ahmad-asadi" rel="noopener" target="_blank">
+         Stack Overflow
+        </a>
+       </li>
+       <li>
+        <a href="https://quera.org/profile/7qb7g3" rel="noopener" target="_blank">
+         Quera
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="footer-col">
+      <h4>
+       Social
+      </h4>
+      <ul>
+       <li>
+        <a href="https://www.linkedin.com/in/asadi-ahmad/" rel="noopener" target="_blank">
+         Linkedin
+        </a>
+       </li>
+       <li>
+        <a href="https://www.youtube.com/channel/UCwL61xJfYpS2oa-qYECD4Uw" rel="noopener" target="_blank">
+         YouTube
+        </a>
+       </li>
+       <li>
+        <a href="https://t.me/ahmadasadics" rel="noopener" target="_blank">
+         Telegram
+        </a>
+       </li>
+       <li>
+        <a href="https://www.instagram.com/ahmadasadi7d1/" rel="noopener" target="_blank">
+         Instagram
+        </a>
+       </li>
+       <li>
+        <a href="https://www.pinterest.com/ahmadasadi138122/" rel="noopener" target="_blank">
+         Pinterest
+        </a>
+       </li>
+      </ul>
+     </div>
+    </div>
+    <div class="footer-bottom">
+     <p>
+      © 2026 Ahmad Asadi. All rights reserved. |
+      <a href="#">
+       Privacy Policy
+      </a>
+     </p>
+    </div>
+   </footer>
   </main>
-  <!-- <svg style="display:none;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600"><defs><linearGradient id="linear-gradient" x1="92.03" x2="304.37" y1="221.12" y2="592.86" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#0099d6"/><stop offset="1" stop-color="#06568e"/></linearGradient><linearGradient id="linear-gradient-2" x1="421.71" x2="542.9" y1="288.69" y2="498.04" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#007fbe"/><stop offset="1" stop-color="#005085"/></linearGradient><style>.cls-3{display:none;stroke:#231f20;stroke-miterlimit:10;fill:none}</style></defs><g id="Layer_1"><path d="M430.9 430.6 250.84 120.55l-.91-1.55c-6.13-10.02-16.81-16-28.56-16-13.42 0-25.52 7.99-30.81 20.36L12.79 431.25l-.16.29c-3.13 5.17-4.78 11.13-4.78 17.23 0 18.46 15.02 33.49 33.49 33.49h119.84c18.46 0 33.49-15.02 33.49-33.49s-15.02-33.49-33.49-33.49H98.96l122.46-212.13 150.7 259.05 3.67 6.3.18.31c6.39 8.55 16.16 13.45 26.83 13.45 18.46 0 33.49-15.02 33.49-33.49 0-6.52-1.87-12.81-5.37-18.17Z" style="fill:url(#linear-gradient)"/><path d="M583.37 440.39 443.74 198.93l-.88-1.52c-5.15-8.45-14.14-13.5-24.05-13.5s-19.84 5.65-24.78 14.73l-48.89 84.68-.12.22v.47l32.52 56 41.28-71.55 115.05 198.93.6 1.02c5.04 8.53 14.33 13.83 24.25 13.83 15.55 0 28.2-12.65 28.2-28.2 0-4.79-1.22-9.51-3.54-13.66Z" style="fill:url(#linear-gradient-2)"/></g></svg> -->
   <script data-file="dark_theme.js">
    (function () {
     const THEME_KEY = 'site-theme';

@@ -1,14 +1,11 @@
-﻿/* Hero Section */
-
-/* @import url('/CSS/color_palette.css'); */
-
-.hero {
+﻿.hero {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 80px;
-  padding: 130px 8% 70px;
+  padding-top: 130px;
+  padding-bottom: 70px;
 }
 
 .hero-image-wrap {
@@ -106,7 +103,8 @@
    Bio Section
 ========================= */
 .bio {
-  padding: 70px 8%;
+  padding-top: 70px;
+  padding-bottom: 70px;
   background: var(--section-muted-bg);
   border-top: 1px solid var(--section-muted-border);
   border-bottom: 1px solid var(--section-muted-border);
