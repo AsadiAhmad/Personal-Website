@@ -236,10 +236,14 @@
     // 
     // 3.5: Handle touch events (for mobile)
     // 
+    
+    // 1. MUST BE DECLARED HERE (Outside the functions)
+    let touchStartX = 0;
     let touchStartY = 0;
     let touchStartScroll = 0;
     let lastTouchY = 0;
     let touchVelocity = 0;
+    let touchAxis = null;
 
     function handleTouchStart(e) {
         if (isStopped) return;
@@ -251,15 +255,19 @@
 
         isTouchDevice = true;
         const touch = e.touches[0];
+        
         touchStartX = touch.clientX;
         touchStartY = touch.clientY;
         lastTouchY = touch.clientY;
-        touchStartScroll = targetScroll;
+        
+        // Stop ongoing momentum and prevent jumping
+        touchStartScroll = currentScroll;
+        targetScroll = currentScroll; 
+        
         touchVelocity = 0;
         touchAxis = null;
     }
 
-    
     function handleTouchMove(e) {
         if (isStopped) return;
 
@@ -279,10 +287,7 @@
                 return;
             }
 
-            touchAxis =
-                Math.abs(deltaX) > Math.abs(deltaY)
-                    ? 'horizontal'
-                    : 'vertical';
+            touchAxis = Math.abs(deltaX) > Math.abs(deltaY) ? 'horizontal' : 'vertical';
         }
 
         // Leave horizontal swipes to the existing page-swap script.
@@ -294,8 +299,7 @@
         e.preventDefault();
 
         const currentY = touch.clientY;
-        const delta =
-            (touchStartY - currentY) * CONFIG.touchMultiplier;
+        const delta = (touchStartY - currentY) * CONFIG.touchMultiplier;
 
         const recentDelta = lastTouchY - currentY;
         touchVelocity = recentDelta * 0.5;
@@ -305,7 +309,6 @@
 
         lastTouchY = currentY;
     }
-
 
     function handleTouchEnd(e) {
         if (isStopped) return;
