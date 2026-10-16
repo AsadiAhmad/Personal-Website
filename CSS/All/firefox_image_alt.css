@@ -1,3 +1,7 @@
 img:-moz-broken {
     display: none;
 }
+
+img { 
+  color: transparent; 
+}
