@@ -251,36 +251,61 @@
 
         isTouchDevice = true;
         const touch = e.touches[0];
+        touchStartX = touch.clientX;
         touchStartY = touch.clientY;
-        lastTouchY = touchStartY;
+        lastTouchY = touch.clientY;
         touchStartScroll = targetScroll;
         touchVelocity = 0;
+        touchAxis = null;
     }
 
+    
     function handleTouchMove(e) {
         if (isStopped) return;
-        
+
         const target = e.target;
         if (shouldPreventSmooth(target)) {
             return;
         }
 
+        const touch = e.touches[0];
+
+        const deltaX = touch.clientX - touchStartX;
+        const deltaY = touch.clientY - touchStartY;
+
+        // Determine the gesture direction.
+        if (touchAxis === null) {
+            if (Math.max(Math.abs(deltaX), Math.abs(deltaY)) < 8) {
+                return;
+            }
+
+            touchAxis =
+                Math.abs(deltaX) > Math.abs(deltaY)
+                    ? 'horizontal'
+                    : 'vertical';
+        }
+
+        // Leave horizontal swipes to the existing page-swap script.
+        if (touchAxis === 'horizontal') {
+            return;
+        }
+
+        // Smooth-scroll vertical gestures only.
         e.preventDefault();
 
-        const touch = e.touches[0];
         const currentY = touch.clientY;
-        const deltaY = (touchStartY - currentY) * CONFIG.touchMultiplier;
+        const delta =
+            (touchStartY - currentY) * CONFIG.touchMultiplier;
 
-        // Calculate velocity based on recent movement
         const recentDelta = lastTouchY - currentY;
         touchVelocity = recentDelta * 0.5;
 
-        // Update target scroll based on touch movement
-        targetScroll = touchStartScroll + deltaY;
+        targetScroll = touchStartScroll + delta;
         targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
 
         lastTouchY = currentY;
     }
+
 
     function handleTouchEnd(e) {
         if (isStopped) return;
