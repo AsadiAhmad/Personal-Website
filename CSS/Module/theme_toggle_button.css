@@ -49,6 +49,38 @@
   display: block;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+body[data-theme='dark'] .theme-toggle .icon-sun {
+  opacity: 0;
+  transform: rotate(-110deg) scale(0.35);
+}
+
+body[data-theme='dark'] .theme-toggle .icon-moon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+body[data-theme='light'] .theme-toggle .icon-sun {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+body[data-theme='light'] .theme-toggle .icon-moon {
+  opacity: 0;
+  transform: rotate(110deg) scale(0.35);
+}
+
 @media (max-width: 650px) {
   :root {
     --theme-toggle-top: 34px;

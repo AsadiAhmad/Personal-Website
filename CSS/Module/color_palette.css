@@ -58,3 +58,8 @@ body[data-theme='light'] {
   --section-muted-bg: #e7edff;
   --section-muted-border: rgba(15, 23, 42, 0.12);
 }
+
+body {
+  background-color: var(--page-bg);
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
