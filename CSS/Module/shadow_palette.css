@@ -14,56 +14,60 @@
 
 /* buttons */
 
-.dark-shadow {
-  box-shadow: var(--dark-shadow-base);
+.button-shadow {
   transition: box-shadow 0.25s ease;
 }
 
-.dark-shadow:hover {
-  box-shadow: var(--dark-shadow-hover);
-}
-
-.dark-shadow:active {
-  box-shadow: var(--dark-shadow-base);
-}
-
-.light-shadow {
+body[data-theme='dark'] .button-shadow {
   box-shadow: var(--light-shadow-base);
-  transition: box-shadow 0.25s ease;
 }
 
-.light-shadow:hover {
+body[data-theme='dark'] .button-shadow:hover {
   box-shadow: var(--light-shadow-hover);
 }
 
-.light-shadow:active {
+body[data-theme='dark'] .button-shadow:active {
   box-shadow: var(--light-shadow-base);
+}
+
+body[data-theme='light'] .button-shadow {
+  box-shadow: var(--dark-shadow-base);
+}
+
+body[data-theme='light'] .button-shadow:hover {
+  box-shadow: var(--dark-shadow-hover);
+}
+
+body[data-theme='light'] .button-shadow:active {
+  box-shadow: var(--dark-shadow-base);
 }
 
 /* logos */
 
-.logo-dark-shadow {
-  filter: var(--dark-logo-shadow-base);
+.logo-shadow {
   transition: filter 0.25s ease, transform 0.2s ease;
 }
 
-.logo-dark-shadow:hover {
-  filter: var(--dark-logo-shadow-hover);
-}
-
-.logo-dark-shadow:active {
-  filter: var(--dark-logo-shadow-base);
-}
-
-.logo-light-shadow {
+body[data-theme='dark'] .logo-shadow {
   filter: var(--light-logo-shadow-base);
-  transition: filter 0.25s ease, transform 0.2s ease;
 }
 
-.logo-light-shadow:hover {
+body[data-theme='dark'] .logo-shadow:hover {
   filter: var(--light-logo-shadow-hover);
 }
 
-.logo-light-shadow:active {
+body[data-theme='dark'] .logo-shadow:active {
   filter: var(--light-logo-shadow-base);
+}
+
+body[data-theme='light'] .logo-shadow {
+  filter: var(--dark-logo-shadow-base);
+}
+
+body[data-theme='light'] .logo-shadow:hover {
+  filter: var(--dark-logo-shadow-hover);
+}
+
+body[data-theme='light'] .logo-shadow:active {
+  filter: var(--dark-logo-shadow-base);
 }

@@ -118,74 +118,138 @@ body[data-theme='light'] {
 
 /* buttons */
 
-.dark-shadow {
-  box-shadow: var(--dark-shadow-base);
+.button-shadow {
   transition: box-shadow 0.25s ease;
 }
 
-.dark-shadow:hover {
-  box-shadow: var(--dark-shadow-hover);
-}
-
-.dark-shadow:active {
-  box-shadow: var(--dark-shadow-base);
-}
-
-.light-shadow {
+body[data-theme='dark'] .button-shadow {
   box-shadow: var(--light-shadow-base);
-  transition: box-shadow 0.25s ease;
 }
 
-.light-shadow:hover {
+body[data-theme='dark'] .button-shadow:hover {
   box-shadow: var(--light-shadow-hover);
 }
 
-.light-shadow:active {
+body[data-theme='dark'] .button-shadow:active {
   box-shadow: var(--light-shadow-base);
+}
+
+body[data-theme='light'] .button-shadow {
+  box-shadow: var(--dark-shadow-base);
+}
+
+body[data-theme='light'] .button-shadow:hover {
+  box-shadow: var(--dark-shadow-hover);
+}
+
+body[data-theme='light'] .button-shadow:active {
+  box-shadow: var(--dark-shadow-base);
 }
 
 /* logos */
 
-.logo-dark-shadow {
-  filter: var(--dark-logo-shadow-base);
+.logo-shadow {
   transition: filter 0.25s ease, transform 0.2s ease;
 }
 
-.logo-dark-shadow:hover {
-  filter: var(--dark-logo-shadow-hover);
-}
-
-.logo-dark-shadow:active {
-  filter: var(--dark-logo-shadow-base);
-}
-
-.logo-light-shadow {
+body[data-theme='dark'] .logo-shadow {
   filter: var(--light-logo-shadow-base);
-  transition: filter 0.25s ease, transform 0.2s ease;
 }
 
-.logo-light-shadow:hover {
+body[data-theme='dark'] .logo-shadow:hover {
   filter: var(--light-logo-shadow-hover);
 }
 
-.logo-light-shadow:active {
+body[data-theme='dark'] .logo-shadow:active {
   filter: var(--light-logo-shadow-base);
+}
+
+body[data-theme='light'] .logo-shadow {
+  filter: var(--dark-logo-shadow-base);
+}
+
+body[data-theme='light'] .logo-shadow:hover {
+  filter: var(--dark-logo-shadow-hover);
+}
+
+body[data-theme='light'] .logo-shadow:active {
+  filter: var(--dark-logo-shadow-base);
 }
   </style>
   <style data-file="theme_toggle_button.css">
-  </style>
-  <style data-file="dark_theme.css">
-   /* @import url('/CSS/color_palette.css'); */
-
-/* color */
-
-:root {
+   :root {
   --theme-toggle-width: 46px;
   --theme-toggle-height: 46px;
   --theme-toggle-top: 30px;
 }
 
-body {
+.theme-toggle {
+  position: fixed;
+  top: var(--theme-toggle-top);
+  left: 50%;
+  margin-left: calc((var(--nav-width) / 2) + 12px);
+  width: var(--theme-toggle-width);
+  height: var(--theme-toggle-height);
+  border: 1px solid var(--toggle-border);
+  border-radius: 50%;
+  background: var(--toggle-bg);
+  color: var(--toggle-icon);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 3;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px) scale(1.03);
+}
+
+.theme-toggle:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.theme-toggle .icon {
+  position: absolute;
+  width: 70%;
+  height: 70%;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+  padding: 3px;
+}
+
+.theme-toggle .icon svg {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+@media (max-width: 650px) {
+  :root {
+    --theme-toggle-top: 34px;
+  }
+}
+
+@media (max-width: 550px) {
+  .theme-toggle {
+    margin-left: calc((var(--nav-width) / 2) + 10px);
+  }
+}
+
+@media (max-width: 450px) {
+  :root {
+    --theme-toggle-width: 40px;
+    --theme-toggle-height: 40px;
+    --theme-toggle-top: 36px;
+  }
+}
+  </style>
+  <style data-file="dark_theme.css">
+   body {
   background-color: var(--page-bg);
   color: var(--text-primary);
   transition: background-color 0.35s ease, color 0.35s ease;
@@ -238,52 +302,6 @@ ul.nav .animation {
   }
 }
 
-/* Theme toggle button */
-.theme-toggle {
-  position: fixed;
-  top: var(--theme-toggle-top);
-  left: 50%;
-  margin-left: calc((var(--nav-width) / 2) + 12px);
-  width: var(--theme-toggle-width);
-  height: var(--theme-toggle-height);
-  border: 1px solid var(--toggle-border);
-  border-radius: 50%;
-  background: var(--toggle-bg);
-  color: var(--toggle-icon);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 3;
-  transition: transform 0.25s ease, border-color 0.25s ease;
-}
-
-.theme-toggle:hover {
-  transform: translateY(-2px) scale(1.03);
-}
-
-.theme-toggle:active {
-  transform: translateY(0) scale(0.98);
-}
-
-.theme-toggle .icon {
-  position: absolute;
-  width: 70%;
-  height: 70%;
-  line-height: 1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.35s ease, opacity 0.35s ease;
-  padding: 3px;
-}
-
-.theme-toggle .icon svg {
-  width: 100% !important;
-  height: 100% !important;
-  display: block;
-}
-
 body[data-theme='dark'] .theme-toggle .icon-sun {
   opacity: 0;
   transform: rotate(-110deg) scale(0.35);
@@ -314,26 +332,6 @@ body[data-theme='light'] .theme-toggle .icon-moon {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
-}
-
-@media (max-width: 650px) {
-  :root {
-    --theme-toggle-top: 34px;
-  }
-}
-
-@media (max-width: 550px) {
-  .theme-toggle {
-    margin-left: calc((var(--nav-width) / 2) + 10px);
-  }
-}
-
-@media (max-width: 450px) {
-  :root {
-    --theme-toggle-width: 40px;
-    --theme-toggle-height: 40px;
-    --theme-toggle-top: 36px;
-  }
 }
   </style>
   <style data-file="font.css">
@@ -714,9 +712,7 @@ ul.nav .animation {
 }
   </style>
   <style data-file="about.css">
-   /* @import url('/CSS/color_palette.css'); */
-
-.projects-header {
+   .projects-header {
   max-width: 1000px;
   margin: 0 auto;
   padding: 130px 8% 70px;
@@ -1022,7 +1018,7 @@ ul.nav .animation {
     <div class="education-list">
      <article class="education-item">
       <div aria-hidden="true" class="education-marker">
-       <img alt="" class="logo" decoding="async" loading="lazy" onerror="this.style.display='none'" src="/image/University/university_of_tehran.svg"/>
+       <img alt="" class="logo logo-shadow" decoding="async" loading="lazy" onerror="this.style.display='none'" src="/image/University/university_of_tehran.svg"/>
       </div>
       <div class="education-content">
        <h2 class="fw-semibold">
@@ -1044,7 +1040,7 @@ ul.nav .animation {
      </article>
      <article class="education-item">
       <div aria-hidden="true" class="education-marker">
-       <img alt="" class="logo" decoding="async" loading="lazy" onerror="this.style.display='none'" src="/image/University/university_of_zanjan.svg"/>
+       <img alt="" class="logo logo-shadow" decoding="async" loading="lazy" onerror="this.style.display='none'" src="/image/University/university_of_zanjan.svg"/>
       </div>
       <div class="education-content">
        <h2 class="fw-semibold">
@@ -1066,7 +1062,7 @@ ul.nav .animation {
      </article>
      <article class="education-item">
       <div aria-hidden="true" class="education-marker">
-       <img alt="" class="logo" decoding="async" loading="lazy" onerror="this.style.display='none'" src="/image/University/sampad.svg"/>
+       <img alt="" class="logo logo-shadow" decoding="async" loading="lazy" onerror="this.style.display='none'" src="/image/University/sampad.svg"/>
       </div>
       <div class="education-content">
        <h2 class="fw-semibold">
@@ -1095,7 +1091,7 @@ ul.nav .animation {
     <div class="education-list">
      <article class="education-item">
       <div aria-hidden="true" class="education-marker">
-       <img alt="" class="logo" decoding="async" loading="lazy" onerror="this.style.display='none'" src="/image/Companies/Resanai.svg"/>
+       <img alt="" class="logo logo-shadow" decoding="async" loading="lazy" onerror="this.style.display='none'" src="/image/Companies/Resanai.svg"/>
       </div>
       <div class="education-content">
        <h2 class="fw-semibold">
@@ -1114,7 +1110,7 @@ ul.nav .animation {
      </article>
      <article class="education-item">
       <div aria-hidden="true" class="education-marker">
-       <img alt="" class="logo" decoding="async" loading="lazy" onerror="this.style.display='none'" src="/image/Companies/IDA.svg"/>
+       <img alt="" class="logo logo-shadow" decoding="async" loading="lazy" onerror="this.style.display='none'" src="/image/Companies/IDA.svg"/>
       </div>
       <div class="education-content">
        <h2 class="fw-semibold">
@@ -1161,7 +1157,7 @@ ul.nav .animation {
     <div class="education-list">
      <article class="education-item">
       <div aria-hidden="true" class="education-marker">
-       <img alt="" class="logo" decoding="async" loading="lazy" onerror="this.style.display='none'" src="/image/University/university_of_tehran.svg"/>
+       <img alt="" class="logo logo-shadow" decoding="async" loading="lazy" onerror="this.style.display='none'" src="/image/University/university_of_tehran.svg"/>
       </div>
       <div class="education-content">
        <h2 class="fw-semibold">
@@ -1177,7 +1173,7 @@ ul.nav .animation {
      </article>
      <article class="education-item">
       <div aria-hidden="true" class="education-marker">
-       <img alt="" class="logo" decoding="async" loading="lazy" onerror="this.style.display='none'" src="/image/University/university_of_tehran.svg"/>
+       <img alt="" class="logo logo-shadow" decoding="async" loading="lazy" onerror="this.style.display='none'" src="/image/University/university_of_tehran.svg"/>
       </div>
       <div class="education-content">
        <h2 class="fw-semibold">
@@ -1193,7 +1189,7 @@ ul.nav .animation {
      </article>
      <article class="education-item">
       <div aria-hidden="true" class="education-marker">
-       <img alt="" class="logo" decoding="async" loading="lazy" onerror="this.style.display='none'" src="/image/University/university_of_zanjan.svg"/>
+       <img alt="" class="logo logo-shadow" decoding="async" loading="lazy" onerror="this.style.display='none'" src="/image/University/university_of_zanjan.svg"/>
       </div>
       <div class="education-content">
        <h2 class="fw-semibold">
@@ -1209,7 +1205,7 @@ ul.nav .animation {
      </article>
      <article class="education-item">
       <div aria-hidden="true" class="education-marker">
-       <img alt="" class="logo" decoding="async" loading="lazy" onerror="this.style.display='none'" src="/image/University/university_of_zanjan.svg"/>
+       <img alt="" class="logo logo-shadow" decoding="async" loading="lazy" onerror="this.style.display='none'" src="/image/University/university_of_zanjan.svg"/>
       </div>
       <div class="education-content">
        <h2 class="fw-semibold">
@@ -1225,7 +1221,7 @@ ul.nav .animation {
      </article>
      <article class="education-item">
       <div aria-hidden="true" class="education-marker">
-       <img alt="" class="logo" decoding="async" loading="lazy" onerror="this.style.display='none'" src="/image/University/university_of_zanjan.svg"/>
+       <img alt="" class="logo logo-shadow" decoding="async" loading="lazy" onerror="this.style.display='none'" src="/image/University/university_of_zanjan.svg"/>
       </div>
       <div class="education-content">
        <h2 class="fw-semibold">
@@ -1241,7 +1237,7 @@ ul.nav .animation {
      </article>
      <article class="education-item">
       <div aria-hidden="true" class="education-marker">
-       <img alt="" class="logo" decoding="async" loading="lazy" onerror="this.style.display='none'" src="/image/University/university_of_zanjan.svg"/>
+       <img alt="" class="logo logo-shadow" decoding="async" loading="lazy" onerror="this.style.display='none'" src="/image/University/university_of_zanjan.svg"/>
       </div>
       <div class="education-content">
        <h2 class="fw-semibold">
@@ -1257,7 +1253,7 @@ ul.nav .animation {
      </article>
      <article class="education-item">
       <div aria-hidden="true" class="education-marker">
-       <img alt="" class="logo" decoding="async" loading="lazy" onerror="this.style.display='none'" src="/image/University/university_of_zanjan.svg"/>
+       <img alt="" class="logo logo-shadow" decoding="async" loading="lazy" onerror="this.style.display='none'" src="/image/University/university_of_zanjan.svg"/>
       </div>
       <div class="education-content">
        <h2 class="fw-semibold">
@@ -1273,7 +1269,7 @@ ul.nav .animation {
      </article>
      <article class="education-item">
       <div aria-hidden="true" class="education-marker">
-       <img alt="" class="logo" decoding="async" loading="lazy" onerror="this.style.display='none'" src="/image/University/university_of_zanjan.svg"/>
+       <img alt="" class="logo logo-shadow" decoding="async" loading="lazy" onerror="this.style.display='none'" src="/image/University/university_of_zanjan.svg"/>
       </div>
       <div class="education-content">
        <h2 class="fw-semibold">
@@ -1289,7 +1285,7 @@ ul.nav .animation {
      </article>
      <article class="education-item">
       <div aria-hidden="true" class="education-marker">
-       <img alt="" class="logo" decoding="async" loading="lazy" onerror="this.style.display='none'" src="/image/University/university_of_zanjan.svg"/>
+       <img alt="" class="logo logo-shadow" decoding="async" loading="lazy" onerror="this.style.display='none'" src="/image/University/university_of_zanjan.svg"/>
       </div>
       <div class="education-content">
        <h2 class="fw-semibold">
@@ -1305,7 +1301,7 @@ ul.nav .animation {
      </article>
      <article class="education-item">
       <div aria-hidden="true" class="education-marker">
-       <img alt="" class="logo" decoding="async" loading="lazy" onerror="this.style.display='none'" src="/image/University/university_of_zanjan.svg"/>
+       <img alt="" class="logo logo-shadow" decoding="async" loading="lazy" onerror="this.style.display='none'" src="/image/University/university_of_zanjan.svg"/>
       </div>
       <div class="education-content">
        <h2 class="fw-semibold">
@@ -1464,22 +1460,6 @@ ul.nav .animation {
             );
             toggleButton.setAttribute('title', theme === 'dark' ? 'Light mode' : 'Dark mode');
         }
-        const addShadowClass = theme === 'dark' ? 'light-shadow' : 'dark-shadow';
-        const removeShadowClass = theme === 'dark' ? 'dark-shadow' : 'light-shadow';
-        const addLogoShadowClass = theme === 'dark' ? 'logo-light-shadow' : 'logo-dark-shadow';
-        const removeLogoShadowClass = theme === 'dark' ? 'logo-dark-shadow' : 'logo-light-shadow';
-        document
-            .querySelectorAll('.theme-toggle, .hero-btn, .nav-mobile-toggle')
-            .forEach((element) => {
-                element.classList.remove(removeShadowClass);
-                element.classList.add(addShadowClass);
-            });
-        document
-            .querySelectorAll('.logo')
-            .forEach((element) => {
-                element.classList.remove(removeLogoShadowClass);
-                element.classList.add(addLogoShadowClass);
-            });
     }
 
     function toggleTheme() {
