@@ -25,7 +25,9 @@
   <link rel="stylesheet" href="/CSS/Module/side_space.css">
   <link rel="stylesheet" href="/CSS/Parts/navbar.css">
   <link rel="stylesheet" href="/CSS/Parts/footer.css">
+  <link rel="stylesheet" href="/CSS/Parts/scrollbar.css">
   <link rel="stylesheet" href="/CSS/Animation/page_swap.css">
+  <link rel="stylesheet" href="/CSS/Animation/smooth_scroll.css">
   <link rel="stylesheet" href="/CSS/Pages/publications.css">
   <link rel="prefetch" href="/HTML/notes.html">
   <!-- <link rel="prefetch" href="/HTML/about.html"> -->
@@ -65,7 +67,7 @@
   gtag('js', new Date());
   gtag('config', 'G-P46W9GQNQK');
 </script>
-<body class="font-poppins">
+<body class="font-poppins scroll-container" id="scrollContainer">
   <nav class="parent-nav">
     <ul class="nav fw-medium">
       <li><a href="/" onclick="leftDirection()">Home</a></li>
@@ -167,5 +169,6 @@
   <script src="/JS/navbar.js"></script>
   <script src="/JS/mobile_touch_controll.js"></script>
   <script src="/JS/transition_tracker.js"></script>
+  <script src="/JS/smooth_scroll.js"></script>
 </body>
 </html>

@@ -36,8 +36,15 @@
   --project-tech-bg-hover: rgb(var(--accent-primary-rgb) / 0.20);
   --project-tech-border: rgb(var(--accent-primary-rgb) / 0.25);
   --project-tech-border-hover: rgb(var(--accent-primary-rgb) / 0.45);
+
+  --scrollbar-track: #3F3F3F;
+  --scrollbar-thumb: #7F7F7F;
+  --scrollbar-thumb-hover: #BFBFBF;
+  --scrollbar-thumb-active: var(--accent-primary);
 }
 
+html:has(body[data-theme='light']),
+:root[data-theme='light'],
 body[data-theme='light'] {
   --page-bg: #f1f5ff;
   --text-primary: #0f172a;
@@ -57,6 +64,11 @@ body[data-theme='light'] {
   --toggle-icon: #0f172a;
   --section-muted-bg: #e7edff;
   --section-muted-border: rgba(15, 23, 42, 0.12);
+
+  --scrollbar-track: #BFBFBF;
+  --scrollbar-thumb: #7F7F7F;
+  --scrollbar-thumb-hover: #3F3F3F;
+  --scrollbar-thumb-active: var(--accent-primary);
 }
 
 body {

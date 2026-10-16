@@ -1,0 +1,50 @@
+:root {
+  --scrollbar-width: 8px;
+  --scrollbar-thumb-inset: 1px;
+  --scrollbar-radius: 4px;
+}
+
+.smooth-scrollbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: var(--scrollbar-width);
+  height: 100%;
+  z-index: 10;
+  background: var(--scrollbar-track);
+  touch-action: none;
+  transition: background-color 0.35s ease, width 0.25s ease;
+}
+
+.smooth-scrollbar.is-hidden {
+  display: none;
+}
+
+.smooth-scrollbar-thumb {
+  position: absolute;
+  top: 0;
+  left: var(--scrollbar-thumb-inset);
+  right: var(--scrollbar-thumb-inset);
+  border-radius: var(--scrollbar-radius);
+  background: var(--scrollbar-thumb);
+  cursor: grab;
+  will-change: transform;
+  transition: background-color 0.2s ease;
+}
+
+.smooth-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+.smooth-scrollbar-thumb.is-dragging {
+  background: var(--scrollbar-thumb-active);
+  cursor: grabbing;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --scrollbar-width: 5px;
+    --scrollbar-thumb-inset: 1px;
+    --scrollbar-radius: 3px;
+  }
+}

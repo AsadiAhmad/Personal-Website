@@ -1,0 +1,27 @@
+html.smooth-scroll,
+html.smooth-scroll body {
+  height: 100%;
+  overflow: hidden; /* Prevents native scroll */
+}
+
+.smooth-scroll .scroll-container {
+  /* This is our virtual scroll container */
+  height: 100%;
+  overflow: visible;
+  will-change: transform;
+  transform: translateY(0); /* We'll animate this */
+}
+
+/* Style for nested scrollable elements (like modals) */
+.smooth-scroll [data-prevent-smooth] {
+  overscroll-behavior: contain;
+  overflow: auto;
+}
+
+.smooth-scroll .scroll-container {
+  height: auto;          /* was 100% - let it be as tall as its content */
+  min-height: 100%;
+  overflow: visible;
+  will-change: transform;
+  transform: translateY(0);
+}

@@ -13,6 +13,7 @@
 
     function applyTheme(theme) {
         root.setAttribute('data-theme', theme);
+        document.documentElement.setAttribute('data-theme', theme);
         if (toggleButton) {
             toggleButton.setAttribute(
                 'aria-label',
