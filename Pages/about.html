@@ -1493,9 +1493,7 @@ ul.nav .animation {
     mobileToggle.type = 'button';
     mobileToggle.className = 'nav-mobile-toggle';
     mobileToggle.classList.add('fw-medium');
-    mobileToggle.classList.add(
-        document.body.getAttribute('data-theme') === 'light' ? 'dark-shadow' : 'light-shadow'
-    );
+    mobileToggle.classList.add('button-shadow');
     mobileToggle.setAttribute('aria-label', 'Toggle navigation menu');
     mobileToggle.setAttribute('aria-expanded', 'false');
     navElement.insertBefore(mobileToggle, navList);
