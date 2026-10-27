@@ -10,6 +10,7 @@ Allow: /Pages
 Allow: /image
 Allow: /PDF
 Allow: /index.html
+Allow: /404.html
 Allow: /CNAME
 Allow: /LICENSE
 Allow: /README.md

@@ -1,0 +1,633 @@
+import * as THREE from 'three';
+
+/* ================================================================== *
+ *  CAMERA ANGLE CONFIG  (all values in DEGREES)
+ * ================================================================== */
+const DEG2RAD = Math.PI / 180;
+
+const CAM = {
+    // --- Pitch (up/down) ---
+    pitchBase:       6,    // resting tilt, degrees (positive = look up)
+    pitchParallax:  10,    // max ± offset from pointer, degrees
+    pitchDrift:      0.5,  // idle sine sway amplitude, degrees
+
+    // --- Yaw (left/right) ---
+    yawBase:         0,    // resting yaw, degrees
+    yawParallax:    8,    // max ± offset from pointer, degrees
+    yawDrift:        0.8,  // idle sine sway amplitude, degrees
+
+    // --- Idle drift speeds (radians/sec of the sine phase) ---
+    pitchDriftSpeed: 0.17,
+    yawDriftSpeed:   0.11,
+
+    // --- Vertical bob (world units, not an angle) ---
+    bobAmount:       1.6,
+    bobSpeed:        0.45,
+};
+
+/* ================================================================== *
+ *  RENDERER / SCENE / CAMERA
+ * ================================================================== */
+const canvas   = document.getElementById('bg');
+const renderer = new THREE.WebGLRenderer({
+    canvas,
+    antialias: false,                 // AA is handled by the render target below
+    powerPreference: 'high-performance'
+});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+renderer.setSize(window.innerWidth, window.innerHeight, false);
+renderer.toneMapping = THREE.NoToneMapping;
+
+const scene  = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(58, window.innerWidth / window.innerHeight, 5, 20000);
+camera.position.set(0, 14, 0);
+camera.rotation.order = 'YXZ';
+
+const SUN = new THREE.Vector3(-0.72, 0.34, -0.60).normalize();
+
+const pixelRatio = renderer.getPixelRatio();
+
+/* ================================================================== *
+ *  HELPERS
+ * ================================================================== */
+function radialTexture() {
+    const size = 128;
+    const c = document.createElement('canvas');
+    c.width = c.height = size;
+    const ctx = c.getContext('2d');
+    const g = ctx.createRadialGradient(size/2, size/2, 0, size/2, size/2, size/2);
+    g.addColorStop(0.00, 'rgba(255,255,255,1)');
+    g.addColorStop(0.22, 'rgba(255,255,255,.55)');
+    g.addColorStop(0.55, 'rgba(255,255,255,.12)');
+    g.addColorStop(1.00, 'rgba(255,255,255,0)');
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, size, size);
+    const tex = new THREE.CanvasTexture(c);
+    tex.colorSpace = THREE.SRGBColorSpace;
+    return tex;
+}
+const glowTex = radialTexture();
+
+/* ================================================================== *
+ *  SKY DOME
+ * ================================================================== */
+const skyUniforms = {
+    uTop:    { value: new THREE.Color('#140b3a') },
+    uMid:    { value: new THREE.Color('#1b053f') },
+    uBot:    { value: new THREE.Color('#570885') },
+    uAccent: { value: new THREE.Color('#099c8e') },
+    uSunDir: { value: SUN.clone() },
+    uTime:   { value: 0 }
+};
+
+const sky = new THREE.Mesh(
+    new THREE.SphereGeometry(9000, 48, 32),
+    new THREE.ShaderMaterial({
+        side: THREE.BackSide,
+        depthWrite: false,
+        uniforms: skyUniforms,
+        vertexShader: /* glsl */`
+        varying vec3 vDir;
+        void main() {
+            vDir = normalize(position);
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+        `,
+        fragmentShader: /* glsl */`
+        varying vec3 vDir;
+        uniform vec3  uTop, uMid, uBot, uAccent, uSunDir;
+        uniform float uTime;
+
+        void main() {
+            vec3  d = normalize(vDir);
+            float h = d.y;
+            float t = clamp(h * 0.5 + 0.5, 0.0, 1.0);
+
+            vec3 col = mix(uBot, uMid, smoothstep(0.46, 0.68, t));
+            col      = mix(col,  uTop, smoothstep(0.66, 1.00, t));
+
+            col += uBot * 0.28 * exp(-abs(h) * 10.0);
+
+            // wider, softer accent band
+            float band = smoothstep(0.35, 0.0, abs(h - 0.14));
+            col = mix(col, uAccent, band * 0.22);
+
+            // softer stripes (lower contrast + smooth power curve)
+            float stri = sin(t * 46.0 + sin(d.x * 3.0) * 1.6 + uTime * 0.05) * 0.5 + 0.5;
+            stri = smoothstep(0.0, 1.0, stri);
+            col += stri * 0.008;
+
+            float s = max(dot(d, uSunDir), 0.0);
+            col += vec3(1.0, 0.86, 0.68) * pow(s, 120.0) * 2.0;
+            col += vec3(1.0, 0.62, 0.42) * pow(s,   7.0) * 0.30;
+
+            gl_FragColor = vec4(col, 1.0);
+            #include <colorspace_fragment>
+        }
+        `
+    })
+);
+sky.renderOrder = -10;
+scene.add(sky);
+
+/* ================================================================== *
+ *  STARS
+ * ================================================================== */
+(function buildStars() {
+    const COUNT = 2600;
+    const positions = new Float32Array(COUNT * 3);
+    const colors    = new Float32Array(COUNT * 3);
+    const c = new THREE.Color();
+
+    for (let i = 0; i < COUNT; i++) {
+        const u     = Math.random() * 2 - 1;
+        const theta = Math.random() * Math.PI * 2;
+        const s     = Math.sqrt(1 - u * u);
+        const r     = 5600 + Math.random() * 2200;
+
+        positions[i*3+0] = Math.cos(theta) * s * r;
+        positions[i*3+1] = u * r;
+        positions[i*3+2] = Math.sin(theta) * s * r;
+
+        const pick = Math.random();
+        if (pick < 0.16)      c.set('#ffd2ab');
+        else if (pick < 0.34) c.set('#a9d8ff');
+        else                  c.set('#ffffff');
+
+        const b = 0.35 + Math.random() * 0.65;
+        colors[i*3+0] = c.r * b;
+        colors[i*3+1] = c.g * b;
+        colors[i*3+2] = c.b * b;
+    }
+
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geo.setAttribute('color',    new THREE.BufferAttribute(colors, 3));
+
+    scene.add(new THREE.Points(geo, new THREE.PointsMaterial({
+        size: 4 * pixelRatio,
+        sizeAttenuation: false,
+        map: glowTex,
+        vertexColors: true,
+        transparent: true,
+        opacity: 0.95,
+        depthWrite: false,
+        blending: THREE.AdditiveBlending
+    })));
+})();
+
+/* ================================================================== *
+ *  NEBULA HAZE
+ * ================================================================== */
+(function buildNebula() {
+    [
+        { pos: [-3200, 1900, -5200], scale: 7000, color: '#ff5fa2', op: 0.13 },
+        { pos: [ 3400,  600, -5000], scale: 6200, color: '#3fd8c8', op: 0.10 },
+        { pos: [  600, 3000, -6000], scale: 8000, color: '#8a5cff', op: 0.12 },
+        { pos: [-1200, -900, -5600], scale: 5600, color: '#ffa14a', op: 0.09 }
+    ].forEach(b => {
+        const sprite = new THREE.Sprite(new THREE.SpriteMaterial({
+        map: glowTex,
+        color: new THREE.Color(b.color),
+        transparent: true,
+        opacity: b.op,
+        depthWrite: false,
+        blending: THREE.AdditiveBlending
+        }));
+        sprite.position.set(...b.pos);
+        sprite.scale.setScalar(b.scale);
+        scene.add(sprite);
+    });
+})();
+
+/* ================================================================== *
+ *  PLANET + RINGS
+ * ================================================================== */
+const planetPosition = new THREE.Vector3(-1800, 780, -4000);
+const planetRadius   = 1200;
+
+(function buildPlanet() {
+    const planet = new THREE.Mesh(
+        new THREE.SphereGeometry(planetRadius, 72, 48),
+        new THREE.ShaderMaterial({
+        uniforms: {
+            uColA:   { value: new THREE.Color('#e8a0c8') },
+            uColB:   { value: new THREE.Color('#7a4ecb') },
+            uRim:    { value: new THREE.Color('#ffd6a5') },
+            uSunDir: { value: SUN.clone() }
+        },
+        vertexShader: /* glsl */`
+            varying vec3 vNormalW;
+            varying vec3 vPosW;
+            void main() {
+            vNormalW = normalize(mat3(modelMatrix) * normal);
+            vPosW    = (modelMatrix * vec4(position, 1.0)).xyz;
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+            }
+        `,
+        fragmentShader: /* glsl */`
+            varying vec3 vNormalW;
+            varying vec3 vPosW;
+            uniform vec3 uColA, uColB, uRim, uSunDir;
+
+            void main() {
+            vec3 n = normalize(vNormalW);
+            vec3 v = normalize(cameraPosition - vPosW);
+
+            // softer bands — wider sine period and a smooth pow so no hard edges
+            float b1 = sin(n.y * 10.0) * 0.5 + 0.5;
+            float b2 = sin(n.y *  3.0) * 0.5 + 0.5;
+            float bands = mix(b1, b2, 0.5);
+            bands = smoothstep(0.0, 1.0, bands);
+
+            vec3 base = mix(uColA, uColB, bands);
+
+            // gentler terminator
+            float diff = smoothstep(-0.45, 0.90, dot(n, uSunDir));
+            vec3  col  = base * (0.12 + 0.85 * diff);
+
+            // softer, wider rim
+            float rim = pow(1.0 - max(dot(n, v), 0.0), 2.0);
+            col += uRim * rim * 0.6;
+
+            gl_FragColor = vec4(col, 1.0);
+            #include <colorspace_fragment>
+            }
+        `
+        })
+    );
+    planet.position.copy(planetPosition);
+    scene.add(planet);
+
+    const inner = planetRadius * 1.45;
+    const outer = planetRadius * 2.45;
+
+    const ring = new THREE.Mesh(
+        new THREE.RingGeometry(inner, outer, 220, 1),
+        new THREE.ShaderMaterial({
+        transparent: true,
+        depthWrite: false,
+        side: THREE.DoubleSide,
+        uniforms: {
+            uColA:  { value: new THREE.Color('#cdbaff') },
+            uColB:  { value: new THREE.Color('#ffd9b0') },
+            uInner: { value: inner },
+            uOuter: { value: outer }
+        },
+        vertexShader: /* glsl */`
+            varying vec3 vPos;
+            void main() {
+            vPos = position;
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+            }
+        `,
+        fragmentShader: /* glsl */`
+            varying vec3 vPos;
+            uniform vec3  uColA, uColB;
+            uniform float uInner, uOuter;
+
+            void main() {
+            float r = length(vPos.xy);
+            float span = uOuter - uInner;
+
+            float fade = smoothstep(uInner, uInner + span * 0.12, r)
+                        * (1.0 - smoothstep(uOuter - span * 0.20, uOuter, r));
+
+            // lower frequency + smoothstep = wide soft ring bands
+            float bands = 0.55 + 0.45 * sin(r * 0.020);
+            bands = smoothstep(0.0, 1.0, bands);
+            vec3  col = mix(uColA, uColB, bands);
+
+            // wider inner/outer fade so edges don't feel like a cut
+            float fadeSoft = smoothstep(uInner, uInner + span * 0.35, r)
+                        * (1.0 - smoothstep(uOuter - span * 0.45, uOuter, r));
+
+            gl_FragColor = vec4(col, fadeSoft * (0.40 + 0.25 * bands) * 0.75);
+            #include <colorspace_fragment>
+            }
+        `
+        })
+    );
+    ring.position.copy(planetPosition);
+    ring.rotation.set(-1.02, 0.0, 0.34);
+    scene.add(ring);
+})();
+
+/* ================================================================== *
+ *  ROCKS + LIGHTS
+ * ================================================================== */
+scene.add(new THREE.DirectionalLight(0xffc9a0, 2.4).translateX(0)); // placeholder removed below
+scene.children.pop();
+
+const sunLight = new THREE.DirectionalLight(0xffc9a0, 2.4);
+sunLight.position.copy(SUN).multiplyScalar(3000);
+scene.add(sunLight);
+scene.add(new THREE.HemisphereLight(0xa06bff, 0x2a1a45, 0.9));
+
+const rocks = [];
+(function buildRocks() {
+    const rockMat = new THREE.MeshStandardMaterial({
+        color: 0x2b1c48, roughness: 1.0, metalness: 0.0, flatShading: true
+    });
+
+    for (let i = 0; i < 18; i++) {
+        const rock = new THREE.Mesh(
+        new THREE.IcosahedronGeometry(1, Math.random() < 0.5 ? 0 : 1),
+        rockMat
+        );
+
+        const dir = new THREE.Vector3(
+        Math.random() - 0.5,
+        Math.random() * 0.55 - 0.18,
+        -Math.random() - 0.12
+        ).normalize();
+
+        rock.position.copy(dir).multiplyScalar(260 + Math.random() * 1500);
+
+        const s = 9 + Math.random() * 38;
+        rock.scale.set(s, s * (0.7 + Math.random() * 0.5), s * (0.75 + Math.random() * 0.4));
+        rock.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI);
+
+        rock.userData = {
+        spin: new THREE.Vector3(
+            (Math.random() - 0.5) * 0.18,
+            (Math.random() - 0.5) * 0.18,
+            (Math.random() - 0.5) * 0.18
+        ),
+        bobSpeed:  0.25 + Math.random() * 0.5,
+        bobAmount: 6 + Math.random() * 16,
+        phase:     Math.random() * Math.PI * 2,
+        baseY:     rock.position.y
+        };
+
+        scene.add(rock);
+        rocks.push(rock);
+    }
+})();
+
+/* ================================================================== *
+ *  POST-PROCESSING — GLITCH PASS
+ * ================================================================== */
+const drawSize = renderer.getDrawingBufferSize(new THREE.Vector2());
+
+const renderTarget = new THREE.WebGLRenderTarget(drawSize.x, drawSize.y, {
+    minFilter: THREE.LinearFilter,
+    magFilter: THREE.LinearFilter,
+    format:    THREE.RGBAFormat,
+    type:      THREE.UnsignedByteType,
+    samples:   4,             // MSAA on WebGL2
+    depthBuffer: true,
+    stencilBuffer: false
+});
+renderTarget.texture.wrapS = THREE.RepeatWrapping;
+renderTarget.texture.wrapT = THREE.ClampToEdgeWrapping;
+
+const postScene  = new THREE.Scene();
+const postCamera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+
+const glitchUniforms = {
+    tDiffuse:    { value: renderTarget.texture },
+    uResolution: { value: new THREE.Vector2(drawSize.x, drawSize.y) },
+    uTime:       { value: 0 },
+    uBurst:      { value: 0 },     // 0..1 driven by JS
+    uMicro:      { value: 0.35 }   // constant ambient glitch
+};
+
+const postMaterial = new THREE.ShaderMaterial({
+    uniforms: glitchUniforms,
+    depthTest: false,
+    depthWrite: false,
+    vertexShader: /* glsl */`
+        varying vec2 vUv;
+        void main() {
+        vUv = uv;
+        gl_Position = vec4(position.xy, 0.0, 1.0);
+        }
+    `,
+    fragmentShader: /* glsl */`
+        precision highp float;
+
+        uniform sampler2D tDiffuse;
+        uniform vec2  uResolution;
+        uniform float uTime;
+        uniform float uBurst;
+        uniform float uMicro;
+
+        varying vec2 vUv;
+
+        float hash21(vec2 p) {
+        vec3 p3 = fract(vec3(p.xyx) * 0.1031);
+        p3 += dot(p3, p3.yzx + 33.33);
+        return fract((p3.x + p3.y) * p3.z);
+        }
+
+        // scene renders into a linear-light target, so encode at the very end
+        vec3 linearToSRGB(vec3 c) {
+        c = max(c, vec3(0.0));
+        return mix(
+            c * 12.92,
+            1.055 * pow(c, vec3(1.0 / 2.4)) - 0.055,
+            step(vec3(0.0031308), c)
+        );
+        }
+
+        void main() {
+        vec2 uv = vUv;
+        float t  = uTime;
+
+        /* ---------------- 1. horizontal slice tearing ---------------- */
+        float rows = 46.0;
+        float row  = floor(uv.y * rows);
+        float slot = floor(t * 18.0);
+
+        float microHit   = step(1.0 - 0.06 * uMicro, hash21(vec2(row, slot)));
+        float microShift = (hash21(vec2(row, slot + 17.0)) - 0.5) * 0.10 * uMicro;
+
+        float burstHit   = step(1.0 - 0.55 * uBurst, hash21(vec2(row * 2.13, slot * 0.5)));
+        float burstShift = (hash21(vec2(row, slot + 5.0)) - 0.5) * 0.30 * uBurst;
+
+        uv.x += microHit * microShift + burstHit * burstShift;
+
+        /* ---------------- 2. chromatic aberration ---------------- */
+        vec2  fromCenter = uv - 0.5;
+        vec2  caDir      = normalize(fromCenter + 1e-6);
+        float caAmt      = 0.0035 * uBurst + 0.0006 * uMicro;
+
+        vec3 colR = linearToSRGB(texture2D(tDiffuse, uv + caDir * caAmt).rgb);
+        vec3 colG = linearToSRGB(texture2D(tDiffuse, uv).rgb);
+        vec3 colB = linearToSRGB(texture2D(tDiffuse, uv - caDir * caAmt).rgb);
+
+        vec3 col = vec3(colR.r, colG.g, colB.b);
+
+        /* ---------------- 3. random square near the centre ---------------- *
+        * Picks a new square ~6x per second, biased to the middle of the
+        * screen. Each square either inverts, shifts or posterize-tints.   */
+        float sqSlot = floor(t * 6.0);
+        float sqOn   = step(1.0 - 0.70 * uBurst, hash21(vec2(sqSlot, 11.0)));
+
+        vec2 sqCenter = vec2(0.5) + (vec2(
+            hash21(vec2(sqSlot, 23.0)),
+            hash21(vec2(sqSlot, 37.0))
+        ) - 0.5) * 0.42;                       // stays inside central ~42%
+
+        vec2 sqHalf = vec2(
+            0.040 + hash21(vec2(sqSlot, 41.0)) * 0.090,
+            0.030 + hash21(vec2(sqSlot, 53.0)) * 0.070
+        );
+
+        vec2  d      = abs(vUv - sqCenter) - sqHalf;
+        float inside = step(max(d.x, d.y), 0.0) * sqOn;
+
+        float mode = hash21(vec2(sqSlot, 67.0));
+
+        vec3 sqCol;
+        if (mode < 0.45) {
+            /* invert colours */
+            sqCol = 1.0 - col;
+        } else if (mode < 0.78) {
+            /* shift the sample sideways */
+            vec2 sh = vec2((hash21(vec2(sqSlot, 71.0)) - 0.5) * 0.14, 0.0);
+            sqCol = linearToSRGB(texture2D(tDiffuse, vUv + sh).rgb);
+        } else {
+            /* posterize + channel swap */
+            sqCol = floor(col * 4.0) / 4.0;
+            sqCol = sqCol.brg;
+        }
+
+        col = mix(col, sqCol, inside);
+
+        /* ---------------- 4. film noise + brightness flicker ---------------- */
+        float n = hash21(gl_FragCoord.xy + vec2(t * 91.0, t * 57.0));
+        col += (n - 0.5) * 0.10 * uBurst;
+        col *= 1.0 + 0.12 * uBurst * sin(t * 90.0);
+
+        gl_FragColor = vec4(clamp(col, 0.0, 1.0), 1.0);
+        }
+    `
+});
+
+postScene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), postMaterial));
+
+/* ================================================================== *
+ *  GLITCH TIMING (JS side)
+ * ================================================================== */
+let nextGlitchAt = 1.2 + Math.random() * 2.5;
+let glitchStart  = -1;
+let glitchDur    = 0;
+
+function triggerGlitch(now, duration) {
+    glitchStart = now;
+    glitchDur   = duration;
+    nextGlitchAt = now + duration + 1.6 + Math.random() * 3.8;
+}
+
+function updateGlitch(now) {
+    let burst = 0;
+
+    if (glitchStart < 0 && now >= nextGlitchAt) {
+        triggerGlitch(now, 0.10 + Math.random() * 0.32);
+    }
+
+    if (glitchStart >= 0) {
+        const p = (now - glitchStart) / glitchDur;
+        if (p >= 1) {
+        glitchStart = -1;
+        nextGlitchAt = now + 1.6 + Math.random() * 3.8;
+        } else {
+        const env   = Math.sin(p * Math.PI);          // 0 → 1 → 0
+        const flick = 0.65 + Math.random() * 0.35;    // per-frame jitter
+        burst = env * flick;
+        }
+    }
+
+    glitchUniforms.uBurst.value = burst;
+}
+
+// press "G" to force a glitch
+window.addEventListener('keydown', (e) => {
+    if (e.key.toLowerCase() === 'g') {
+        triggerGlitch(clock.elapsedTime, 0.25 + Math.random() * 0.35);
+    }
+});
+
+/* ================================================================== *
+ *  POINTER PARALLAX
+ * ================================================================== */
+let pointerX = 0, pointerY = 0;
+let smoothX  = 0, smoothY  = 0;
+
+window.addEventListener('pointermove', (e) => {
+    pointerX = (e.clientX / window.innerWidth)  * 2 - 1;
+    pointerY = (e.clientY / window.innerHeight) * 2 - 1;
+}, { passive: true });
+
+/* ================================================================== *
+ *  RESIZE
+ * ================================================================== */
+function onResize() {
+    const w = window.innerWidth, h = window.innerHeight;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.setSize(w, h, false);
+
+    const size = renderer.getDrawingBufferSize(new THREE.Vector2());
+    renderTarget.setSize(size.x, size.y);
+    glitchUniforms.uResolution.value.set(size.x, size.y);
+}
+window.addEventListener('resize', onResize);
+
+/* ================================================================== *
+ *  ANIMATION LOOP
+ * ================================================================== */
+const clock = new THREE.Clock();
+let elapsed = 0;
+
+function animate() {
+    const dt = Math.min(clock.getDelta(), 0.05);
+    elapsed += dt;
+
+    // camera drift + parallax
+    const k = 1 - Math.pow(0.001, dt);
+    smoothX += (pointerX - smoothX) * k * 0.7;
+    smoothY += (pointerY - smoothY) * k * 0.7;
+
+    // --- YAW (left/right) -------------------------------------------------
+    // smoothX ∈ [-1, 1] → ±yawParallax degrees around yawBase
+    const yawDeg   = CAM.yawBase
+                   - smoothX * CAM.yawParallax
+                   + Math.sin(elapsed * CAM.yawDriftSpeed) * CAM.yawDrift;
+    camera.rotation.y = yawDeg * DEG2RAD;
+
+    // --- PITCH (up/down) --------------------------------------------------
+    // smoothY ∈ [-1, 1] → ±pitchParallax degrees around pitchBase
+    const pitchDeg = CAM.pitchBase
+                   - smoothY * CAM.pitchParallax
+                   + Math.sin(elapsed * CAM.pitchDriftSpeed) * CAM.pitchDrift;
+    camera.rotation.x = pitchDeg * DEG2RAD;
+
+    // --- Vertical bob (position, not angle) ------------------------------
+    camera.position.y = 14 + Math.sin(elapsed * CAM.bobSpeed) * CAM.bobAmount;
+
+    skyUniforms.uTime.value = elapsed;
+
+    for (let i = 0; i < rocks.length; i++) {
+        const r = rocks[i], d = r.userData;
+        r.rotation.x += d.spin.x * dt;
+        r.rotation.y += d.spin.y * dt;
+        r.rotation.z += d.spin.z * dt;
+        r.position.y  = d.baseY + Math.sin(elapsed * d.bobSpeed + d.phase) * d.bobAmount;
+    }
+
+    // --- glitch pass ---
+    glitchUniforms.uTime.value = elapsed;
+    updateGlitch(elapsed);
+
+    renderer.setRenderTarget(renderTarget);
+    renderer.render(scene, camera);
+
+    renderer.setRenderTarget(null);
+    renderer.render(postScene, postCamera);
+}
+
+renderer.setAnimationLoop(animate);
