@@ -88,14 +88,47 @@ def js_replacer(soup, root):
 def svg_replacer():
     ...
 
-def save(root, output_folder, file):
-    output_folder.mkdir(exist_ok=True)
+def save(root, routes, file):
+    """
+    Write a processed HTML file to its destination path defined in routes.map.
 
-    if file.name == "index.html":
-        output_file = root / file.name
-    else:
-        output_file = output_folder / file.name
+    The destination is looked up from the routes mapping using the source key
+    "/HTML/<file.name>". This makes routes.map the single source of truth for
+    output locations, so a route such as "/HTML/404.html=/404.html" is written
+    to the project root, while "/HTML/about.html=/Pages/about.html" is written
+    into the Pages folder.
 
+    Any missing parent directories (e.g. /Pages/) are created automatically.
+
+    Args:
+        root (Path): The project root directory; destination paths are
+            resolved relative to it.
+        routes (dict[str, str]): Mapping of source keys (e.g. "/HTML/404.html")
+            to destination routes (e.g. "/404.html" or "/Pages/about.html"),
+            as loaded from routes.map.
+        file (Path): The source HTML file to save. Its name is used to build
+            the lookup key "/HTML/<file.name>" in routes.
+        soup (BeautifulSoup): The parsed and processed HTML document to
+            serialize. Its prettified form is written to disk.
+
+    Returns:
+        None: The file is written to disk; no value is returned.
+
+    Raises:
+        KeyError: If no route exists in routes for "/HTML/<file.name>".
+    """
+    source_key = f"/HTML/{file.name}"
+
+    if source_key not in routes:
+        raise KeyError(
+            f"No route found for {file.name} (looked up {source_key!r} in routes.map)"
+        )
+
+    relative_output = routes[source_key].lstrip("/")
+    output_file = root / relative_output
+    output_file.parent.mkdir(parents=True, exist_ok=True)
+
+    print(f"HTML: saving {file.name} -> {output_file}")
     output_file.write_text(soup.prettify(), encoding="utf-8")
 
 if __name__=="__main__":
@@ -123,7 +156,7 @@ if __name__=="__main__":
         css_replacer(soup, root)
         js_replacer(soup, root)
   
-        save(root, pages_folder, file)
+        save(root, routes, file)
         
     print("---------------------------------------")
     print("Build Successfully Done!")
