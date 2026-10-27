@@ -70,7 +70,7 @@ def js_replacer(soup, root):
     js_scripts = soup.find_all("script", src=True)
 
     for script in js_scripts:
-        # Skip for google tag manager
+        # Skip scripts explicitly marked as "don't inline"
         if script.has_attr("data-no-inline"):
             print("JS: skipping external script:", script["src"])
             continue
@@ -78,8 +78,15 @@ def js_replacer(soup, root):
         js_path = root / script["src"].lstrip("/")
         js_text = js_path.read_text(encoding="utf-8")
 
-        print("JS: Merging with html: ", js_path.name)
+        print("JS: Merging with html:", js_path.name)
         new_script = soup.new_tag("script")
+
+        # Preserve all attributes from the original tag
+        for attr, value in script.attrs.items():
+            new_script[attr] = value
+
+        # Inlining replaces src; keep the original file name for reference
+        del new_script["src"]
         new_script["data-file"] = js_path.name
         new_script.string = js_text
 
