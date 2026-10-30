@@ -47,7 +47,7 @@ body[data-theme='light'] .button-shadow:active {
 /* logos */
 
 .logo-shadow {
-  transition: filter 0.25s ease, transform 0.2s ease;
+  transition: filter 0.4s ease, transform 0.2s ease;
 }
 
 body[data-theme='dark'] .logo-shadow {
@@ -75,7 +75,7 @@ body[data-theme='light'] .logo-shadow:active {
 }
 
 .logo-color-shadow {
-  transition: filter 0.25s ease, transform 0.2s ease;
+  transition: filter 0.4s ease, transform 0.2s ease;
 }
 
 body[data-theme='dark'] .logo-color-shadow {

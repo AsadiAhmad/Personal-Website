@@ -92,7 +92,6 @@
   width: 82px;
   height: 82px;
   object-fit: contain;
-  transition: transform 0.2s ease;
 }
 
 .experience-marker-text {
