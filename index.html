@@ -128,10 +128,12 @@ body {
   --light-shadow-base: 0px 0px 18px rgba(255, 255, 255, 0.2);
   --light-shadow-hover: 0px 0px 24px rgba(255, 255, 255, 0.4);
 
-  --dark-logo-shadow-base: drop-shadow(0px 0px 12px rgba(15, 23, 42, 0.4));
-  --dark-logo-shadow-hover: drop-shadow(0px 0px 16px rgba(15, 23, 42, 0.5));
-  --light-logo-shadow-base: drop-shadow(0px 0px 12px rgba(255, 255, 255, 0.5));
-  --light-logo-shadow-hover: drop-shadow(0px 0px 16px rgba(255, 255, 255, 0.68));
+  --logo-dark-shadow-base: drop-shadow(0px 0px 12px rgba(15, 23, 42, 0.5));
+  --logo-dark-shadow-hover: drop-shadow(0px 0px 16px rgba(15, 23, 42, 0.6));
+  --logo-light-shadow-base: drop-shadow(0px 0px 12px rgba(255, 255, 255, 0.5));
+  --logo-light-shadow-hover: drop-shadow(0px 0px 16px rgba(255, 255, 255, 0.68));
+  --logo-purple-shadow-base: drop-shadow(0px 0px 12px rgba(80, 0, 241, 0.5));
+  --logo-purple-shadow-hover: drop-shadow(0px 0px 16px rgba(80, 0, 241, 0.68));
 }
 
 /* buttons */
@@ -171,27 +173,55 @@ body[data-theme='light'] .button-shadow:active {
 }
 
 body[data-theme='dark'] .logo-shadow {
-  filter: var(--light-logo-shadow-base);
+  filter: var(--logo-light-shadow-base);
 }
 
 body[data-theme='dark'] .logo-shadow:hover {
-  filter: var(--light-logo-shadow-hover);
+  filter: var(--logo-light-shadow-hover);
 }
 
 body[data-theme='dark'] .logo-shadow:active {
-  filter: var(--light-logo-shadow-base);
+  filter: var(--logo-light-shadow-base);
 }
 
 body[data-theme='light'] .logo-shadow {
-  filter: var(--dark-logo-shadow-base);
+  filter: var(--logo-dark-shadow-base);
 }
 
 body[data-theme='light'] .logo-shadow:hover {
-  filter: var(--dark-logo-shadow-hover);
+  filter: var(--logo-dark-shadow-hover);
 }
 
 body[data-theme='light'] .logo-shadow:active {
-  filter: var(--dark-logo-shadow-base);
+  filter: var(--logo-dark-shadow-base);
+}
+
+.logo-color-shadow {
+  transition: filter 0.25s ease, transform 0.2s ease;
+}
+
+body[data-theme='dark'] .logo-color-shadow {
+  filter: var(--logo-purple-shadow-base);
+}
+
+body[data-theme='dark'] .logo-color-shadow:hover {
+  filter: var(--logo-purple-shadow-hover);
+}
+
+body[data-theme='dark'] .logo-color-shadow:active {
+  filter: var(--logo-purple-shadow-base);
+}
+
+body[data-theme='light'] .logo-color-shadow {
+  filter: var(--logo-purple-shadow-base);
+}
+
+body[data-theme='light'] .logo-color-shadow:hover {
+  filter: var(--logo-purple-shadow-hover);
+}
+
+body[data-theme='light'] .logo-color-shadow:active {
+  filter: var(--logo-purple-shadow-base);
 }
   </style>
   <style data-file="theme_toggle_button.css">
